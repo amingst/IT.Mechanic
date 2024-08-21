@@ -11,6 +11,16 @@
             SemanticProperties.HeadingLevel="Level1" />
         <RadioButton Content="GoDaddy" />
 
+        <Label
+            Text="Enter Your Domain Name"
+            Style="{StaticResource Headline}"
+            SemanticProperties.HeadingLevel="Level1" />
+        <Entry 
+            x:Name="dnsEntry"
+            Placeholder="example.com"
+            Text="{Binding dnsModel.DomainName, Mode=TwoWay}"
+        />
+
         <buttons:NavigationButtonGroup
         NextRoute="//Server"
         BackRoute="///ProductSelect"
