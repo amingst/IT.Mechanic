@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="IT.Mechanic.Installer.ProductSelectionPage"
-             Title="Product Selection">
+             x:Class="IT.Mechanic.Installer.DNSPage"
+             Title="DNS Settings">
     <VerticalStackLayout>
         <Label
-            Text="Select A Product"
+            Text="Set Your DNS Provider"
             Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1" /> 
-        <RadioButton Content="CMS" />
-        <RadioButton Content="Business" />
+            SemanticProperties.HeadingLevel="Level1" />
+        <RadioButton Content="GoDaddy" />
 
         <Button
             x:Name="NextBtn"

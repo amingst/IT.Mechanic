@@ -16,4 +16,12 @@
         Title="Product Selection"
         ContentTemplate="{DataTemplate local:ProductSelectionPage}}"
         Route="ProductSelect" />
+    <ShellContent
+        Title="DNS Settings"
+        ContentTemplate="{DataTemplate local:DNSPage}}"
+        Route="DNS" />
+    <ShellContent
+        Title="Server Settings"
+        ContentTemplate="{DataTemplate local:ServerPage}}"
+        Route="Server" />
 </Shell>

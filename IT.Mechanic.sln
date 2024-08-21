@@ -7,7 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IT.Mechanic.Models.Configur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestBench", "Models\TestBench\TestBench.csproj", "{96058570-1822-4D8C-ADD1-81AA5542E1F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IT.Mechanic.Installer", "IT.Mechanic.Installer\IT.Mechanic.Installer.csproj", "{02868545-D2BB-4665-B58A-1C26C198F3E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IT.Mechanic.Installer", "IT.Mechanic.Installer\IT.Mechanic.Installer.csproj", "{02868545-D2BB-4665-B58A-1C26C198F3E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5DDABB53-38AE-44EE-BA23-38F90FA3451A} = {5DDABB53-38AE-44EE-BA23-38F90FA3451A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
