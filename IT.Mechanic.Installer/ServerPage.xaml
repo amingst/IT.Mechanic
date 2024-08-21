@@ -5,10 +5,57 @@
              xmlns:buttons="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              Title="Server Settings">
     <VerticalStackLayout>
-        <Label 
-            Text="Server"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <HorizontalStackLayout>
+            <Label 
+                Text="Expert Mode: "
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Switch
+                IsToggled="{Binding IsExpertMode, Mode=TwoWay}" />
+        </HorizontalStackLayout>
+
+        <Label
+            Text="Select A Hosting Provider"
+            Style="{StaticResource Headline}"
+            SemanticProperties.HeadingLevel="Level1" />
+        <RadioButton Content="Expert Mode" />
+        <RadioButton Content="Rumble" />
+        <RadioButton Content="Digital Ocean" />
+        <RadioButton Content="Azure" />
+        <RadioButton Content="AWS" />
+        <RadioButton Content="GCP" />
+        <RadioButton Content="InvertedTech" />
+
+
+        <Label Text="Server Name" />
+        <Entry 
+            x:Name="serverNameEntry"
+            Placeholder="Example Server"
+            Text="{Binding serverModel.ServerName, Mode=TwoWay}"
+        />
+
+        <Label Text="User" />
+        <Entry 
+            x:Name="userEntry"
+            Placeholder="jdoe"
+            Text="{Binding serverModel.User, Mode=TwoWay}"
+        />
+
+        <Label Text="Public IP Address" />
+        <Entry 
+            x:Name="publicIpEntry"
+            Placeholder="127.0.0.1:80"
+            Text="{Binding serverModel.PublicIP, Mode=TwoWay}"
+            IsVisible="{Binding IsExpertMode}"
+        />
+
+        <Label Text="SSH Private Key" />
+        <Entry 
+            x:Name="sshPrivKeyEntry"
+            Placeholder="SSH Key"
+            Text="{Binding serverModel.SSHPrivateKey, Mode=TwoWay}"
+            IsVisible="{Binding IsExpertMode}"
+        />
         <buttons:NavigationButtonGroup
             NextRoute="//Hosting"
             BackRoute="///DNS"
