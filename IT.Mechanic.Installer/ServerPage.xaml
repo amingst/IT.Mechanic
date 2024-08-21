@@ -8,5 +8,17 @@
             Text="Server"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button
+        x:Name="NextBtn"
+        Text="Next" 
+        SemanticProperties.Hint="Advances To The Next Section"
+        Clicked="OnNextClicked"
+        />
+        <Button
+            x:Name="BackBtn"
+            Text="Back" 
+            SemanticProperties.Hint="Advances To The Previous Section"
+            Clicked="OnBackClicked"
+        />
     </VerticalStackLayout>
 </ContentPage>

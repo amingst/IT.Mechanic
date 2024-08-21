@@ -17,7 +17,6 @@ public partial class DNSPage : ContentPage
 
     private async void OnBackClicked(object sender, EventArgs e)
     {
-        // TODO: Make Go To Products
-        await Shell.Current.GoToAsync("//Products");
+        await Shell.Current.GoToAsync("///ProductSelect");
     }
 }

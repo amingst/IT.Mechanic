@@ -19,7 +19,6 @@ public partial class ProductSelectionPage : ContentPage
 
 	private async void OnBackClicked(object sender, EventArgs e)
 	{
-		// TODO: Make Go To Home
-		await Shell.Current.GoToAsync("//");
+		await Shell.Current.GoToAsync("///MainPage");
 	}
 }
