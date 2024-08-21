@@ -19,7 +19,7 @@
                 Text="Select A Hosting Provider"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" /> 
-            <RadioButton Content="Expert Mode" Value="{Binding serverModel.HostingProvider.ExpertMode}" CheckedChanged="OnCheckChanged"/>
+            <RadioButton Content="Expert Mode" Value="{Binding serverModel.HostingProvider.ExpertMode}"/>
             <RadioButton Content="Rumble" Value="{Binding serverModel.HostingProvider.Rumble}"/>
             <RadioButton Content="Digital Ocean" Value="{Binding serverModel.HostingProvider.Digitalocean}"/>
             <RadioButton Content="Azure" Value="{Binding serverModel.HostingProvider.Azure}"/>
