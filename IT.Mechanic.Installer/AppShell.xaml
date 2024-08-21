@@ -12,4 +12,8 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
+    <ShellContent
+        Title="Product Selection"
+        ContentTemplate="{DataTemplate local:ProductSelectionPage}}"
+        Route="ProductSelect" />
 </Shell>
