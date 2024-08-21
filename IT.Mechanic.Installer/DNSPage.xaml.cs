@@ -9,14 +9,4 @@ public partial class DNSPage : ContentPage
         dnsModel = new DNSModel();
         BindingContext = dnsModel;
 	}
-
-    private async void OnNextClicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("//Server");
-    }
-
-    private async void OnBackClicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("///ProductSelect");
-    }
 }

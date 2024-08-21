@@ -67,6 +67,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Components\Buttons\NavigationButtonGroup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="DNSPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

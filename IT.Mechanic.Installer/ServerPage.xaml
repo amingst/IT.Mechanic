@@ -2,23 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IT.Mechanic.Installer.ServerPage"
+             xmlns:buttons="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              Title="Server Settings">
     <VerticalStackLayout>
         <Label 
             Text="Server"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Button
-        x:Name="NextBtn"
-        Text="Next" 
-        SemanticProperties.Hint="Advances To The Next Section"
-        Clicked="OnNextClicked"
-        />
-        <Button
-            x:Name="BackBtn"
-            Text="Back" 
-            SemanticProperties.Hint="Advances To The Previous Section"
-            Clicked="OnBackClicked"
+        <buttons:NavigationButtonGroup
+            NextRoute="//Hosting"
+            BackRoute="///DNS"
         />
     </VerticalStackLayout>
 </ContentPage>

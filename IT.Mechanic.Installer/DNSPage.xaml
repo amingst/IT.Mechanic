@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IT.Mechanic.Installer.DNSPage"
+             xmlns:buttons="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              Title="DNS Settings">
     <VerticalStackLayout>
         <Label
@@ -10,17 +11,9 @@
             SemanticProperties.HeadingLevel="Level1" />
         <RadioButton Content="GoDaddy" />
 
-        <Button
-            x:Name="NextBtn"
-            Text="Next" 
-            SemanticProperties.Hint="Advances To The Next Section"
-            Clicked="OnNextClicked"
-            />
-        <Button
-            x:Name="BackBtn"
-            Text="Back" 
-            SemanticProperties.Hint="Advances To The Previous Section"
-            Clicked="OnBackClicked"
+        <buttons:NavigationButtonGroup
+        NextRoute="//Server"
+        BackRoute="///ProductSelect"
         />
     </VerticalStackLayout>
 </ContentPage>

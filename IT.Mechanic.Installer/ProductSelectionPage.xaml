@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:buttons="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              x:Class="IT.Mechanic.Installer.ProductSelectionPage"
              Title="Product Selection">
     <VerticalStackLayout>
@@ -11,17 +12,9 @@
         <RadioButton Content="CMS" />
         <RadioButton Content="Business" />
 
-        <Button
-            x:Name="NextBtn"
-            Text="Next" 
-            SemanticProperties.Hint="Advances To The Next Section"
-            Clicked="OnNextClicked"
+        <buttons:NavigationButtonGroup
+            NextRoute="//DNS"
+            BackRoute="///MainPage"
             />
-        <Button
-            x:Name="BackBtn"
-            Text="Back" 
-            SemanticProperties.Hint="Advances To The Previous Section"
-            Clicked="OnBackClicked"
-        />
     </VerticalStackLayout>
 </ContentPage>

@@ -11,14 +11,4 @@ public partial class ProductSelectionPage : ContentPage
 		productSelection = new ProductSelectionModel();
 		BindingContext = productSelection;
 	}
-
-	private async void OnNextClicked(object sender, EventArgs e)
-	{
-		await Shell.Current.GoToAsync("//DNS");
-	}
-
-	private async void OnBackClicked(object sender, EventArgs e)
-	{
-		await Shell.Current.GoToAsync("///MainPage");
-	}
 }
