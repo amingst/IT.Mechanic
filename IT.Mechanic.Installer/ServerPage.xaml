@@ -14,17 +14,19 @@
                 IsToggled="{Binding IsExpertMode, Mode=TwoWay}" />
         </HorizontalStackLayout>
 
-        <Label
-            Text="Select A Hosting Provider"
-            Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1" />
-        <RadioButton Content="Expert Mode" />
-        <RadioButton Content="Rumble" />
-        <RadioButton Content="Digital Ocean" />
-        <RadioButton Content="Azure" />
-        <RadioButton Content="AWS" />
-        <RadioButton Content="GCP" />
-        <RadioButton Content="InvertedTech" />
+        <VerticalStackLayout RadioButtonGroup.SelectedValue="{Binding serverModel.HostingProvider}">
+            <Label
+                Text="Select A Hosting Provider"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" /> 
+            <RadioButton Content="Expert Mode" Value="{Binding serverModel.HostingProvider.ExpertMode}" CheckedChanged="OnCheckChanged"/>
+            <RadioButton Content="Rumble" Value="{Binding serverModel.HostingProvider.Rumble}"/>
+            <RadioButton Content="Digital Ocean" Value="{Binding serverModel.HostingProvider.Digitalocean}"/>
+            <RadioButton Content="Azure" Value="{Binding serverModel.HostingProvider.Azure}"/>
+            <RadioButton Content="AWS" Value="{Binding serverModel.HostingProvider.AWS}"/>
+            <RadioButton Content="GCP" Value="{Binding serverModel.HostingProvider.GCP}"/>
+            <RadioButton Content="InvertedTech" Value="{Binding serverModel.HostingProvider.InvertedTech}" />
+        </VerticalStackLayout>
 
 
         <Label Text="Server Name" />
