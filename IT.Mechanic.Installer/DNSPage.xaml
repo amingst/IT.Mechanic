@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IT.Mechanic.Installer.DNSPage"
-             xmlns:buttons="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              Title="DNS Settings">
     <VerticalStackLayout HorizontalOptions="Center">
         <VerticalStackLayout RadioButtonGroup.GroupName="HostingProviders" RadioButtonGroup.SelectedValue="{Binding _configService.DNS.Provider}">
@@ -23,9 +22,21 @@
             Text="{Binding _configService.DNS.DomainName, Mode=TwoWay}"
         />
 
-        <buttons:NavigationButtonGroup
-        NextRoute="//Server"
-        BackRoute="///ProductSelect"
-        />
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Button
+                x:Name="BackBtn"
+                Text="Back" 
+                SemanticProperties.Hint="Advances To The Previous Section"
+                Clicked="OnBackClicked"
+                Margin="2"
+            />
+                    <Button
+                x:Name="NextBtn"
+                Text="Next" 
+                SemanticProperties.Hint="Advances To The Next Section"
+                Clicked="OnNextClicked"
+                Margin="2"
+            />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
