@@ -6,7 +6,7 @@
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
-            Spacing="25">
+            Spacing="25" HorizontalOptions="Center" >
 
             <Label
                 Text="Welcome To Mechanic"
@@ -17,6 +17,13 @@
                 x:Name="StartBtn"
                 Text="Get Started!" 
                 SemanticProperties.Hint="Starts the Installation Wizard"
+                Clicked="OnStartClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="LoadBtn"
+                Text="Load From File" 
+                SemanticProperties.Hint="Loads an Existing Mechanic.json file"
                 Clicked="OnStartClicked"
                 HorizontalOptions="Fill" />
         </VerticalStackLayout>

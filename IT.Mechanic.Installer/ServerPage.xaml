@@ -4,7 +4,7 @@
              x:Class="IT.Mechanic.Installer.ServerPage"
              xmlns:buttons="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              Title="Server Settings">
-    <VerticalStackLayout>
+    <VerticalStackLayout HorizontalOptions="Center">
         <!--<HorizontalStackLayout>
             <Label 
                 Text="Expert Mode: "

@@ -4,7 +4,7 @@
              x:Class="IT.Mechanic.Installer.DNSPage"
              xmlns:buttons="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              Title="DNS Settings">
-    <VerticalStackLayout>
+    <VerticalStackLayout HorizontalOptions="Center">
         <Label
             Text="Set Your DNS Provider"
             Style="{StaticResource Headline}"
