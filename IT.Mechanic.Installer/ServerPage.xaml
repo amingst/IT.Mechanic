@@ -5,14 +5,6 @@
              xmlns:buttons="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              Title="Server Settings">
     <VerticalStackLayout HorizontalOptions="Center">
-        <!--<HorizontalStackLayout>
-            <Label 
-                Text="Expert Mode: "
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-            <Switch
-                IsToggled="{Binding IsExpertMode, Mode=TwoWay}" />
-        </HorizontalStackLayout>-->
 
         <VerticalStackLayout RadioButtonGroup.SelectedValue="{Binding serverModel.HostingProvider}">
             <Label

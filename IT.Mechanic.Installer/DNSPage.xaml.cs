@@ -1,12 +1,13 @@
 namespace IT.Mechanic.Installer;
+
+using IT.Mechanic.Installer.Services;
 using IT.Mechanic.Models.Configuration;
 public partial class DNSPage : ContentPage
 {
-    public DNSModel dnsModel { get; set; }
+	private readonly IConfigService _configService;
 	public DNSPage()
 	{
 		InitializeComponent();
-        dnsModel = new DNSModel();
-        BindingContext = dnsModel;
-	}
+        _configService = App.Current.Handler.MauiContext.Services.GetService<IConfigService>();
+    }
 }

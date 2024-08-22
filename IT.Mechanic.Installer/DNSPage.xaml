@@ -5,11 +5,13 @@
              xmlns:buttons="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              Title="DNS Settings">
     <VerticalStackLayout HorizontalOptions="Center">
-        <Label
-            Text="Set Your DNS Provider"
-            Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1" />
-        <RadioButton Content="GoDaddy" />
+        <VerticalStackLayout RadioButtonGroup.GroupName="HostingProviders" RadioButtonGroup.SelectedValue="{Binding _configService.DNS.Provider}">
+            <Label
+                Text="Set Your DNS Provider"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+            <RadioButton Content="GoDaddy" Value="{Binding _configService.DNS.ProviderEnum.Godaddy}"/>
+        </VerticalStackLayout>
 
         <Label
             Text="Enter Your Domain Name"
@@ -18,7 +20,7 @@
         <Entry 
             x:Name="dnsEntry"
             Placeholder="example.com"
-            Text="{Binding dnsModel.DomainName, Mode=TwoWay}"
+            Text="{Binding _configService.DNS.DomainName, Mode=TwoWay}"
         />
 
         <buttons:NavigationButtonGroup

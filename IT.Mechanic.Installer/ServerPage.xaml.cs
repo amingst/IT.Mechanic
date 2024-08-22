@@ -1,15 +1,14 @@
+using IT.Mechanic.Installer.Services;
 using IT.Mechanic.Models.Configuration;
 
 namespace IT.Mechanic.Installer;
 
 public partial class ServerPage : ContentPage
 {
-	public ServerModel serverModel { get; set; }
-	public bool IsExpertMode { get; set; } = false;
+	private readonly IConfigService _configService;
 	public ServerPage()
 	{
 		InitializeComponent();
-		serverModel = new ServerModel();
-		BindingContext = serverModel;
-	}
+        _configService = App.Current.Handler.MauiContext.Services.GetService<IConfigService>();
+    }
 }
