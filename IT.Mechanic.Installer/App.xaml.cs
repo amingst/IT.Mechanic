@@ -1,4 +1,6 @@
-﻿namespace IT.Mechanic.Installer
+﻿using IT.Mechanic.Models.Configuration;
+
+namespace IT.Mechanic.Installer
 {
     public partial class App : Application
     {

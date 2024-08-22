@@ -4,13 +4,23 @@
              xmlns:buttons="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              x:Class="IT.Mechanic.Installer.ProductSelectionPage"
              Title="Product Selection">
-    <VerticalStackLayout>
+    <VerticalStackLayout HorizontalOptions="Center">
         <Label
-            Text="Select A Product"
+            Text="What Kind Of Website Do You Want?"
             Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1" /> 
-        <RadioButton Content="CMS" />
-        <RadioButton Content="Business" />
+            SemanticProperties.HeadingLevel="Level1" />
+        <HorizontalStackLayout>
+            <RadioButton Content="CMS" />
+            <Label
+                Margin="9"
+                Text="Add Thoughtful Explanation Here"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <RadioButton Content="Business" />
+            <Label
+                Margin="9"
+                Text="Add Thoughtful Explanation Here"/>
+        </HorizontalStackLayout>
 
         <buttons:NavigationButtonGroup
             NextRoute="//DNS"
