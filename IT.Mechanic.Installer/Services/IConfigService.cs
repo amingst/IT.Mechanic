@@ -8,5 +8,6 @@ namespace IT.Mechanic.Installer.Services
 {
     public interface IConfigService
     {
+        public string GetWebsiteType();
     }
 }

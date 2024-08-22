@@ -11,7 +11,7 @@
             SemanticProperties.HeadingLevel="Level1" />
         <VerticalStackLayout RadioButtonGroup.GroupName="ProductSelection" RadioButtonGroup.SelectedValue="{Binding _configService.ProductSelection.WebsiteType}">
             <HorizontalStackLayout>
-                <RadioButton Content="Business" Value="{Binding _configService.ProductSelection.WebsiteTypes.Business}"/>
+                <RadioButton Content="Business" Value="{Binding _configService.ProductSelection.WebsiteTypes.Business, Mode=TwoWay}"/>
                 <Label
                         Margin="9"
                         Text="Add Thoughtful Explanation Here"/>

@@ -51,7 +51,7 @@
             IsVisible="{Binding IsExpertMode}"
         />
         <buttons:NavigationButtonGroup
-            NextRoute="//Hosting"
+            NextRoute="//ReviewBuild"
             BackRoute="///DNS"
         />
     </VerticalStackLayout>

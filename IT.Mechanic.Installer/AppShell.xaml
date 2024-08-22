@@ -24,4 +24,8 @@
         Title="Server Settings"
         ContentTemplate="{DataTemplate local:ServerPage}}"
         Route="Server" />
+    <ShellContent
+        Title="Review Build"
+        ContentTemplate="{DataTemplate local:ReviewBuildPage}}"
+        Route="ReviewBuild" />
 </Shell>

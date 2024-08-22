@@ -15,5 +15,10 @@ namespace IT.Mechanic.Installer.Services
         public ServerModel Server { get; set; } = new();
         public List<CredentialsBase> Credentials { get; set; } = new();
         public ProductSelectionModel ProductSelection { get; set; } = new();
+
+        public string GetWebsiteType()
+        {
+            return ProductSelection.WebsiteType.ToString();
+        }
     }
 }
