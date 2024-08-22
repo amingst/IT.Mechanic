@@ -9,18 +9,20 @@
             Text="What Kind Of Website Do You Want?"
             Style="{StaticResource Headline}"
             SemanticProperties.HeadingLevel="Level1" />
-        <HorizontalStackLayout>
-            <RadioButton Content="CMS" />
-            <Label
-                Margin="9"
-                Text="Add Thoughtful Explanation Here"/>
-        </HorizontalStackLayout>
-        <HorizontalStackLayout>
-            <RadioButton Content="Business" />
-            <Label
-                Margin="9"
-                Text="Add Thoughtful Explanation Here"/>
-        </HorizontalStackLayout>
+        <VerticalStackLayout RadioButtonGroup.GroupName="ProductSelection" RadioButtonGroup.SelectedValue="{Binding MainModel.ProductSelection.WebsiteType}">
+            <HorizontalStackLayout>
+                <RadioButton Content="Business" Value="{Binding MainModel.ProductSelection.WebsiteTypes.Business}"/>
+                <Label
+                        Margin="9"
+                        Text="Add Thoughtful Explanation Here"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <RadioButton Content="CMS" Value="{Binding MainModel.ProductSelection.WebsiteTypes.CMS}"/>
+                <Label
+                    Margin="9"
+                    Text="Add Thoughtful Explanation Here"/>
+                 </HorizontalStackLayout>
+        </VerticalStackLayout>
 
         <buttons:NavigationButtonGroup
             NextRoute="//DNS"
