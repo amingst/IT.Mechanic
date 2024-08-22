@@ -16,9 +16,44 @@ namespace IT.Mechanic.Installer.Services
         public List<CredentialsBase> Credentials { get; set; } = new();
         public ProductSelectionModel ProductSelection { get; set; } = new();
 
-        public string GetWebsiteType()
+        public IEnumerable<CredentialsBase> GetCredentials()
         {
-            return ProductSelection.WebsiteType.ToString();
+            return Credentials;
+        }
+
+        public DNSModel GetDNSModel()
+        {
+            return DNS;
+        }
+
+        public ProductSelectionModel GetProductSelection()
+        {
+            return ProductSelection;
+        }
+
+        public ServerModel GetServerModel()
+        {
+            return Server;
+        }
+
+        public void SetCredentials(IEnumerable<CredentialsBase> credentials)
+        {
+            Credentials = credentials.ToList();
+        }
+
+        public void SetDNSModel(DNSModel dnsModel)
+        {
+            DNS = dnsModel;
+        }
+
+        public void SetProductSelection(ProductSelectionModel productSelection)
+        {
+            ProductSelection = productSelection;
+        }
+
+        public void SetServerModel(ServerModel serverModel)
+        {
+           Server = serverModel;
         }
     }
 }
