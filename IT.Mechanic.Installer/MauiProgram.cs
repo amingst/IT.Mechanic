@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using IT.Mechanic.Installer.Services;
+using Microsoft.Extensions.Logging;
 
 namespace IT.Mechanic.Installer
 {
@@ -13,13 +14,21 @@ namespace IT.Mechanic.Installer
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+                .RegisterServices();
 
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
+        }
+
+        public static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
+        {
+            builder.Services.AddSingleton<IConfigService, ConfigService>();
+
+            return builder;
         }
     }
 }
