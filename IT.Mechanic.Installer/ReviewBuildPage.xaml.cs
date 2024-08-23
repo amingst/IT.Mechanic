@@ -17,5 +17,6 @@ public partial class ReviewBuildPage : ContentPage
 	{
         websiteType.Text = _configService.Model.ProductSelection.WebsiteType.ToString();
 		domainName.Text = _configService.Model.DNS.DomainName.ToString();
+		hostingProvider.Text = _configService.Model.Server.HostingProvider.ToString();
     }
 }

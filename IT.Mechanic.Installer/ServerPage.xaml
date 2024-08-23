@@ -5,18 +5,18 @@
              Title="Server Settings">
     <VerticalStackLayout HorizontalOptions="Center">
 
-        <VerticalStackLayout RadioButtonGroup.SelectedValue="{Binding Model.HostingProvider}">
+        <VerticalStackLayout>
             <Label
                 Text="Select A Hosting Provider"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" /> 
-            <RadioButton Content="Expert Mode" Value="{Binding Model.HostingProvider.ExpertMode}"/>
-            <RadioButton Content="Rumble" Value="{Binding Model.HostingProvider.Rumble}"/>
-            <RadioButton Content="Digital Ocean" Value="{Binding Model.HostingProvider.Digitalocean}"/>
-            <RadioButton Content="Azure" Value="{Binding Model.HostingProvider.Azure}"/>
-            <RadioButton Content="AWS" Value="{Binding Model.HostingProvider.AWS}"/>
-            <RadioButton Content="GCP" Value="{Binding Model.HostingProvider.GCP}"/>
-            <RadioButton Content="InvertedTech" Value="{Binding Model.HostingProvider.InvertedTech}" />
+            <RadioButton CheckedChanged="OnCheckedChanged" Content="Expert Mode" />
+            <RadioButton CheckedChanged="OnCheckedChanged" Content="Rumble" />
+            <RadioButton CheckedChanged="OnCheckedChanged" Content="Digital Ocean" />
+            <RadioButton CheckedChanged="OnCheckedChanged" Content="Azure" />
+            <RadioButton CheckedChanged="OnCheckedChanged" Content="AWS" />
+            <RadioButton CheckedChanged="OnCheckedChanged" Content="GCP"/>
+            <RadioButton CheckedChanged="OnCheckedChanged" Content="Inverted Tech" />
         </VerticalStackLayout>
 
 
