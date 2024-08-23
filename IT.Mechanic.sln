@@ -8,6 +8,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestBench", "Models\TestBench\TestBench.csproj", "{96058570-1822-4D8C-ADD1-81AA5542E1F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Installer\Installer.csproj", "{86D83996-1096-4533-94ED-729AFF7E334F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5DDABB53-38AE-44EE-BA23-38F90FA3451A} = {5DDABB53-38AE-44EE-BA23-38F90FA3451A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
