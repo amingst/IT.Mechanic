@@ -14,22 +14,22 @@
 
     <ShellContent
         Title="Product Selection"
-        ContentTemplate="{DataTemplate local:ProductSelectionPage}}"
+        ContentTemplate="{DataTemplate local:ProductSelectionPage}"
         Route="ProductSelect" />
     <ShellContent
         Title="DNS Settings"
-        ContentTemplate="{DataTemplate local:DNSPage}}"
+        ContentTemplate="{DataTemplate local:DNSPage}"
         Route="DNS" />
     <ShellContent
         Title="GoDaddy Credentials"
-        ContentTemplate="{DataTemplate local:GoDaddyCredentialsPage}}"
+        ContentTemplate="{DataTemplate local:GoDaddyCredentialsPage}"
         Route="GodaddyCreds" />
     <ShellContent
         Title="Server Settings"
-        ContentTemplate="{DataTemplate local:ServerPage}}"
+        ContentTemplate="{DataTemplate local:ServerPage}"
         Route="Server" />
     <ShellContent
         Title="Review Build"
-        ContentTemplate="{DataTemplate local:ReviewBuildPage}}"
+        ContentTemplate="{DataTemplate local:ReviewBuildPage}"
         Route="ReviewBuild" />
 </Shell>
