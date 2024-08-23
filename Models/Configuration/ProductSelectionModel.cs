@@ -13,5 +13,10 @@ namespace IT.Mechanic.Models.Configuration
             CMS = 0,
             Business = 1,
         }
+
+        public IEnumerable<string> GetWebsiteTypesNames()
+        {
+            return Enum.GetNames(typeof(WebsiteTypes));
+        }
     }
 }

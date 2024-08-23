@@ -13,5 +13,10 @@ namespace IT.Mechanic.Models.Configuration
         {
             Godaddy
         }
+
+        public IEnumerable<string> GetDomainNameProvidersNames()
+        {
+            return Enum.GetNames(typeof(ProviderEnum));
+        }
     }
 }

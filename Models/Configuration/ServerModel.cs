@@ -1,4 +1,6 @@
 ﻿using IT.Mechanic.Models.Configuration.Hosting;
+using System;
+using System.Collections.Generic;
 
 namespace IT.Mechanic.Models.Configuration
 {
@@ -25,6 +27,11 @@ namespace IT.Mechanic.Models.Configuration
             AWS,
             GCP,
             Invertedtech,
+        }
+
+        public IEnumerable<string> GetHostingProvidersNames()
+        {
+            return Enum.GetNames(typeof(HostingProviderEnum));
         }
     }
 }
