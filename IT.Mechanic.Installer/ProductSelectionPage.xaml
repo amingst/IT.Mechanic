@@ -32,6 +32,8 @@
                 SemanticProperties.Hint="Advances To The Previous Section"
                 Clicked="OnBackClicked"
                 Margin="2"
+                HeightRequest="60"
+                WidthRequest="100"
             />
             <Button
                 x:Name="NextBtn"
@@ -39,6 +41,8 @@
                 SemanticProperties.Hint="Advances To The Next Section"
                 Clicked="OnNextClicked"
                 Margin="2"
+                HeightRequest="60"
+                WidthRequest="100"
             />
         </HorizontalStackLayout>
     </toolkit:DockLayout>
