@@ -5,11 +5,11 @@ namespace IT.Mechanic.Installer;
 
 public partial class ServerPage : ContentPage
 {
-	private readonly IConfigService _configService;
+	private readonly ConfigService _configService;
 	public ServerPage()
 	{
 		InitializeComponent();
-        _configService = App.Current.Handler.MauiContext.Services.GetService<IConfigService>();
+        _configService = App.Current.Handler.MauiContext.Services.GetService<ConfigService>();
     }
 
     public async void OnNextClicked(object sender, EventArgs e)

@@ -10,6 +10,7 @@ namespace IT.Mechanic.Installer.Services
 {
     public class ConfigService : IConfigService
     {
+        public MainModel Model { get; set; } = new();
         public Guid SiteId { get; set; } = Guid.Empty;
         public DNSModel DNS { get; set; } = new();
         public ServerModel Server { get; set; } = new();

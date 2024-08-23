@@ -3,14 +3,16 @@ using IT.Mechanic.Models.Configuration;
 
 namespace IT.Mechanic.Installer;
 
+// TODO: Bind Data To Model
 public partial class ProductSelectionPage : ContentPage
 {
-	private readonly IConfigService _configService;
+	private readonly ConfigService _configService;
 	public ProductSelectionPage()
 	{
 		InitializeComponent();
-        _configService = App.Current.Handler.MauiContext.Services.GetService<IConfigService>();
-    }
+        _configService = App.Current.Handler.MauiContext.Services.GetService<ConfigService>();
+		BindingContext = _configService.Model;
+	}
 
 	public async void OnNextClicked(object sender, EventArgs e)
 	{

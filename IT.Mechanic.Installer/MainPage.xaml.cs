@@ -10,7 +10,7 @@ namespace IT.Mechanic.Installer
         public MainPage()
         {
             InitializeComponent();
-            _configService = App.Current.Handler.MauiContext.Services.GetService<IConfigService>();
+            _configService = App.Current.Handler.MauiContext.Services.GetService<ConfigService>();
         }
 
         private async void OnStartClicked(object sender, EventArgs e)

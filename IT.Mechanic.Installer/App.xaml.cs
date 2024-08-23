@@ -5,7 +5,7 @@ namespace IT.Mechanic.Installer
 {
     public partial class App : Application
     {
-        public App(IConfigService _configService)
+        public App(ConfigService _configService)
         {
             InitializeComponent();
 

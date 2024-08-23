@@ -26,7 +26,7 @@ namespace IT.Mechanic.Installer
 
         public static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
         {
-            builder.Services.AddSingleton<IConfigService, ConfigService>();
+            builder.Services.AddSingleton<ConfigService>();
 
             return builder;
         }

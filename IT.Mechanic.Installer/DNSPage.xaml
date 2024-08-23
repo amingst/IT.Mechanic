@@ -19,7 +19,7 @@
         <Entry 
             x:Name="dnsEntry"
             Placeholder="example.com"
-            Text="{Binding _configService.DNS.DomainName, Mode=TwoWay}"
+            Text="{Binding Model.DNS.DomainName, Mode=TwoWay}"
         />
 
         <HorizontalStackLayout HorizontalOptions="Center">

@@ -5,9 +5,9 @@ namespace IT.Mechanic.Installer
 {
     public partial class AppShell : Shell
     {
-        public readonly IConfigService _configService;
+        public readonly ConfigService _configService;
         // public MainModel MainModel { get; set; }
-        public AppShell(IConfigService configService)
+        public AppShell(ConfigService configService)
         {
             InitializeComponent();
             _configService = configService;

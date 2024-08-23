@@ -14,5 +14,15 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
         </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label 
+                Text="Domain Name: "
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+                    <Label 
+                x:Name="domainName"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

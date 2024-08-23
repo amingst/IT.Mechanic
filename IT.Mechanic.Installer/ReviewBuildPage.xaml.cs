@@ -4,17 +4,18 @@ namespace IT.Mechanic.Installer;
 
 public partial class ReviewBuildPage : ContentPage
 {
-	private readonly IConfigService _configService;
+	private readonly ConfigService _configService;
 	public ReviewBuildPage()
 	{
 		InitializeComponent();
-        _configService = App.Current.Handler.MauiContext.Services.GetService<IConfigService>();
+        _configService = App.Current.Handler.MauiContext.Services.GetService<ConfigService>();
+		BindingContext = _configService.Model;
 		BuildProductSelection();
     }
 
 	private void BuildProductSelection()
 	{
-        var productSelection = _configService.GetProductSelection();
-        websiteType.Text = productSelection.WebsiteType.ToString();
+        websiteType.Text = _configService.Model.ProductSelection.WebsiteType.ToString();
+		domainName.Text = _configService.Model.DNS.DomainName.ToString();
     }
 }
