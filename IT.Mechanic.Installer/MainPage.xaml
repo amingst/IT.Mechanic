@@ -4,7 +4,7 @@
              x:Class="IT.Mechanic.Installer.MainPage"
              xmlns:cards="clr-namespace:IT.Mechanic.Installer.Components.Card"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             Title="Mechanic">
+             Title="Welcome To Mechanic">
 
     <ScrollView>
         <toolkit:DockLayout>
@@ -15,7 +15,7 @@
                 CardTitle="Recent Profiles:"
                 TitleColor="White"/>
 
-            <HorizontalStackLayout toolkit:DockLayout.DockPosition="Bottom" HorizontalOptions="Center" Padding="10">
+            <!--<HorizontalStackLayout toolkit:DockLayout.DockPosition="Bottom" HorizontalOptions="Center" Padding="10">
                 <Button
                     x:Name="StartBtn"
                     Text="Get Started!" 
@@ -31,7 +31,7 @@
                     Clicked="OnStartClicked"
                     HorizontalOptions="Fill" 
                     Margin="10"/>
-            </HorizontalStackLayout >
+            </HorizontalStackLayout >-->
         </toolkit:DockLayout>
     </ScrollView>
 

@@ -2,13 +2,40 @@
 <ContentView x:Name="this"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="IT.Mechanic.Installer.Components.Card.CardView" WidthRequest="500" HeightRequest="375">
+             x:Class="IT.Mechanic.Installer.Components.Card.CardView" 
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             WidthRequest="500" 
+             HeightRequest="375">
     <Frame BindingContext="{x:Reference this}"
            BackgroundColor="{Binding CardColor, FallbackValue='DarkGray'}"
-           BorderColor="{Binding BorderColor, FallbackValue='Black'}">
-        <StackLayout>
-            <Label TextDecorations="Underline" FontSize="24" Text="{Binding CardTitle, FallbackValue='Card Title'}" TextColor="{Binding TitleColor, FallbackValue='White'}"/>
-            <Label FontSize="18" Text="Click + To Get Started" MaxLines="2" TextColor="{Binding TitleColor, FallbackValue='White'}"/>
+           BorderColor="{Binding BorderColor, FallbackValue='Black'}"
+           CornerRadius="10">
+        <StackLayout Padding="10">
+            <toolkit:DockLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="10">
+                <Label TextDecorations="Underline" 
+               FontSize="24" 
+               Text="{Binding CardTitle, FallbackValue='Card Title'}" 
+               TextColor="{Binding TitleColor, FallbackValue='White'}"
+               HorizontalOptions="Start" 
+               VerticalOptions="Center" 
+               toolkit:DockLayout.DockPosition="Left"/>
+                            <Button Text="+" 
+                FontSize="24" 
+                WidthRequest="40" 
+                HeightRequest="40" 
+                BackgroundColor="LightGray" 
+                TextColor="Black"
+                CornerRadius="40"
+                HorizontalOptions="End" 
+                VerticalOptions="Center" 
+                toolkit:DockLayout.DockPosition="Right"
+                Clicked="OnPlusClicked"/>
+            </toolkit:DockLayout>
+            <Label FontSize="18" 
+                   Text="Click + To Get Started" 
+                   MaxLines="2" 
+                   TextColor="{Binding TitleColor, FallbackValue='White'}"
+                   Margin="10,20,0,0"/>
         </StackLayout>
     </Frame>
 </ContentView>

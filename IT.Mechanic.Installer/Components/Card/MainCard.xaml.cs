@@ -27,6 +27,11 @@ public partial class CardView : ContentView
         set => SetValue(CardView.TitleColorProperty, value);
     }
 
+    public async void OnPlusClicked(object sender,EventArgs e)
+    {
+        await Shell.Current.GoToAsync("//ProductSelect");
+    }
+
     public CardView()
 	{
 		InitializeComponent();
