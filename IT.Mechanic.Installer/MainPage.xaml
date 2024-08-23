@@ -9,13 +9,13 @@
             Padding="30,0"
             Spacing="25" HorizontalOptions="Center" >
 
-            <!--<Label
-                Text="Welcome To Mechanic"
+            <Label
+                Text="Welcome To Mechanic!"
                 Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />-->
+                SemanticProperties.HeadingLevel="Level1" />
             <cards:CardView CardColor="Gray"
                             BorderColor="Black"
-                            CardTitle="Welcome To Mechanic"
+                            CardTitle="Recent Profiles:"
                             TitleColor="White"/>
 
             <Button
