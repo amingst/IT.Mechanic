@@ -44,5 +44,31 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
         </HorizontalStackLayout>
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="10">
+            <HorizontalStackLayout>
+                <Button
+                    x:Name="backBtn"
+                    Text="Back"
+                    Clicked="OnBackClicked"
+                    Margin="5"/>
+                <Button
+                    x:Name="deployBtn"
+                    Text="Deploy"
+                    Clicked="OnDeployClicked"
+                    Margin="5"/>
+            </HorizontalStackLayout>
+            <Button
+                x:Name="saveExitBtn"
+                Text="Save And Exit"
+                Clicked="OnSaveExitClicked"
+                Margin="5"
+                />
+            <Button
+                x:Name="exitBtn"
+                Text="Quit"
+                Clicked="OnQuitClicked"
+                Margin="5"
+                />
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
