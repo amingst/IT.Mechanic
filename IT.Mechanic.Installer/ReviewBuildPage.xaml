@@ -34,5 +34,15 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
         </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label 
+                Text="DNS Provider: "
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Label 
+                x:Name="dnsProvider"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

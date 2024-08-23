@@ -4,18 +4,18 @@
              x:Class="IT.Mechanic.Installer.DNSPage"
              Title="DNS Settings">
     <VerticalStackLayout HorizontalOptions="Center">
-        <VerticalStackLayout RadioButtonGroup.GroupName="HostingProviders" RadioButtonGroup.SelectedValue="{Binding _configService.DNS.Provider}">
+        <VerticalStackLayout RadioButtonGroup.GroupName="HostingProviders">
             <Label
                 Text="Set Your DNS Provider"
                 Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
-            <RadioButton Content="GoDaddy" Value="{Binding _configService.DNS.ProviderEnum.Godaddy}"/>
+                SemanticProperties.HeadingLevel="Level4" />
+            <RadioButton CheckedChanged="OnCheckedChanged" Content="GoDaddy"/>
         </VerticalStackLayout>
 
         <Label
             Text="Enter Your Domain Name"
             Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1" />
+            SemanticProperties.HeadingLevel="Level4" />
         <Entry 
             x:Name="dnsEntry"
             Placeholder="example.com"

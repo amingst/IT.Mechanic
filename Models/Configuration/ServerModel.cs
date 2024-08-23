@@ -29,7 +29,7 @@ namespace IT.Mechanic.Models.Configuration
             Invertedtech,
         }
 
-        public IEnumerable<string> GetHostingProvidersNames()
+        public static IEnumerable<string> GetHostingProvidersNames()
         {
             return Enum.GetNames(typeof(HostingProviderEnum));
         }

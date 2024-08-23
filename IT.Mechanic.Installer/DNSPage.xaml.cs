@@ -12,6 +12,19 @@ public partial class DNSPage : ContentPage
         BindingContext = _configService.Model;
     }
 
+    public void OnCheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (_configService != null)
+        {
+            if (sender is RadioButton radioButton)
+            {
+                var selectedContent = radioButton.Content;
+                var selectedProvider = DNSModel.GetProviderFromName(selectedContent.ToString());
+                _configService.Model.DNS.Provider = selectedProvider;
+            }
+        }
+    }
+
     public async void OnNextClicked(object sender, EventArgs e)
     {
         await AppShell.Current.GoToAsync("//Server");

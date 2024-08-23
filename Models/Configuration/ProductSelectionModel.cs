@@ -14,7 +14,7 @@ namespace IT.Mechanic.Models.Configuration
             Business = 1,
         }
 
-        public IEnumerable<string> GetWebsiteTypesNames()
+        public static IEnumerable<string> GetWebsiteTypesNames()
         {
             return Enum.GetNames(typeof(WebsiteTypes));
         }
