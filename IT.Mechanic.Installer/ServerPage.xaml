@@ -19,8 +19,9 @@
             <RadioButton CheckedChanged="OnCheckedChanged" Content="Inverted Tech" />
         </VerticalStackLayout>
 
+        <!--TODO: Move to Separate Page-->
 
-        <Label Text="Server Name" />
+        <!--<Label Text="Server Name" />
         <Entry 
             x:Name="serverNameEntry"
             Placeholder="Example Server"
@@ -48,7 +49,7 @@
             Placeholder="SSH Key"
             Text="{Binding Model.SSHPrivateKey, Mode=TwoWay}"
             IsVisible="{Binding IsExpertMode}"
-        />
+        />-->
         <HorizontalStackLayout HorizontalOptions="Center">
             <Button
                 x:Name="BackBtn"
