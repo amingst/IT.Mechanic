@@ -8,15 +8,15 @@
             Text="What Kind Of Website Do You Want?"
             Style="{StaticResource Headline}"
             SemanticProperties.HeadingLevel="Level1" />
-        <VerticalStackLayout RadioButtonGroup.GroupName="ProductSelection" RadioButtonGroup.SelectedValue="{Binding Model.ProductSelection.WebsiteType}">
+        <VerticalStackLayout RadioButtonGroup.GroupName="ProductSelection">
             <HorizontalStackLayout>
-                <RadioButton Content="Business" Value="{Binding Model.ProductSelection.WebsiteTypes.Business}"/>
+                <RadioButton CheckedChanged="OnCheckedChanged" Content="Business"/>
                 <Label
                         Margin="9"
                         Text="Add Thoughtful Explanation Here"/>
             </HorizontalStackLayout>
             <HorizontalStackLayout>
-                <RadioButton Content="CMS" Value="{Binding Model.ProductSelection.WebsiteTypes.CMS}"/>
+                <RadioButton CheckedChanged="OnCheckedChanged" Content="CMS"/>
                 <Label
                     Margin="9"
                     Text="Add Thoughtful Explanation Here"/>

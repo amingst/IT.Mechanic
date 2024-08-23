@@ -19,7 +19,7 @@ namespace IT.Mechanic.Models.Configuration
             return Enum.GetNames(typeof(WebsiteTypes));
         }
 
-        public WebsiteTypes GetWebsiteTypesFromName(string name)
+        public static WebsiteTypes GetWebsiteTypesFromName(string name)
         {
             switch (name)
             {
