@@ -18,5 +18,14 @@ namespace IT.Mechanic.Models.Configuration
         {
             return Enum.GetNames(typeof(ProviderEnum));
         }
+
+        public ProviderEnum GetProviderFromName(string name)
+        {
+            switch (name)
+            {
+                case "Godaddy": return ProviderEnum.Godaddy;
+                default: return ProviderEnum.Godaddy;
+            }
+        }
     }
 }

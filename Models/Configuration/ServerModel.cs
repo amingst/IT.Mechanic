@@ -33,5 +33,28 @@ namespace IT.Mechanic.Models.Configuration
         {
             return Enum.GetNames(typeof(HostingProviderEnum));
         }
+
+        public HostingProviderEnum GetHostingProviderFromName(string name)
+        {
+            switch (name)
+            {
+                case "ExpertMode":
+                    return HostingProviderEnum.Expertmode;
+                case "Rumble":
+                    return HostingProviderEnum.Rumble;
+                case "DigitalOcean":
+                    return HostingProviderEnum.Digitalocean;
+                case "Azure":
+                    return HostingProviderEnum.Azure;
+                case "AWS":
+                    return HostingProviderEnum.AWS;
+                case "GCP":
+                    return HostingProviderEnum.GCP;
+                case "InvertedTech":
+                    return HostingProviderEnum.Invertedtech;
+                default:
+                    return HostingProvider;
+            }
+        }
     }
 }

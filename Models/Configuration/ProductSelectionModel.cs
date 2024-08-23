@@ -18,5 +18,18 @@ namespace IT.Mechanic.Models.Configuration
         {
             return Enum.GetNames(typeof(WebsiteTypes));
         }
+
+        public WebsiteTypes GetWebsiteTypesFromName(string name)
+        {
+            switch (name)
+            {
+                case "CMS":
+                    return WebsiteTypes.CMS;
+                case "Business":
+                    return WebsiteTypes.Business;
+                default:
+                    return WebsiteTypes.CMS;
+            }
+        }
     }
 }
