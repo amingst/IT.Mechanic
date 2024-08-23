@@ -2,49 +2,52 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IT.Mechanic.Installer.ReviewBuildPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="Review Selections">
-    <VerticalStackLayout HorizontalOptions="Center">
-        <HorizontalStackLayout>
-            <Label 
-                Text="Website Type: "
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-            <Label 
-                x:Name="websiteType"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-        </HorizontalStackLayout>
-        <HorizontalStackLayout>
-            <Label 
-                Text="Domain Name: "
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-                    <Label 
-                x:Name="domainName"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-        </HorizontalStackLayout>
-        <HorizontalStackLayout>
-            <Label 
-                Text="Hosting Provider: "
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-            <Label 
-                x:Name="hostingProvider"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-        </HorizontalStackLayout>
-        <HorizontalStackLayout>
-            <Label 
-                Text="DNS Provider: "
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-            <Label 
-                x:Name="dnsProvider"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-        </HorizontalStackLayout>
-        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="10">
+    <toolkit:DockLayout HorizontalOptions="Center">
+        <VerticalStackLayout HorizontalOptions="Center" toolkit:DockLayout.DockPosition="None">
+            <HorizontalStackLayout>
+                <Label 
+                    Text="Website Type: "
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                            <Label 
+                    x:Name="websiteType"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Label 
+                    Text="Domain Name: "
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                            <Label 
+                    x:Name="domainName"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Label 
+                    Text="Hosting Provider: "
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                            <Label 
+                    x:Name="hostingProvider"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Label 
+                    Text="DNS Provider: "
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                            <Label 
+                    x:Name="dnsProvider"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="10" toolkit:DockLayout.DockPosition="Bottom">
             <HorizontalStackLayout>
                 <Button
                     x:Name="backBtn"
@@ -70,5 +73,5 @@
                 Margin="5"
                 />
         </VerticalStackLayout>
-    </VerticalStackLayout>
+    </toolkit:DockLayout>
 </ContentPage>
