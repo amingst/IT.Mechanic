@@ -5,18 +5,18 @@
              Title="Server Settings">
     <VerticalStackLayout HorizontalOptions="Center">
 
-        <VerticalStackLayout RadioButtonGroup.SelectedValue="{Binding serverModel.HostingProvider}">
+        <VerticalStackLayout RadioButtonGroup.SelectedValue="{Binding Model.HostingProvider}">
             <Label
                 Text="Select A Hosting Provider"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" /> 
-            <RadioButton Content="Expert Mode" Value="{Binding serverModel.HostingProvider.ExpertMode}"/>
-            <RadioButton Content="Rumble" Value="{Binding serverModel.HostingProvider.Rumble}"/>
-            <RadioButton Content="Digital Ocean" Value="{Binding serverModel.HostingProvider.Digitalocean}"/>
-            <RadioButton Content="Azure" Value="{Binding serverModel.HostingProvider.Azure}"/>
-            <RadioButton Content="AWS" Value="{Binding serverModel.HostingProvider.AWS}"/>
-            <RadioButton Content="GCP" Value="{Binding serverModel.HostingProvider.GCP}"/>
-            <RadioButton Content="InvertedTech" Value="{Binding serverModel.HostingProvider.InvertedTech}" />
+            <RadioButton Content="Expert Mode" Value="{Binding Model.HostingProvider.ExpertMode}"/>
+            <RadioButton Content="Rumble" Value="{Binding Model.HostingProvider.Rumble}"/>
+            <RadioButton Content="Digital Ocean" Value="{Binding Model.HostingProvider.Digitalocean}"/>
+            <RadioButton Content="Azure" Value="{Binding Model.HostingProvider.Azure}"/>
+            <RadioButton Content="AWS" Value="{Binding Model.HostingProvider.AWS}"/>
+            <RadioButton Content="GCP" Value="{Binding Model.HostingProvider.GCP}"/>
+            <RadioButton Content="InvertedTech" Value="{Binding Model.HostingProvider.InvertedTech}" />
         </VerticalStackLayout>
 
 
@@ -24,21 +24,21 @@
         <Entry 
             x:Name="serverNameEntry"
             Placeholder="Example Server"
-            Text="{Binding serverModel.ServerName, Mode=TwoWay}"
+            Text="{Binding Model.ServerName, Mode=TwoWay}"
         />
 
         <Label Text="User" />
         <Entry 
             x:Name="userEntry"
             Placeholder="jdoe"
-            Text="{Binding serverModel.User, Mode=TwoWay}"
+            Text="{Binding Model.User, Mode=TwoWay}"
         />
 
         <Label Text="Public IP Address" />
         <Entry 
             x:Name="publicIpEntry"
             Placeholder="127.0.0.1:80"
-            Text="{Binding serverModel.PublicIP, Mode=TwoWay}"
+            Text="{Binding Model.PublicIP, Mode=TwoWay}"
             IsVisible="{Binding IsExpertMode}"
         />
 
@@ -46,7 +46,7 @@
         <Entry 
             x:Name="sshPrivKeyEntry"
             Placeholder="SSH Key"
-            Text="{Binding serverModel.SSHPrivateKey, Mode=TwoWay}"
+            Text="{Binding Model.SSHPrivateKey, Mode=TwoWay}"
             IsVisible="{Binding IsExpertMode}"
         />
         <HorizontalStackLayout HorizontalOptions="Center">

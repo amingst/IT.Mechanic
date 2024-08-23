@@ -10,6 +10,7 @@ public partial class ServerPage : ContentPage
 	{
 		InitializeComponent();
         _configService = App.Current.Handler.MauiContext.Services.GetService<ConfigService>();
+        BindingContext = _configService.Model;
     }
 
     public async void OnNextClicked(object sender, EventArgs e)
