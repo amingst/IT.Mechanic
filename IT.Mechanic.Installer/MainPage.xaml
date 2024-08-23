@@ -2,36 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IT.Mechanic.Installer.MainPage"
-             xmlns:cards="clr-namespace:IT.Mechanic.Installer.Components.Card">
+             xmlns:cards="clr-namespace:IT.Mechanic.Installer.Components.Card"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="Mechanic">
 
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25" HorizontalOptions="Center" >
+        <toolkit:DockLayout>
+            <cards:CardView 
+                CardColor="SlateGrey"
+                toolkit:DockLayout.DockPosition="None"
+                BorderColor="Black"
+                CardTitle="Recent Profiles:"
+                TitleColor="White"/>
 
-            <Label
-                Text="Welcome To Mechanic!"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
-            <cards:CardView CardColor="Gray"
-                            BorderColor="Black"
-                            CardTitle="Recent Profiles:"
-                            TitleColor="White"/>
+            <HorizontalStackLayout toolkit:DockLayout.DockPosition="Bottom" HorizontalOptions="Center" Padding="10">
+                <Button
+                    x:Name="StartBtn"
+                    Text="Get Started!" 
+                    SemanticProperties.Hint="Starts the Installation Wizard"
+                    Clicked="OnStartClicked"
+                    HorizontalOptions="Fill" 
+                    Margin="10"/>
 
-            <Button
-                x:Name="StartBtn"
-                Text="Get Started!" 
-                SemanticProperties.Hint="Starts the Installation Wizard"
-                Clicked="OnStartClicked"
-                HorizontalOptions="Fill" />
-
-            <Button
-                x:Name="LoadBtn"
-                Text="Load From File" 
-                SemanticProperties.Hint="Loads an Existing Mechanic.json file"
-                Clicked="OnStartClicked"
-                HorizontalOptions="Fill" />
-        </VerticalStackLayout>
+                <Button
+                    x:Name="LoadBtn"
+                    Text="Load From File" 
+                    SemanticProperties.Hint="Loads an Existing Mechanic.json file"
+                    Clicked="OnStartClicked"
+                    HorizontalOptions="Fill" 
+                    Margin="10"/>
+            </HorizontalStackLayout >
+        </toolkit:DockLayout>
     </ScrollView>
 
 </ContentPage>
