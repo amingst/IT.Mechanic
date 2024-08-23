@@ -1,12 +1,14 @@
-﻿namespace Installer
+﻿using Installer.Services;
+
+namespace Installer
 {
     public partial class App : Application
     {
-        public App()
+        public App(ConfigModelService configModelService)
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new AppShell(configModelService);
         }
     }
 }

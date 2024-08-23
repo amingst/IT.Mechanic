@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Installer.Services;
+using Microsoft.Extensions.Logging;
 namespace Installer
 {
     public static class MauiProgram
@@ -13,6 +14,7 @@ namespace Installer
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            builder.Services.AddSingleton<ConfigModelService>();
 
 #if DEBUG
     		builder.Logging.AddDebug();
