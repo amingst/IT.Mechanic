@@ -50,7 +50,7 @@ public partial class DNSPage : ContentPage
 
     public async void OnNextClicked(object sender, EventArgs e)
     {
-        await AppShell.Current.GoToAsync("//Server");
+        await AppShell.Current.GoToAsync("//GodaddyCreds");
     }
 
     public async void OnBackClicked(object sender, EventArgs e)

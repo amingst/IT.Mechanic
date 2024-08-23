@@ -21,6 +21,10 @@
         ContentTemplate="{DataTemplate local:DNSPage}}"
         Route="DNS" />
     <ShellContent
+        Title="GoDaddy Credentials"
+        ContentTemplate="{DataTemplate local:GoDaddyCredentialsPage}}"
+        Route="GodaddyCreds" />
+    <ShellContent
         Title="Server Settings"
         ContentTemplate="{DataTemplate local:ServerPage}}"
         Route="Server" />

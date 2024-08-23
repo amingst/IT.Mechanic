@@ -33,6 +33,6 @@ public partial class ServerPage : ContentPage
 
     public async void OnBackClicked(object sender, EventArgs e)
     {
-        await AppShell.Current.GoToAsync("///DNS");
+        await AppShell.Current.GoToAsync("///GodaddyCreds");
     }
 }
