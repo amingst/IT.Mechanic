@@ -10,6 +10,7 @@ public partial class DNSPage : ContentPage
 		InitializeComponent();
         _configService = App.Current.Handler.MauiContext.Services.GetService<ConfigService>();
         BindingContext = _configService.Model;
+        NextBtn.IsVisible = false;
     }
 
     public void OnCheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -21,6 +22,28 @@ public partial class DNSPage : ContentPage
                 var selectedContent = radioButton.Content;
                 var selectedProvider = DNSModel.GetProviderFromName(selectedContent.ToString());
                 _configService.Model.DNS.Provider = selectedProvider;
+            }
+        }
+    }
+
+    // TODO: Reset State if text is backspaced out
+    public void OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (_configService != null)
+        {
+            if (e.OldTextValue != null || e.OldTextValue != "")
+            {
+                if (e.NewTextValue != null || e.NewTextValue != "")
+                {
+                    NextBtn.IsVisible = true;
+                }
+                else
+                {
+                    NextBtn.IsVisible = false;
+                }
+            }
+            else { 
+                NextBtn.IsVisible= false;
             }
         }
     }
