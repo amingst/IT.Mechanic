@@ -12,8 +12,7 @@
                CornerRadius="10">
         <toolkit:DockLayout
                HeightRequest="45">
-            <Label 
-                    TextDecorations="Underline" 
+            <Label
                     FontSize="18" 
                     Text="{Binding ItemTitle, FallbackValue='Item Title'}" 
                     TextColor="{Binding TitleColor, FallbackValue='White'}"
