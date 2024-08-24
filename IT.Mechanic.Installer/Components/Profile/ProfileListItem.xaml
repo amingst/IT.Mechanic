@@ -3,7 +3,8 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IT.Mechanic.Installer.Components.Profile.ProfileListItem"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:components="clr-namespace:IT.Mechanic.Installer.Components">
         <Frame BindingContext="{x:Reference this}"
                BackgroundColor="{Binding ItemBackground, FallbackValue='DarkSlateGray'}"
                BorderColor="{Binding ItemBorder, FallbackValue='Black'}"
@@ -19,16 +20,61 @@
                     VerticalOptions="Center" 
                     toolkit:DockLayout.DockPosition="Left"/>
 
-            <Button Text="+" 
+
+            <Button
                     FontSize="24" 
                     WidthRequest="10" 
                     HeightRequest="10" 
-                    BackgroundColor="LightGray" 
-                    TextColor="Black"
+                    BackgroundColor="Transparent"
                     CornerRadius="40"
                     HorizontalOptions="End" 
                     VerticalOptions="Center" 
-                    toolkit:DockLayout.DockPosition="Right"/>
+                    toolkit:DockLayout.DockPosition="Right"
+                    ToolTipProperties.Text="Delete Server">
+                <Button.ImageSource>
+                    <FontImageSource
+                        FontFamily="FaRegular"
+                        Glyph="{x:Static components:IconFont.Trash}"
+                        Size="15" 
+                        Color="White"/>
+                </Button.ImageSource>
+            </Button>
+            <Button
+                FontSize="24" 
+                WidthRequest="10" 
+                HeightRequest="10" 
+                BackgroundColor="Transparent"
+                CornerRadius="40"
+                HorizontalOptions="End" 
+                VerticalOptions="Center" 
+                toolkit:DockLayout.DockPosition="Right"
+                ToolTipProperties.Text="Profile Settings">
+                        <Button.ImageSource>
+                            <FontImageSource
+                    FontFamily="FaRegular"
+                    Glyph="{x:Static components:IconFont.Cog}"
+                    Size="15" 
+                    Color="White"/>
+                        </Button.ImageSource>
+            </Button>
+            <Button
+                    FontSize="24" 
+                    WidthRequest="10" 
+                    HeightRequest="10" 
+                    BackgroundColor="Transparent"
+                    CornerRadius="40"
+                    HorizontalOptions="End" 
+                    VerticalOptions="Center" 
+                    toolkit:DockLayout.DockPosition="Right"
+                    ToolTipProperties.Text="Start Server">
+                <Button.ImageSource>
+                    <FontImageSource
+                        FontFamily="FaRegular"
+                        Glyph="{x:Static components:IconFont.Play}"
+                        Size="15" 
+                        Color="Green"/>
+                </Button.ImageSource>
+            </Button>
         </toolkit:DockLayout>
     </Frame>
 </ContentView>

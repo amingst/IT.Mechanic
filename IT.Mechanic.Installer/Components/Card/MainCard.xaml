@@ -5,6 +5,7 @@
              x:Class="IT.Mechanic.Installer.Components.Card.CardView" 
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:profile="clr-namespace:IT.Mechanic.Installer.Components.Profile"
+             xmlns:components="clr-namespace:IT.Mechanic.Installer.Components"
              WidthRequest="500" 
              HeightRequest="375">
     <Frame BindingContext="{x:Reference this}"
@@ -20,7 +21,7 @@
                HorizontalOptions="Start" 
                VerticalOptions="Center" 
                toolkit:DockLayout.DockPosition="Left"/>
-            <Button Text="+" 
+            <!--<Button Text="+" 
                 FontSize="24" 
                 WidthRequest="40" 
                 HeightRequest="40" 
@@ -32,7 +33,26 @@
                 HorizontalOptions="End" 
                 VerticalOptions="Center" 
                 toolkit:DockLayout.DockPosition="Right"
-                Clicked="OnPlusClicked"/>
+                Clicked="OnPlusClicked"/>-->
+                <Button
+        FontSize="24" 
+        WidthRequest="20" 
+        HeightRequest="20" 
+        BackgroundColor="Transparent"
+        CornerRadius="20"
+                    Padding="10"
+        HorizontalOptions="End" 
+        VerticalOptions="Center" 
+        toolkit:DockLayout.DockPosition="Right"
+        ToolTipProperties.Text="New Profile">
+                    <Button.ImageSource>
+                        <FontImageSource
+            FontFamily="FaRegular"
+            Glyph="{x:Static components:IconFont.PlusCircle}"
+            Size="20" 
+            Color="White"/>
+                    </Button.ImageSource>
+                </Button>
             </toolkit:DockLayout>
             <!--<Label FontSize="18" 
                    Text="Click + To Get Started" 
