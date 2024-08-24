@@ -4,9 +4,54 @@
              x:Class="IT.Mechanic.Installer.Pages.Hosting.RumbleHostingPage"
              Title="RumbleHostingPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <VerticalStackLayout>
+            <Label
+                Text="Enter Rumble Server Sku"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level4" />
+            <Entry 
+                x:Name="serverSku"
+                Placeholder="RumbleServerSku"
+                TextChanged="serverSku_TextChanged" 
+            />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <!--<Label
+                Text="Enter Rumble Server Location"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level4" />-->
+            <Picker
+                x:Name="locationPicker"
+                Title="Select Item">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>US-East (Virginia)</x:String>
+                        <x:String>US-SouthEast (Florida)</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button
+            x:Name="BackBtn"
+            Text="Back" 
+            SemanticProperties.Hint="Advances To The Previous Section"
+            Clicked="OnBackClicked"
+            Margin="2"
+            HeightRequest="60"
+            WidthRequest="100"
+        />
+                <Button
+            x:Name="NextBtn"
+            Text="Next" 
+            SemanticProperties.Hint="Advances To The Next Section"
+            Clicked="OnNextClicked"
+            Margin="2"
+            HeightRequest="60"
+            WidthRequest="100"
+        />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IT.Mechanic.Installer.Pages.Server.ExpertServerDetailsPage"
+             Title="ExpertServerDetailsPage">
+    <VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label
+                 Text="Server Public Ip Address"
+                 Style="{StaticResource Headline}"
+                 SemanticProperties.HeadingLevel="Level4" />
+            <Entry 
+                 x:Name="publicIpEntry"
+                 Placeholder="0.0.0.0:0"
+             />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label
+                 Text="What's The Name Of Your Server?"
+                 Style="{StaticResource Headline}"
+                 SemanticProperties.HeadingLevel="Level4" />
+            <Entry 
+                 x:Name="serverNameEntry"
+                 Placeholder="My Bussin Server"
+             />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label
+                 Text="Server User"
+                 Style="{StaticResource Headline}"
+                 SemanticProperties.HeadingLevel="Level4" />
+            <Entry 
+                 x:Name="serverUserEntry"
+                 Placeholder="jdoe"
+             />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label
+                 Text="SSH Private Key"
+                 Style="{StaticResource Headline}"
+                 SemanticProperties.HeadingLevel="Level4" />
+            <Entry 
+                 x:Name="sshPrivateKeyEntry"
+                 IsPassword="True"
+             />
+        </VerticalStackLayout>
+        <HorizontalStackLayout>
+            <Button
+                x:Name="BackBtn"
+                Text="Back" 
+                SemanticProperties.Hint="Advances To The Previous Section"
+                Clicked="OnBackClicked"
+                HeightRequest="60"
+                WidthRequest="80"
+            />
+            <Button
+                x:Name="NextBtn"
+                Text="Next" 
+                SemanticProperties.Hint="Advances To The Next Section"
+                Clicked="OnNextClicked"
+                HeightRequest="60"
+                WidthRequest="80"
+            />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

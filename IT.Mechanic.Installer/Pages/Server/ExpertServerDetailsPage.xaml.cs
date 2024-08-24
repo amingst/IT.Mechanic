@@ -1,8 +1,8 @@
-namespace IT.Mechanic.Installer.Pages.Credentials;
+namespace IT.Mechanic.Installer.Pages.Server;
 
-public partial class DigitalOceanCredentialsPage : ContentPage
+public partial class ExpertServerDetailsPage : ContentPage
 {
-	public DigitalOceanCredentialsPage()
+	public ExpertServerDetailsPage()
 	{
 		InitializeComponent();
 	}

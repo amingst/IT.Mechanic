@@ -28,7 +28,16 @@ public partial class ServerPage : ContentPage
 
     public async void OnNextClicked(object sender, EventArgs e)
     {
-        await AppShell.Current.GoToAsync("//ReviewBuild");
+        if (_configService != null)
+        {
+            if (_configService.Model.Server.HostingProvider == ServerModel.HostingProviderEnum.Expertmode)
+            {
+                await AppShell.Current.GoToAsync("//ExpertServerDetails");
+            } else
+            {
+                await AppShell.Current.GoToAsync("//ServerDetails");
+            }
+        }
     }
 
     public async void OnBackClicked(object sender, EventArgs e)
