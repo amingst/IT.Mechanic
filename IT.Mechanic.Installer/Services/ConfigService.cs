@@ -14,7 +14,7 @@ namespace IT.Mechanic.Installer.Services
     public class ConfigService
     {
         /// <summary>
-        /// Configuration Model used for building a profile throughout the app flow
+        /// Configuration Model used for building a profile during the app flow.
         /// </summary>
         public MainModel Model { get; set; } = new();
     }
