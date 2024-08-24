@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace IT.Mechanic.Installer.Services
@@ -36,6 +37,26 @@ namespace IT.Mechanic.Installer.Services
         {
             var profile = Profiles[siteId];
             return Task.FromResult(profile);
+        }
+
+        public async Task SaveProfileToDisk()
+        {
+            if (Profiles.Count > 0)
+            {
+                var profilesToSave = Profiles.Values.ToList();
+
+                // Get the path to the user's Desktop directory
+                var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                // Define the file path for saving the profiles
+                var filePath = Path.Combine(desktopPath, "it_profiles.json");
+
+                // Create or overwrite the file
+                await using FileStream fileStream = File.Create(filePath);
+
+                // Serialize and save the profiles to the file
+                await JsonSerializer.SerializeAsync(fileStream, profilesToSave);
+            }
         }
     }
 }

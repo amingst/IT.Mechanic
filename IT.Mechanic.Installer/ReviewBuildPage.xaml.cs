@@ -10,7 +10,7 @@ public partial class ReviewBuildPage : ContentPage
 	public ReviewBuildPage()
 	{
 		InitializeComponent();
-        _configService = App.Current.Handler.MauiContext.Services.GetService<ConfigService>();
+        _configService = App.Current.Handler.MauiContext.Services.GetService<ConfigService>(); 
         _profileService = App.Current.Handler.MauiContext.Services.GetService<ProfileService>();
         BindingContext = _configService.Model;
 		BuildProductSelection();
@@ -24,11 +24,16 @@ public partial class ReviewBuildPage : ContentPage
 		dnsProvider.Text = _configService.Model.DNS.Provider.ToString();
     }
 
-	public void OnSaveExitClicked(object sender, EventArgs e)
+	public async void OnSaveExitClicked(object sender, EventArgs e)
 	{
 		if (Application.Current != null)
 		{
-            Application.Current.Quit();
+			if (_configService != null && _profileService != null)
+			{
+				_profileService.AddProfile(_configService.Model);
+				await _profileService.SaveProfileToDisk();
+                Application.Current.Quit();
+            }
         }
 	}
 
