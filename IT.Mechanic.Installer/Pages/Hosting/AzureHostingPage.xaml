@@ -4,6 +4,33 @@
              x:Class="IT.Mechanic.Installer.Pages.Hosting.AzureHostingPage"
              Title="AzureHostingPage">
     <VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label
+                Text="Enter Azure Server Sku"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level4" />
+            <Entry 
+                x:Name="serverSku"
+                Placeholder="AzureServerSku"
+                TextChanged="serverSku_TextChanged" 
+            />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <!--<Label
+                Text="Enter Rumble Server Location"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level4" />-->
+            <Picker
+                x:Name="locationPicker"
+                Title="Select Item">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>US-East (Virginia)</x:String>
+                        <x:String>US-SouthEast (Florida)</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </VerticalStackLayout>
         <HorizontalStackLayout HorizontalOptions="Center">
             <Button
             x:Name="BackBtn"
