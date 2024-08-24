@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IT.Mechanic.Installer.Components.Profile.ProfileListItem"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:components="clr-namespace:IT.Mechanic.Installer.Components">
+             xmlns:components="clr-namespace:IT.Mechanic.Installer.Components.FontIcons">
         <Frame BindingContext="{x:Reference this}"
                BackgroundColor="{Binding ItemBackground, FallbackValue='DarkSlateGray'}"
                BorderColor="{Binding ItemBorder, FallbackValue='Black'}"
@@ -34,7 +34,7 @@
                 <Button.ImageSource>
                     <FontImageSource
                         FontFamily="FaRegular"
-                        Glyph="{x:Static components:IconFont.Trash}"
+                        Glyph="{x:Static components:FontAwesome.Trash}"
                         Size="15" 
                         Color="White"/>
                 </Button.ImageSource>
@@ -52,7 +52,7 @@
                         <Button.ImageSource>
                             <FontImageSource
                     FontFamily="FaRegular"
-                    Glyph="{x:Static components:IconFont.Cog}"
+                    Glyph="{x:Static components:FontAwesome.Cog}"
                     Size="15" 
                     Color="White"/>
                         </Button.ImageSource>
@@ -69,8 +69,8 @@
                     ToolTipProperties.Text="Start Server">
                 <Button.ImageSource>
                     <FontImageSource
-                        FontFamily="FaRegular"
-                        Glyph="{x:Static components:IconFont.Play}"
+                        FontFamily="FaSolid"
+                        Glyph="{x:Static components:FontAwesome.Play}"
                         Size="15" 
                         Color="Green"/>
                 </Button.ImageSource>

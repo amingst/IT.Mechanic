@@ -1,6 +1,5 @@
-﻿namespace IT.Mechanic.Installer.Components;
-
-static class IconFont
+﻿namespace IT.Mechanic.Installer.Components.FontIcons;
+public static class IconFont
 {
     public const string CaravanAlt = "\ue000";
     public const string CatSpace = "\ue001";
