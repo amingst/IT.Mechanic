@@ -14,6 +14,6 @@ public partial class RumbleCredentialsPage : ContentPage
 
     public async void OnNextClicked(object sender, EventArgs e)
     {
-        await AppShell.Current.GoToAsync("//ReviewBuild");
+        await AppShell.Current.GoToAsync("//RumbleHostingPage");
     }
 }

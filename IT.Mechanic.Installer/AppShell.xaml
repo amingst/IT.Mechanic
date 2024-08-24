@@ -5,6 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:IT.Mechanic.Installer"
     xmlns:serverPages="clr-namespace:IT.Mechanic.Installer.Pages.Server"
+    xmlns:credPages="clr-namespace:IT.Mechanic.Installer.Pages.Credentials"
+    xmlns:hostingPages="clr-namespace:IT.Mechanic.Installer.Pages.Hosting"
     Shell.FlyoutBehavior="Disabled"
     Title="IT.Mechanic.Installer">
 
@@ -30,10 +32,6 @@
         ContentTemplate="{DataTemplate local:ServerPage}"
         Route="Server" />
     <ShellContent
-        Title="Review Build"
-        ContentTemplate="{DataTemplate local:ReviewBuildPage}"
-        Route="ReviewBuild" />
-    <ShellContent
         Title="Server Details"
         ContentTemplate="{DataTemplate serverPages:ServerDetailsPage}"
         Route="ServerDetails" />
@@ -41,4 +39,36 @@
         Title="Expert Server Details"
         ContentTemplate="{DataTemplate serverPages:ExpertServerDetailsPage}"
         Route="ExpertServerDetails" />
+    <ShellContent
+        Title="AWSCredentialsPage"
+        ContentTemplate="{DataTemplate credPages:AWSCredentialsPage}"
+        Route="AWSCredentialsPage" />
+    <ShellContent
+        Title="AzureCredentialsPage"
+        ContentTemplate="{DataTemplate credPages:AzureCredentialsPage}"
+        Route="AzureCredentialsPage" />
+    <ShellContent
+        Title="DigitaloceanCredentialsPage"
+        ContentTemplate="{DataTemplate credPages:DigitalOceanCredentialsPage}"
+        Route="DigitaloceanCredentialsPage" />
+    <ShellContent
+        Title="RumbleCredentialsPage"
+        ContentTemplate="{DataTemplate credPages:RumbleCredentialsPage}"
+        Route="RumbleCredentialsPage" />
+    <ShellContent
+        Title="DigitaloceanHostingPage"
+        ContentTemplate="{DataTemplate hostingPages:DigitalOceanHostingPage}"
+        Route="DigitaloceanHostingPage" />
+    <ShellContent
+        Title="AzureHostingPage"
+        ContentTemplate="{DataTemplate hostingPages:AzureHostingPage}"
+        Route="AzureHostingPage" />
+    <ShellContent
+        Title="RumbleHostingPage"
+        ContentTemplate="{DataTemplate hostingPages:RumbleHostingPage}"
+        Route="RumbleHostingPage" />
+    <ShellContent
+        Title="Review Build"
+        ContentTemplate="{DataTemplate local:ReviewBuildPage}"
+        Route="ReviewBuild" />
 </Shell>
