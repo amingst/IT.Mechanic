@@ -8,7 +8,8 @@
     <Button
         BindingContext="{x:Reference this}"
         BackgroundColor="Transparent"
-        ToolTipProperties.Text="{Binding Tooltip}">
+        ToolTipProperties.Text="{Binding Tooltip}"
+        >
         <Button.ImageSource>
             <FontImageSource 
                 Glyph="{Binding IconPath}"

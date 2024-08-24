@@ -7,6 +7,7 @@ public partial class ProfileListItem : ContentView
     public static readonly BindableProperty ItemTitleProperty = BindableProperty.Create(nameof(ItemTitle), typeof(string), typeof(ProfileListItem), string.Empty);
     public static readonly BindableProperty ItemColorProperty = BindableProperty.Create(nameof(ItemColor), typeof(string), typeof(ProfileListItem), string.Empty);
     public static readonly BindableProperty ItemUptimeProperty = BindableProperty.Create(nameof(ItemUptime), typeof(float), typeof(ProfileListItem));
+    public static readonly BindableProperty ProfileStatusProperty = BindableProperty.Create(nameof(ProfileStatus), typeof(ProfileStatusEnum), typeof(ProfileListItem));
     public string BorderColor
     {
         get => (string)((GetValue(ProfileListItem.BorderColorProperty)));
@@ -33,8 +34,18 @@ public partial class ProfileListItem : ContentView
         get => (float)(GetValue(ProfileListItem.ItemUptimeProperty));
         set => SetValue(ProfileListItem.ItemUptimeProperty, value);
     }
+    public ProfileStatusEnum ProfileStatus
+    {
+        get;
+        set;
+    }
     public ProfileListItem()
 	{
 		InitializeComponent();
 	}
+
+    public enum ProfileStatusEnum {
+        Running,
+        Stopped
+    }
 }

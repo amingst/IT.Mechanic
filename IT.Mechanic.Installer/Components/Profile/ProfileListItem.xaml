@@ -5,42 +5,68 @@
              x:Class="IT.Mechanic.Installer.Components.Profile.ProfileListItem"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:components="clr-namespace:IT.Mechanic.Installer.Components.FontIcons"
-             WidthRequest="750" HeightRequest="75">
-        <Frame BindingContext="{x:Reference this}"
-               BackgroundColor="{Binding ItemBackground, FallbackValue='SlateGray'}"
-               BorderColor="{Binding ItemBorder, FallbackValue='Black'}"
-               CornerRadius="10">
-        <toolkit:DockLayout
-               HeightRequest="45">
+             WidthRequest="700" HeightRequest="85">
+    <Frame BindingContext="{x:Reference this}"
+           BackgroundColor="{Binding ItemBackground, FallbackValue='SlateGray'}"
+           BorderColor="{Binding ItemBorder, FallbackValue='Black'}"
+           CornerRadius="10">
+        <HorizontalStackLayout
+            HeightRequest="45"
+            VerticalOptions="Center"
+            HorizontalOptions="FillAndExpand"
+            Spacing="250">
             <Label
-                    FontSize="18" 
-                    Text="{Binding ItemTitle, FallbackValue='Item Title'}" 
-                    TextColor="{Binding TitleColor, FallbackValue='White'}"
-                    HorizontalOptions="Start" 
-                    VerticalOptions="Center" 
-                    toolkit:DockLayout.DockPosition="Left"/>
+                FontSize="18" 
+                Text="{Binding ItemTitle, FallbackValue='Item Title'}" 
+                TextColor="{Binding TitleColor, FallbackValue='White'}"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"/>
 
-            <components:IconButton 
-                IconColor="White"
-                Tooltip="Delete Server"
-                IconSize="20"
-                IconPath="{x:Static components:FontAwesome.Trash}"
-                IconFont="FaSolid"
-                toolkit:DockLayout.DockPosition="Right"/>
-            <components:IconButton
-                toolkit:DockLayout.DockPosition="Right"
-                IconFont="FaRegular"
-                IconPath="{x:Static components:FontAwesome.Cog}"
-                IconSize="20"
-                IconColor="White"
-                Tooltip="Profile Settings"/>
-            <components:IconButton
-                 toolkit:DockLayout.DockPosition="Right"
-                 IconFont="FaSolid"
-                 IconPath="{x:Static components:FontAwesome.Play}"
-                 IconSize="20"
-                 IconColor="LightGreen"
-                 Tooltip="Start Server"/>
-        </toolkit:DockLayout>
+            <HorizontalStackLayout>
+                <components:IconButton
+                    IconFont="FaSolid"
+                    IconPath="{x:Static components:FontAwesome.Play}"
+                    IconSize="20"
+                    IconColor="MediumSpringGreen"
+                    Tooltip="Start"
+                    />
+                <components:IconButton
+                    IconFont="FaSolid"
+                    IconPath="{x:Static components:FontAwesome.Stop}"
+                    IconSize="20"
+                    IconColor="LightCoral"
+                    Tooltip="Stop"/>
+                <components:IconButton
+                    IconFont="FaSolid"
+                    IconPath="{x:Static components:FontAwesome.Download}"
+                    IconSize="20"
+                    IconColor="LemonChiffon"
+                    Tooltip="Backup"/>
+                <components:IconButton
+                    IconFont="FaRegular"
+                    IconPath="{x:Static components:FontAwesome.Globe}"
+                    IconSize="20"
+                    IconColor="LightSkyBlue"
+                    Tooltip="DNS Settings"/>
+                <components:IconButton
+                    IconFont="FaSolid"
+                    IconPath="{x:Static components:FontAwesome.Upload}"
+                    IconSize="20"
+                    IconColor="LemonChiffon"
+                    Tooltip="Migrate"/>
+                <components:IconButton
+                    IconFont="FaSolid"
+                    IconPath="{x:Static components:FontAwesome.Sync}"
+                    IconSize="20"
+                    IconColor="MediumSpringGreen"
+                    Tooltip="Update Software"/>
+                <components:IconButton 
+                    IconColor="LightCoral"
+                    Tooltip="Teardown Server"
+                    IconSize="20"
+                    IconPath="{x:Static components:FontAwesome.Trash}"
+                    IconFont="FaSolid"/>
+            </HorizontalStackLayout>
+        </HorizontalStackLayout>
     </Frame>
 </ContentView>
