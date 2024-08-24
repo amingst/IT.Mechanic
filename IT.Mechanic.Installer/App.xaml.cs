@@ -5,11 +5,11 @@ namespace IT.Mechanic.Installer
 {
     public partial class App : Application
     {
-        public App(ConfigService _configService)
+        public App(ConfigService _configService, ProfileService _profileService)
         {
             InitializeComponent();
 
-            MainPage = new AppShell(_configService);
+            MainPage = new AppShell(_configService, _profileService);
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

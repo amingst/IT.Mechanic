@@ -6,11 +6,13 @@ namespace IT.Mechanic.Installer
     public partial class MainPage : ContentPage
     {
         private readonly ConfigService _configService;
+        private readonly ProfileService _profileService;
 
         public MainPage()
         {
             InitializeComponent();
             _configService = App.Current.Handler.MauiContext.Services.GetService<ConfigService>();
+            _profileService = App.Current.Handler.MauiContext.Services.GetService<ProfileService>();
             BindingContext = _configService.Model;
         }
 

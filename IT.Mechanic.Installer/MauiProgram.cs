@@ -31,7 +31,7 @@ namespace IT.Mechanic.Installer
         public static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
         {
             builder.Services.AddSingleton<ConfigService>();
-
+            builder.Services.AddSingleton<ProfileService>();
             return builder;
         }
     }
