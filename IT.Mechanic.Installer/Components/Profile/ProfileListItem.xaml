@@ -4,9 +4,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IT.Mechanic.Installer.Components.Profile.ProfileListItem"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:components="clr-namespace:IT.Mechanic.Installer.Components.FontIcons">
+             xmlns:components="clr-namespace:IT.Mechanic.Installer.Components.FontIcons"
+             WidthRequest="750" HeightRequest="75">
         <Frame BindingContext="{x:Reference this}"
-               BackgroundColor="{Binding ItemBackground, FallbackValue='DarkSlateGray'}"
+               BackgroundColor="{Binding ItemBackground, FallbackValue='SlateGray'}"
                BorderColor="{Binding ItemBorder, FallbackValue='Black'}"
                CornerRadius="10">
         <toolkit:DockLayout
@@ -20,61 +21,27 @@
                     VerticalOptions="Center" 
                     toolkit:DockLayout.DockPosition="Left"/>
 
-
-            <Button
-                    FontSize="24" 
-                    WidthRequest="10" 
-                    HeightRequest="10" 
-                    BackgroundColor="Transparent"
-                    CornerRadius="40"
-                    HorizontalOptions="End" 
-                    VerticalOptions="Center" 
-                    toolkit:DockLayout.DockPosition="Right"
-                    ToolTipProperties.Text="Delete Server">
-                <Button.ImageSource>
-                    <FontImageSource
-                        FontFamily="FaRegular"
-                        Glyph="{x:Static components:FontAwesome.Trash}"
-                        Size="15" 
-                        Color="White"/>
-                </Button.ImageSource>
-            </Button>
-            <Button
-                FontSize="24" 
-                WidthRequest="10" 
-                HeightRequest="10" 
-                BackgroundColor="Transparent"
-                CornerRadius="40"
-                HorizontalOptions="End" 
-                VerticalOptions="Center" 
+            <components:IconButton 
+                IconColor="White"
+                Tooltip="Delete Server"
+                IconSize="20"
+                IconPath="{x:Static components:FontAwesome.Trash}"
+                IconFont="FaSolid"
+                toolkit:DockLayout.DockPosition="Right"/>
+            <components:IconButton
                 toolkit:DockLayout.DockPosition="Right"
-                ToolTipProperties.Text="Profile Settings">
-                        <Button.ImageSource>
-                            <FontImageSource
-                    FontFamily="FaRegular"
-                    Glyph="{x:Static components:FontAwesome.Cog}"
-                    Size="15" 
-                    Color="White"/>
-                        </Button.ImageSource>
-            </Button>
-            <Button
-                    FontSize="24" 
-                    WidthRequest="10" 
-                    HeightRequest="10" 
-                    BackgroundColor="Transparent"
-                    CornerRadius="40"
-                    HorizontalOptions="End" 
-                    VerticalOptions="Center" 
-                    toolkit:DockLayout.DockPosition="Right"
-                    ToolTipProperties.Text="Start Server">
-                <Button.ImageSource>
-                    <FontImageSource
-                        FontFamily="FaSolid"
-                        Glyph="{x:Static components:FontAwesome.Play}"
-                        Size="15" 
-                        Color="Green"/>
-                </Button.ImageSource>
-            </Button>
+                IconFont="FaRegular"
+                IconPath="{x:Static components:FontAwesome.Cog}"
+                IconSize="20"
+                IconColor="White"
+                Tooltip="Profile Settings"/>
+            <components:IconButton
+                 toolkit:DockLayout.DockPosition="Right"
+                 IconFont="FaSolid"
+                 IconPath="{x:Static components:FontAwesome.Play}"
+                 IconSize="20"
+                 IconColor="LightGreen"
+                 Tooltip="Start Server"/>
         </toolkit:DockLayout>
     </Frame>
 </ContentView>
