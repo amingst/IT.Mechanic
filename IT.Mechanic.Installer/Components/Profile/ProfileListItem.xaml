@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView x:Name="this"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IT.Mechanic.Installer.Components.Profile.ProfileListItem"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+        <Frame BindingContext="{x:Reference this}"
+               BackgroundColor="{Binding ItemBackground, FallbackValue='DarkSlateGray'}"
+               BorderColor="{Binding ItemBorder, FallbackValue='Black'}"
+               CornerRadius="10">
+        <toolkit:DockLayout
+               HeightRequest="45">
+            <Label 
+                    TextDecorations="Underline" 
+                    FontSize="18" 
+                    Text="{Binding ItemTitle, FallbackValue='Item Title'}" 
+                    TextColor="{Binding TitleColor, FallbackValue='White'}"
+                    HorizontalOptions="Start" 
+                    VerticalOptions="Center" 
+                    toolkit:DockLayout.DockPosition="Left"/>
+
+            <Button Text="+" 
+                    FontSize="24" 
+                    WidthRequest="10" 
+                    HeightRequest="10" 
+                    BackgroundColor="LightGray" 
+                    TextColor="Black"
+                    CornerRadius="40"
+                    HorizontalOptions="End" 
+                    VerticalOptions="Center" 
+                    toolkit:DockLayout.DockPosition="Right"/>
+        </toolkit:DockLayout>
+    </Frame>
+</ContentView>

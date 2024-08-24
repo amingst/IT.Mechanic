@@ -78,6 +78,9 @@
 	  <MauiXaml Update="Components\Card\MainCard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Profile\ProfileListItem.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="DNSPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
