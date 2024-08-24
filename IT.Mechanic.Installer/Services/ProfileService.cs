@@ -8,14 +8,26 @@ using System.Threading.Tasks;
 
 namespace IT.Mechanic.Installer.Services
 {
+    /// <summary>
+    /// Represents the service Mechanic uses to keep track of server profiles.
+    /// </summary>
     public class ProfileService
     {
+        /// <summary>
+        /// Key/Value store for Profiles indexed by a Guid <see cref="Guid"/> 
+        /// with a value of MainModel <see cref="MainModel"/>
+        /// </summary>
         public IDictionary<Guid, MainModel> Profiles { get; private set; }
 
         public ProfileService() {
             Profiles = new Dictionary<Guid, MainModel>();
         }
 
+        /// <summary>
+        /// Adds a profile to the Profiles store.
+        /// </summary>
+        /// <param name="profile">MainModel <see cref="MainModel"/></param>
+        /// <returns>Task of type void</returns>
         public Task AddProfile(MainModel profile)
         {
             if (profile.SiteId == Guid.Empty)
@@ -27,18 +39,31 @@ namespace IT.Mechanic.Installer.Services
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Returns all profiles stored in the service
+        /// </summary>
+        /// <returns>A List of type MainModel</returns>
         public Task<List<MainModel>> GetAllProfiles()
         {
             var values = Profiles.Values.ToList();
             return Task.FromResult(values);
         }
 
+        /// <summary>
+        /// Gets a profile stored within the service by its Site ID
+        /// </summary>
+        /// <param name="siteId"></param>
+        /// <returns>The profile found indexed by the siteId or null</returns>
         public Task<MainModel?> GetProfile(Guid siteId)
         {
             var profile = Profiles[siteId];
             return Task.FromResult(profile);
         }
 
+        /// <summary>
+        /// Saves all stored profile to the User's machine
+        /// </summary>
+        /// <returns>void</returns>
         public async Task SaveProfileToDisk()
         {
             if (Profiles.Count > 0)
