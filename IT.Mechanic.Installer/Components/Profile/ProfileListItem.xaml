@@ -42,13 +42,13 @@
                     IconSize="20"
                     IconColor="LemonChiffon"
                     Tooltip="Backup"/>
-                <components:IconButton
+                <!--<components:IconButton
                     IconFont="FaRegular"
                     IconPath="{x:Static components:FontAwesome.Globe}"
                     IconSize="20"
                     IconColor="LightSkyBlue"
-                    Tooltip="DNS Settings"/>
-                <components:IconButton
+                    Tooltip="DNS Settings"/>-->
+                <!--<components:IconButton
                     IconFont="FaSolid"
                     IconPath="{x:Static components:FontAwesome.Upload}"
                     IconSize="20"
@@ -65,6 +65,12 @@
                     Tooltip="Teardown Server"
                     IconSize="20"
                     IconPath="{x:Static components:FontAwesome.Trash}"
+                    IconFont="FaSolid"/>-->
+                <components:IconButton 
+                    IconColor="White"
+                    Tooltip="ProfileDetails"
+                    IconSize="20"
+                    IconPath="{x:Static components:FontAwesome.Cogs}"
                     IconFont="FaSolid"/>
             </HorizontalStackLayout>
         </HorizontalStackLayout>

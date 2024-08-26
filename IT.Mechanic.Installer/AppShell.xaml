@@ -7,6 +7,7 @@
     xmlns:serverPages="clr-namespace:IT.Mechanic.Installer.Pages.Server"
     xmlns:credPages="clr-namespace:IT.Mechanic.Installer.Pages.Credentials"
     xmlns:hostingPages="clr-namespace:IT.Mechanic.Installer.Pages.Hosting"
+    xmlns:profilePages="clr-namespace:IT.Mechanic.Installer.Pages.Profiles"
     Shell.FlyoutBehavior="Disabled"
     Title="IT.Mechanic.Installer">
 
@@ -71,4 +72,8 @@
         Title="Review Build"
         ContentTemplate="{DataTemplate local:ReviewBuildPage}"
         Route="ReviewBuild" />
+    <ShellContent
+        Title="Profile Details"
+        ContentTemplate="{DataTemplate profilePages:ProfileDetailsPage}"
+        Route="ProfileDetails" />
 </Shell>
