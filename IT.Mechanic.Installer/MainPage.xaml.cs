@@ -35,5 +35,15 @@ namespace IT.Mechanic.Installer
         {
             await Shell.Current.GoToAsync("//ProductSelect");
         }
+
+        private async void OnDetailsClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//ProfileDetails");
+        }
+
+        private void OnStartServiceClicked(object sender, EventArgs e)
+        {
+            Console.WriteLine("Starting Service");
+        }
     }
 }

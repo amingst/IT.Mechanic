@@ -26,31 +26,40 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame BackgroundColor="LightSlateGray" Padding="10" Margin="5" HasShadow="False">
+                        <Frame BackgroundColor="SlateGray" Padding="10" Margin="5" HasShadow="False">
                             <Grid ColumnDefinitions="*,Auto,Auto">
                                 <Label Text="{Binding DNS.DomainName}" VerticalOptions="Center" Grid.Column="0" />
-
-                                <components:IconButton
-                                    IconFont="FaSolid"
-                                    IconPath="{x:Static components:FontAwesome.Play}"
-                                    IconSize="20"
-                                    IconColor="MediumSpringGreen"
-                                    Tooltip="Start"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="End"
+                                <Button
+                                    BackgroundColor="Transparent"
+                                    ToolTipProperties.Text="Start Service"
                                     Grid.Column="1"
-                                    Margin="0,0,10,0"
-                                    />
-                                <components:IconButton
-                                    IconColor="White"
-                                    Tooltip="ProfileDetails"
-                                    IconSize="20"
-                                    IconPath="{x:Static components:FontAwesome.Cogs}"
-                                    IconFont="FaSolid"
+                                    Margin="0,0,5,0"
                                     VerticalOptions="Center"
                                     HorizontalOptions="End"
+                                    Clicked="OnStartServiceClicked">
+                                    <Button.ImageSource>
+                                        <FontImageSource
+                                            Glyph="{x:Static components:FontAwesome.Play}"
+                                            Color="MediumSpringGreen"
+                                            Size="20"
+                                            FontFamily="FaSolid"/>
+                                    </Button.ImageSource>
+                                </Button>
+                                <Button
+                                    BackgroundColor="Transparent"
+                                    ToolTipProperties.Text="Profile Deails"
                                     Grid.Column="2"
-                                    />
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="End"
+                                    Clicked="OnDetailsClicked">
+                                    <Button.ImageSource>
+                                        <FontImageSource
+                                            Glyph="{x:Static components:FontAwesome.Cog}"
+                                            Color="White"
+                                            Size="20"
+                                            FontFamily="FaSolid"/>
+                                    </Button.ImageSource>
+                                </Button>
                             </Grid>
                         </Frame>
                     </ViewCell>
