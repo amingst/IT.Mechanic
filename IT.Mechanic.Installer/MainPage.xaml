@@ -8,21 +8,39 @@
              Title="Mechanic">
     <ScrollView>
         <VerticalStackLayout Spacing="30" Margin="50">
+            <!-- Header and Create Profile Button Inline -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Text="Recent Profiles:"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Padding="10,5"
+                    TextColor="White"
+                    HorizontalOptions="Start"
+                    Grid.Column="0"
+                />
+
+                <Button
+                    Text="Create Profile"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    TextColor="MintCream"
+                    BackgroundColor="LightSlateGray"
+                    Clicked="OnStartClicked"
+                    Grid.Column="1"
+                />
+            </Grid>
+
             <ListView
                 x:Name="ProfilesListView"
                 ItemsSource="{Binding Profiles}"
                 SeparatorColor="Black"
                 SeparatorVisibility="Default">
-                <ListView.Header>
-                    <Label
-                        Text="Recent Profiles:"
-                        FontSize="20"
-                        FontAttributes="Bold"
-                        Padding="10,5"
-                        TextColor="White"
-                        HorizontalOptions="FillAndExpand"
-                    />
-                </ListView.Header>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -67,14 +85,14 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
             <Button
                 Text="Create Profile"
                 HorizontalOptions="Center"
-                VerticalOptions="End"
+                VerticalOptions="Center"
                 TextColor="MintCream"
                 BackgroundColor="LightSlateGray"
-                Clicked="OnStartClicked"/>
+                Clicked="OnStartClicked"
+            />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
