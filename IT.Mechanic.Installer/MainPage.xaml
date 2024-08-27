@@ -47,11 +47,12 @@
                                 </Button>
                                 <Button
                                     BackgroundColor="Transparent"
-                                    ToolTipProperties.Text="Profile Deails"
+                                    ToolTipProperties.Text="Profile Details"
                                     Grid.Column="2"
                                     VerticalOptions="Center"
                                     HorizontalOptions="End"
-                                    Clicked="OnDetailsClicked">
+                                    Command="{Binding Path=BindingContext.DetailsCommand, Source={x:Reference ProfilesListView}}"
+                                    CommandParameter="{Binding .}">
                                     <Button.ImageSource>
                                         <FontImageSource
                                             Glyph="{x:Static components:FontAwesome.Cog}"
