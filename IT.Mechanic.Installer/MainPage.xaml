@@ -6,74 +6,75 @@
              xmlns:Icons="clr-namespace:IT.Mechanic.Installer.Components.FontIcons"
              xmlns:components="clr-namespace:IT.Mechanic.Installer.Components.FontIcons"
              Title="Mechanic">
-    <VerticalStackLayout Spacing="30" Margin="50">
-
-        <ListView
-            x:Name="ProfilesListView"
-            ItemsSource="{Binding Profiles}"
-            SeparatorColor="Black"
-            SeparatorVisibility="Default">
-            <ListView.Header>
-                <Label
-                    Text="Recent Profiles:"
-                    FontSize="20"
-                    FontAttributes="Bold"
-                    Padding="10,5"
-                    TextColor="White"
-                    HorizontalOptions="FillAndExpand"
+    <ScrollView>
+        <VerticalStackLayout Spacing="30" Margin="50">
+            <ListView
+                x:Name="ProfilesListView"
+                ItemsSource="{Binding Profiles}"
+                SeparatorColor="Black"
+                SeparatorVisibility="Default">
+                <ListView.Header>
+                    <Label
+                        Text="Recent Profiles:"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        Padding="10,5"
+                        TextColor="White"
+                        HorizontalOptions="FillAndExpand"
                     />
-            </ListView.Header>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Frame BackgroundColor="SlateGray" Padding="10" Margin="5" HasShadow="False">
-                            <Grid ColumnDefinitions="*,Auto,Auto">
-                                <Label Text="{Binding DNS.DomainName}" VerticalOptions="Center" Grid.Column="0" />
-                                <Button
-                                    BackgroundColor="Transparent"
-                                    ToolTipProperties.Text="Start Service"
-                                    Grid.Column="1"
-                                    Margin="0,0,5,0"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="End"
-                                    Clicked="OnStartServiceClicked">
-                                    <Button.ImageSource>
-                                        <FontImageSource
-                                            Glyph="{x:Static components:FontAwesome.Play}"
-                                            Color="MediumSpringGreen"
-                                            Size="20"
-                                            FontFamily="FaSolid"/>
-                                    </Button.ImageSource>
-                                </Button>
-                                <Button
-                                    BackgroundColor="Transparent"
-                                    ToolTipProperties.Text="Profile Details"
-                                    Grid.Column="2"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="End"
-                                    Command="{Binding Path=BindingContext.DetailsCommand, Source={x:Reference ProfilesListView}}"
-                                    CommandParameter="{Binding .}">
-                                    <Button.ImageSource>
-                                        <FontImageSource
-                                            Glyph="{x:Static components:FontAwesome.Cog}"
-                                            Color="White"
-                                            Size="20"
-                                            FontFamily="FaSolid"/>
-                                    </Button.ImageSource>
-                                </Button>
-                            </Grid>
-                        </Frame>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BackgroundColor="SlateGray" Padding="10" Margin="5" HasShadow="False">
+                                <Grid ColumnDefinitions="*,Auto,Auto">
+                                    <Label Text="{Binding DNS.DomainName}" VerticalOptions="Center" Grid.Column="0" />
+                                    <Button
+                                        BackgroundColor="Transparent"
+                                        ToolTipProperties.Text="Start Service"
+                                        Grid.Column="1"
+                                        Margin="0,0,5,0"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="End"
+                                        Clicked="OnStartServiceClicked">
+                                        <Button.ImageSource>
+                                            <FontImageSource
+                                                Glyph="{x:Static components:FontAwesome.Play}"
+                                                Color="MediumSpringGreen"
+                                                Size="20"
+                                                FontFamily="FaSolid"/>
+                                        </Button.ImageSource>
+                                    </Button>
+                                    <Button
+                                        BackgroundColor="Transparent"
+                                        ToolTipProperties.Text="Profile Details"
+                                        Grid.Column="2"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="End"
+                                        Command="{Binding Path=BindingContext.DetailsCommand, Source={x:Reference ProfilesListView}}"
+                                        CommandParameter="{Binding .}">
+                                        <Button.ImageSource>
+                                            <FontImageSource
+                                                Glyph="{x:Static components:FontAwesome.Cog}"
+                                                Color="White"
+                                                Size="20"
+                                                FontFamily="FaSolid"/>
+                                        </Button.ImageSource>
+                                    </Button>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-        <Button
-            Text="Create Profile"
-            HorizontalOptions="Center"
-            VerticalOptions="End"
-            TextColor="MintCream"
-            BackgroundColor="LightSlateGray"
-            Clicked="OnStartClicked"/>
-    </VerticalStackLayout>
+            <Button
+                Text="Create Profile"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                TextColor="MintCream"
+                BackgroundColor="LightSlateGray"
+                Clicked="OnStartClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
