@@ -7,7 +7,8 @@ public partial class IconButton : ContentView
 	public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(int), typeof(IconButton));
 	public static readonly BindableProperty IconFontProperty = BindableProperty.Create(nameof(IconFont), typeof(string), typeof (IconButton), string.Empty);
 	public static readonly BindableProperty TooltipTextProperty = BindableProperty.Create(nameof(Tooltip), typeof(string), typeof(IconButton), string.Empty);
-	public string IconPath
+    
+    public string IconPath
 	{
 		get => (string)GetValue(IconPathProperty);
 		set => SetValue(IconPathProperty, value);
@@ -35,5 +36,5 @@ public partial class IconButton : ContentView
 	public IconButton()
 	{
 		InitializeComponent();
-	}
+    }
 }
