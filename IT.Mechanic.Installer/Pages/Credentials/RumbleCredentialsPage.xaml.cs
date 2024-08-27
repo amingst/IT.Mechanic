@@ -26,10 +26,5 @@ namespace IT.Mechanic.Installer.Pages.Credentials
             _configService.Model.Credentials.Add(RumbleCredentials);
             await AppShell.Current.GoToAsync("//RumbleHostingPage");
         }
-
-        private void apiKeyEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            // Optionally handle text change if needed
-        }
     }
 }

@@ -1,29 +1,30 @@
 using IT.Mechanic.Installer.Services;
+using IT.Mechanic.Models.Configuration.Credentials;
 
-namespace IT.Mechanic.Installer.Pages.Credentials;
-
-public partial class AWSCredentialsPage : ContentPage
+namespace IT.Mechanic.Installer.Pages.Credentials
 {
-    private readonly ConfigService _configService;
-	public AWSCredentialsPage()
-	{
-		InitializeComponent();
-        _configService = App.Current.Handler.MauiContext.Services.GetService<ConfigService>();
-        BindingContext = _configService.Model;
-    }
-
-    public async void OnBackClicked(object sender, EventArgs e)
+    public partial class AWSCredentialsPage : ContentPage
     {
-        await AppShell.Current.GoToAsync("///Server");
-    }
+        private readonly ConfigService _configService;
+        public AWSModel AWSCredentials { get; set; } = new();
 
-    public async void OnNextClicked(object sender, EventArgs e)
-    {
-        await AppShell.Current.GoToAsync("//ReviewBuild");
-    }
+        public AWSCredentialsPage()
+        {
+            InitializeComponent();
+            _configService = App.Current.Handler.MauiContext.Services.GetService<ConfigService>();
+            BindingContext = AWSCredentials; // Set BindingContext to AWSCredentials
+        }
 
-    private void apiKeyEntry_TextChanged(object sender, TextChangedEventArgs e)
-    {
+        public async void OnBackClicked(object sender, EventArgs e)
+        {
+            await AppShell.Current.GoToAsync("///Server");
+        }
 
+        public async void OnNextClicked(object sender, EventArgs e)
+        {
+            // Ensure AWSCredentials has been updated
+            _configService.Model.Credentials.Add(AWSCredentials);
+            await AppShell.Current.GoToAsync("//ReviewBuild");
+        }
     }
 }
