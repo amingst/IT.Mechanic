@@ -29,110 +29,116 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid Padding="20" BackgroundColor="#2E2E2E">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <!-- Title Row -->
-            <RowDefinition Height="Auto" />
-            <!-- Details Rows -->
-            <RowDefinition Height="Auto" />
-            <!-- Action Buttons Row -->
-        </Grid.RowDefinitions>
+    <ScrollView>
+        <Grid Padding="20" BackgroundColor="#2E2E2E">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <!-- Title Row -->
+                <RowDefinition Height="Auto" />
+                <!-- Details Rows -->
+                <RowDefinition Height="Auto" />
+                <!-- Action Buttons Rows -->
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-        <!-- Title Label -->
-        <Label
-            Text="Review Your Selections"
-            Style="{StaticResource SectionTitle}"
-            SemanticProperties.HeadingLevel="Level1"
-            Grid.Row="0"
-            HorizontalOptions="Center" />
+            <!-- Title Label -->
+            <Label
+                Text="Review Your Selections"
+                Style="{StaticResource SectionTitle}"
+                SemanticProperties.HeadingLevel="Level1"
+                Grid.Row="0"
+                HorizontalOptions="Center" />
 
-        <!-- Details -->
-        <VerticalStackLayout
-            Grid.Row="1"
-            Padding="10"
-            Spacing="10"
-            HorizontalOptions="Center">
-            <HorizontalStackLayout>
-                <Label 
-                    Text="Website Type: "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
-                <Label 
-                    x:Name="websiteType"
-                    Style="{StaticResource DetailLabelStyle}"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout>
-                <Label 
-                    Text="Domain Name: "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
-                <Label 
-                    x:Name="domainName"
-                    Style="{StaticResource DetailLabelStyle}"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout>
-                <Label 
-                    Text="Hosting Provider: "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
-                <Label 
-                    x:Name="hostingProvider"
-                    Style="{StaticResource DetailLabelStyle}"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout>
-                <Label 
-                    Text="DNS Provider: "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
-                <Label 
-                    x:Name="dnsProvider"
-                    Style="{StaticResource DetailLabelStyle}"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
+            <!-- Details -->
+            <VerticalStackLayout
+                Grid.Row="1"
+                Padding="10"
+                Spacing="10"
+                HorizontalOptions="Center">
+                <HorizontalStackLayout>
+                    <Label 
+                        Text="Website Type: "
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                    <Label 
+                        x:Name="websiteType"
+                        Style="{StaticResource DetailLabelStyle}"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label 
+                        Text="Domain Name: "
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                    <Label 
+                        x:Name="domainName"
+                        Style="{StaticResource DetailLabelStyle}"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label 
+                        Text="Hosting Provider: "
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                    <Label 
+                        x:Name="hostingProvider"
+                        Style="{StaticResource DetailLabelStyle}"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label 
+                        Text="DNS Provider: "
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                    <Label 
+                        x:Name="dnsProvider"
+                        Style="{StaticResource DetailLabelStyle}"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
 
-        <!-- Action Buttons -->
-        <HorizontalStackLayout
-            Grid.Row="2"
-            HorizontalOptions="Center">
-            <Button
-                x:Name="backBtn"
-                Style="{StaticResource ActionButtonStyle}"
-                Text="Back"
-                Clicked="OnBackClicked"
-                Margin="5"/>
+            <!-- Action Buttons -->
+            <HorizontalStackLayout
+                Grid.Row="2"
+                HorizontalOptions="Center">
+                <Button
+                    x:Name="backBtn"
+                    Style="{StaticResource ActionButtonStyle}"
+                    Text="Back"
+                    Clicked="OnBackClicked"
+                    Margin="5"/>
 
-            <Button
-                x:Name="deployBtn"
-                Style="{StaticResource ActionButtonStyle}"
-                Text="Deploy"
-                Clicked="OnDeployClicked"
-                Margin="5"/>
-        </HorizontalStackLayout>
-        <HorizontalStackLayout
-            Grid.Row="2"
-            HorizontalOptions="Center"
-            VerticalOptions="End">
-            <Button
-                x:Name="saveExitBtn"
-                Style="{StaticResource ActionButtonStyle}"
-                Text="Save And Exit"
-                Clicked="OnSaveExitClicked"
-                Margin="5"/>
-            <Button
-                x:Name="exitBtn"
-                Style="{StaticResource ActionButtonStyle}"
-                Text="Quit"
-                Clicked="OnQuitClicked"
-                Margin="5"/>
-        </HorizontalStackLayout>
-    </Grid>
+                <Button
+                    x:Name="deployBtn"
+                    Style="{StaticResource ActionButtonStyle}"
+                    Text="Deploy"
+                    Clicked="OnDeployClicked"
+                    Margin="5"/>
+            </HorizontalStackLayout>
+
+            <!-- Save and Exit, Quit Buttons -->
+            <HorizontalStackLayout
+                Grid.Row="3"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <Button
+                    x:Name="saveExitBtn"
+                    Style="{StaticResource ActionButtonStyle}"
+                    Text="Save And Exit"
+                    Clicked="OnSaveExitClicked"
+                    Margin="5"/>
+                <Button
+                    x:Name="exitBtn"
+                    Style="{StaticResource ActionButtonStyle}"
+                    Text="Quit"
+                    Clicked="OnQuitClicked"
+                    Margin="5"/>
+            </HorizontalStackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>
