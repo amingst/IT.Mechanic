@@ -1,4 +1,7 @@
+using IT.Mechanic.Models.Configuration;
+using IT.Mechanic.Installer.Services;
 using Microsoft.Maui.Controls;
+using System;
 using System.Threading.Tasks;
 
 namespace IT.Mechanic.Installer.Pages.Profiles
@@ -6,35 +9,56 @@ namespace IT.Mechanic.Installer.Pages.Profiles
     [QueryProperty(nameof(SiteId), "siteId")]
     public partial class ProfileDetailsPage : ContentPage
     {
+        private readonly ProfileService _profileService;
+
+        private Guid _siteId;
+
         public string SiteId
         {
             set
             {
-                // Set the SiteIdLabel's text when SiteId is updated
-                SiteIdLabel.Text = $"Site ID: {value}";
-
-                // Optionally, you can load additional profile details here
-                // LoadProfileDetails(value);
+                if (Guid.TryParse(value, out var siteId))
+                {
+                    _siteId = siteId;
+                    // Fetch and display profile details when SiteId is updated
+                    LoadProfileDetails(siteId).ConfigureAwait(false);
+                }
+                else
+                {
+                    // Handle the case where the siteId is not a valid GUID
+                    SiteIdLabel.Text = "Invalid Site ID.";
+                }
             }
         }
 
         public ProfileDetailsPage()
         {
             InitializeComponent();
+            _profileService = App.Current.Handler.MauiContext.Services.GetService<ProfileService>();
         }
 
-        // Example method to load additional profile details using the siteId
-        private async Task LoadProfileDetails(string siteId)
+        private async Task LoadProfileDetails(Guid siteId)
         {
-            // Use the siteId to fetch and display additional details
-            // For instance:
-            // var profileDetails = await _profileService.GetProfileDetails(siteId);
-            // Update UI with profileDetails
+            var profile = await _profileService.GetProfile(siteId);
+
+            if (profile != null)
+            {
+                // Update UI with profile details
+                SiteIdLabel.Text = $"Site ID: {profile.SiteId}";
+                DomainNameLabel.Text = $"Domain Name: {profile.DNS.DomainName}";
+                HostingProviderLabel.Text = $"Hosting Provider: {profile.Server.HostingProvider}";
+                WebsiteTypeLabel.Text = $"Website Type: {profile.ProductSelection.WebsiteType}";
+            }
+            else
+            {
+                // Handle case where profile is not found
+                SiteIdLabel.Text = "Profile not found.";
+            }
         }
 
         private async void OnBackClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("///MainPage");
+            await Shell.Current.GoToAsync("//MainPage");
         }
     }
 }

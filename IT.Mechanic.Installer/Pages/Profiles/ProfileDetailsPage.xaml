@@ -9,6 +9,25 @@
             FontSize="24"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <Label 
+            x:Name="DomainNameLabel"
+            FontSize="18"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Label 
+            x:Name="HostingProviderLabel"
+            FontSize="18"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Label 
+            x:Name="WebsiteTypeLabel"
+            FontSize="18"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
         <Button
             Text="Back"
             HorizontalOptions="Center"
