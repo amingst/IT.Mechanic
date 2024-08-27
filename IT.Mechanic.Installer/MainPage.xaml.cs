@@ -14,6 +14,11 @@ namespace IT.Mechanic.Installer
             _configService = App.Current.Handler.MauiContext.Services.GetService<ConfigService>();
             _profileService = App.Current.Handler.MauiContext.Services.GetService<ProfileService>();
             BindingContext = _configService.Model;
+
+            if (_profileService != null )
+            {
+                _profileService.LoadProfilesFromDisk();
+            }
         }
 
         private async void OnStartClicked(object sender, EventArgs e)
