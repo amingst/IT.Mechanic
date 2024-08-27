@@ -15,9 +15,19 @@ namespace IT.Mechanic.Installer
             _profileService = App.Current.Handler.MauiContext.Services.GetService<ProfileService>();
             BindingContext = _configService.Model;
 
-            if (_profileService != null )
+            if (_profileService != null)
             {
                 _profileService.LoadProfilesFromDisk();
+                LoadProfiles();
+            }
+        }
+
+        private async void LoadProfiles()
+        {
+            if (_profileService != null)
+            {
+                var profiles = await _profileService.GetAllProfiles();
+                ProfilesListView.ItemsSource = profiles;
             }
         }
 
@@ -26,5 +36,4 @@ namespace IT.Mechanic.Installer
             await Shell.Current.GoToAsync("//ProductSelect");
         }
     }
-
 }

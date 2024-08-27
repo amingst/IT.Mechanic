@@ -5,11 +5,49 @@
              xmlns:profile="clr-namespace:IT.Mechanic.Installer.Components.Profile"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:Icons="clr-namespace:IT.Mechanic.Installer.Components.FontIcons"
+             xmlns:components="clr-namespace:IT.Mechanic.Installer.Components.FontIcons"
              Title="Recent Profiles:">
     <VerticalStackLayout Spacing="30" Margin="50">
+        <ListView
+            x:Name="ProfilesListView"
+            ItemsSource="{Binding Profiles}"
+            SeparatorColor="Black"
+            SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame BackgroundColor="LightSlateGray" Padding="10" Margin="5" HasShadow="False">
+                            <Grid ColumnDefinitions="*,Auto,Auto">
+                                <Label Text="{Binding DNS.DomainName}" VerticalOptions="Center" Grid.Column="0" />
 
-        <profile:ProfileListItem
-            ItemTitle="Example"/>
+                                <components:IconButton
+                                    IconFont="FaSolid"
+                                    IconPath="{x:Static components:FontAwesome.Play}"
+                                    IconSize="20"
+                                    IconColor="MediumSpringGreen"
+                                    Tooltip="Start"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="End"
+                                    Grid.Column="1"
+                                    Margin="0,0,10,0"
+                                    />
+                                    <components:IconButton
+                                    IconColor="White"
+                                    Tooltip="ProfileDetails"
+                                    IconSize="20"
+                                    IconPath="{x:Static components:FontAwesome.Cogs}"
+                                    IconFont="FaSolid"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="End"
+                                    Grid.Column="2"
+                                    />
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
         <Button
             Text="Create Profile"
             HorizontalOptions="Center"
