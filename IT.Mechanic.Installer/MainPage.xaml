@@ -6,13 +6,24 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:Icons="clr-namespace:IT.Mechanic.Installer.Components.FontIcons"
              xmlns:components="clr-namespace:IT.Mechanic.Installer.Components.FontIcons"
-             Title="Recent Profiles:">
+             Title="Mechanic">
     <VerticalStackLayout Spacing="30" Margin="50">
+
         <ListView
             x:Name="ProfilesListView"
             ItemsSource="{Binding Profiles}"
             SeparatorColor="Black"
             SeparatorVisibility="Default">
+            <ListView.Header>
+                <Label
+                    Text="Recent Profiles:"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Padding="10,5"
+                    TextColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    />
+            </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -31,7 +42,7 @@
                                     Grid.Column="1"
                                     Margin="0,0,10,0"
                                     />
-                                    <components:IconButton
+                                <components:IconButton
                                     IconColor="White"
                                     Tooltip="ProfileDetails"
                                     IconSize="20"
