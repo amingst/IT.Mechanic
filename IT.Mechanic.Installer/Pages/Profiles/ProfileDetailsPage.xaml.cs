@@ -43,6 +43,7 @@ namespace IT.Mechanic.Installer.Pages.Profiles
 
             if (profile != null)
             {
+                this.Title = profile.DNS.DomainName;
                 // Update UI with profile details
                 SiteIdLabel.Text = $"Site ID: {profile.SiteId}";
                 DomainNameLabel.Text = $"Domain Name: {profile.DNS.DomainName}";
