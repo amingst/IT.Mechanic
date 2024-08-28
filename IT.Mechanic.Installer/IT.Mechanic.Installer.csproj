@@ -128,4 +128,24 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Remove="C:\Users\Andrew\.nuget\packages\microsoft.windowsappsdk\1.5.240627000\buildTransitive\..\include\DeploymentManagerAutoInitializer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="C:\Users\Andrew\.nuget\packages\microsoft.windowsappsdk\1.5.240627000\buildTransitive\..\include\WindowsAppSDK-VersionInfo.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="C:\Users\Andrew\.nuget\packages\microsoft.windowsappsdk\1.5.240627000\buildTransitive\..\include\DeploymentManagerAutoInitializer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="C:\Users\Andrew\.nuget\packages\microsoft.windowsappsdk\1.5.240627000\buildTransitive\..\include\WindowsAppSDK-VersionInfo.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="C:\Users\Andrew\.nuget\packages\microsoft.windowsappsdk\1.5.240627000\buildTransitive\..\include\DeploymentManagerAutoInitializer.cs" />
+	</ItemGroup>
+
 </Project>
