@@ -5,6 +5,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:Icons="clr-namespace:IT.Mechanic.Installer.Components.FontIcons"
              xmlns:components="clr-namespace:IT.Mechanic.Installer.Components.FontIcons"
+             xmlns:btns="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              Title="Mechanic">
 
     <ContentPage.MenuBarItems>
@@ -40,16 +41,6 @@
                     TextColor="White"
                     HorizontalOptions="Start"
                     Grid.Column="0"
-                />
-
-                <Button
-                    Text="Create Profile"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    TextColor="MintCream"
-                    BackgroundColor="LightSlateGray"
-                    Clicked="OnStartClicked"
-                    Grid.Column="1"
                 />
             </Grid>
 
@@ -103,13 +94,11 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button
+            <btns:LinkButton
                 Text="Create Profile"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
-                TextColor="MintCream"
-                BackgroundColor="LightSlateGray"
-                Clicked="OnStartClicked"
+                Link="//ProductSelect"
             />
         </VerticalStackLayout>
     </ScrollView>

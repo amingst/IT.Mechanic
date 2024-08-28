@@ -7,9 +7,8 @@
         <Button
             Text="{Binding Text, Source={x:Reference this}}"
             HorizontalOptions="Center"
+            Style="{StaticResource ActionButtonStyle}"
             VerticalOptions="End"
-            TextColor="MintCream"
-            BackgroundColor="LightSlateGray"
             Clicked="OnLinkClicked"/>
     </StackLayout>
 </ContentView>
