@@ -57,7 +57,8 @@
                 x:Name="ProfilesListView"
                 ItemsSource="{Binding Profiles}"
                 SeparatorColor="Black"
-                SeparatorVisibility="Default">
+                SeparatorVisibility="Default"
+                SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
