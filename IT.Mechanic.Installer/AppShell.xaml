@@ -77,6 +77,6 @@
         Route="ProfileDetails" />
     <ShellContent
         Title="Settings"
-        ContentTemplate="{DataTemplate local:MechanicSettings}"
+        ContentTemplate="{DataTemplate local:MechanicSettingsPage}"
         Route="Settings" />
 </Shell>

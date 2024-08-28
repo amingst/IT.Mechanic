@@ -6,7 +6,7 @@ namespace IT.Mechanic.Installer.Models
     /// <summary>
     /// Represents the application settings for the IT Mechanic Installer.
     /// </summary>
-    public class AppSettings
+    public class MechanicSettings
     {
         /// <summary>
         /// The default file name for storing profiles. This Cannot Be Changed.

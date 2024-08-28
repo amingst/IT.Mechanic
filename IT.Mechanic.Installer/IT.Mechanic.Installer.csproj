@@ -79,7 +79,7 @@
 	  <MauiXaml Update="DNSPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="MechanicSettings.xaml">
+	  <MauiXaml Update="MechanicSettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Credentials\GoDaddyCredentialsPage.xaml">
@@ -150,6 +150,12 @@
 
 	<ItemGroup>
 	  <Compile Remove="C:\Users\Andrew\.nuget\packages\microsoft.windowsappsdk\1.5.240627000\buildTransitive\..\include\DeploymentManagerAutoInitializer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="MechanicSettingsPage.xaml.cs">
+	    <DependentUpon>MechanicSettingsPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

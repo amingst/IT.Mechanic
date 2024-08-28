@@ -7,11 +7,11 @@ namespace IT.Mechanic.Installer
 {
     public partial class App : Application
     {
-        public App(ConfigService _configService, ProfileService _profileService, SettingsService _settingsService, IOptions<AppSettings> appSettings)
+        public App(ConfigService _configService, ProfileService _profileService, SettingsService _settingsService)
         {
             InitializeComponent();
 
-            MainPage = new AppShell(_configService,  _settingsService, _profileService, appSettings);
+            MainPage = new AppShell(_configService,  _settingsService, _profileService);
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

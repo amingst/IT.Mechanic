@@ -11,7 +11,7 @@ namespace IT.Mechanic.Installer.Services
 {
     public class SettingsService
     {
-        public AppSettings _appSettings { get; private set; }
+        public MechanicSettings _appSettings { get; private set; }
         private readonly JsonSerializerOptions _jsonSerializerOptions;
 
         public SettingsService(JsonSerializerOptions jsonSerializerOptions)
@@ -27,7 +27,7 @@ namespace IT.Mechanic.Installer.Services
             if (File.Exists(filePath))
             {
                 using var fileStream = File.OpenRead(filePath);
-                var settings = JsonSerializer.Deserialize<AppSettings>(fileStream, _jsonSerializerOptions);
+                var settings = JsonSerializer.Deserialize<MechanicSettings>(fileStream, _jsonSerializerOptions);
 
                 if (settings != null)
                 {

@@ -12,13 +12,13 @@ namespace IT.Mechanic.Installer.Services
 {
     public class ProfileService
     {
-        private IOptions<AppSettings> _appSettings;
+        private readonly SettingsService settingsService;
         private readonly JsonSerializerOptions _jsonSerializerOptions;
         public IEnumerable<MainModel> Profiles { get; private set; }
 
-        public ProfileService(IOptions<AppSettings> appSettings, JsonSerializerOptions jsonOpts)
+        public ProfileService(SettingsService _settingsService, JsonSerializerOptions jsonOpts)
         {
-            _appSettings = appSettings;
+            settingsService = _settingsService;
             _jsonSerializerOptions = jsonOpts;
             Profiles = new List<MainModel>();
             LoadProfilesFromDisk();
@@ -54,7 +54,7 @@ namespace IT.Mechanic.Installer.Services
             {
                 var profilesToSave = Profiles.ToList();
 
-                var filePath = Path.Combine(_appSettings.Value.ProfilesDownloadFilePath, _appSettings.Value.ProfilesFileName);
+                var filePath = Path.Combine(settingsService._appSettings.ProfilesDownloadFilePath, settingsService._appSettings.ProfilesFileName);
 
                 await using var fileStream = File.Create(filePath);
                 await JsonSerializer.SerializeAsync(fileStream, profilesToSave, _jsonSerializerOptions);
@@ -63,7 +63,7 @@ namespace IT.Mechanic.Installer.Services
 
         public void LoadProfilesFromDisk()
         {
-            var filePath = Path.Combine(_appSettings.Value.ProfilesDownloadFilePath, _appSettings.Value.ProfilesFileName);
+            var filePath = Path.Combine(settingsService._appSettings.ProfilesDownloadFilePath, settingsService._appSettings.ProfilesFileName);
 
             if (File.Exists(filePath))
             {

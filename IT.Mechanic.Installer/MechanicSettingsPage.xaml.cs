@@ -3,14 +3,14 @@ using Microsoft.Extensions.Options;
 
 namespace IT.Mechanic.Installer;
 
-public partial class MechanicSettings : ContentPage
+public partial class MechanicSettingsPage : ContentPage
 {
-    private readonly AppSettings _appSettings;
+    private readonly MechanicSettings _appSettings;
     public bool IsEditing { get; set; } = false;
 
-    public MechanicSettings()
+    public MechanicSettingsPage()
     {
-        _appSettings = App.Current.Handler.MauiContext.Services.GetRequiredService<AppSettings>();
+        _appSettings = App.Current.Handler.MauiContext.Services.GetRequiredService<MechanicSettings>();
         InitializeComponent();
         DisplaySettings();
     }
