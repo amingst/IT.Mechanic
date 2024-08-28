@@ -4,6 +4,7 @@
              x:Class="IT.Mechanic.Installer.DNSPage"
              xmlns:local="clr-namespace:IT.Mechanic.Installer"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:buttons="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              Title="DNS Settings">
     <ContentPage.Resources>
         <!-- Define styles for consistent look and feel -->
@@ -92,6 +93,10 @@
                 Text="Back"
                 SemanticProperties.Hint="Advances To The Previous Section"
                 Clicked="OnBackClicked" />
+            <!--<buttons:LinkButton
+                Style="{StaticResource ActionButtonStyle}"
+                Text="Back"
+                Link="///ProductSelect" />-->
 
             <Button
                 x:Name="NextBtn"

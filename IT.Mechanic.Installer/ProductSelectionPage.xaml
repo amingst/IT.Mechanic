@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IT.Mechanic.Installer.ProductSelectionPage"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:buttons="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              Title="Product Selection">
     <ContentPage.Resources>
         <!-- Define styles for consistent look and feel -->
@@ -83,7 +84,7 @@
         <HorizontalStackLayout
             Grid.Row="3"
             HorizontalOptions="Center">
-            <Button
+            <!--<Button
                 x:Name="BackBtn"
                 Style="{StaticResource ActionButtonStyle}"
                 Text="Back"
@@ -95,7 +96,9 @@
                 Style="{StaticResource ActionButtonStyle}"
                 Text="Next"
                 SemanticProperties.Hint="Advances To The Next Section"
-                Clicked="OnNextClicked" />
+                Clicked="OnNextClicked" />-->
+            <buttons:LinkButton Style="{StaticResource ActionButtonStyle}" Text="Back" Link="///MainPage" />
+            <buttons:LinkButton Style="{StaticResource ActionButtonStyle}" Text="Next" Link="//DNS" />
         </HorizontalStackLayout>
     </Grid>
 </ContentPage>

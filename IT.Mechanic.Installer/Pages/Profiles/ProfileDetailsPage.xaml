@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IT.Mechanic.Installer.Pages.Profiles.ProfileDetailsPage"
+             xmlns:btns="clr-namespace:IT.Mechanic.Installer.Components.Buttons"
              Title="Profile Details">
     <VerticalStackLayout Spacing="20" Padding="15">
         <Label 
@@ -28,12 +29,6 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-        <Button
-            Text="Back"
-            HorizontalOptions="Center"
-            VerticalOptions="End"
-            TextColor="MintCream"
-            BackgroundColor="LightSlateGray"
-            Clicked="OnBackClicked"/>
+        <btns:LinkButton Text="Back" Link="//MainPage" />
     </VerticalStackLayout>
 </ContentPage>

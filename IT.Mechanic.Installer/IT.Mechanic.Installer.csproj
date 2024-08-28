@@ -69,6 +69,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Components\Buttons\LinkButton.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="DNSPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
