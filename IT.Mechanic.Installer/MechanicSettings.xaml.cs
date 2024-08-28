@@ -22,6 +22,7 @@ public partial class MechanicSettings : ContentPage
         {
             ProfilesDownloadPathEntry.Text = _appSettings.ProfilesDownloadFilePath;
             MechanicCliPathEntry.Text = _appSettings.MechanicCliPath;
+            ThemePicker.ItemsSource = Enum.GetNames(typeof(AppTheme));
             ThemePicker.SelectedIndex = 0;
         }
     }

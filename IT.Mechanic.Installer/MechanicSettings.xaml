@@ -16,9 +16,7 @@
                 FontSize="18"
                 VerticalOptions="Center" 
                 HorizontalOptions="FillAndExpand"
-                IsReadOnly="True"
-                TextColor="SlateGrey"
-                BackgroundColor="LightGray" />
+                IsReadOnly="True"/>
         </VerticalStackLayout>
         <VerticalStackLayout>
             <Label 
@@ -32,9 +30,7 @@
                 FontSize="18"
                 VerticalOptions="Center" 
                 HorizontalOptions="FillAndExpand"
-                IsReadOnly="True"
-                TextColor="SlateGray"
-                BackgroundColor="LightGray" />
+                IsReadOnly="True"/>
         </VerticalStackLayout>
         <VerticalStackLayout>
             <Label 
@@ -47,9 +43,7 @@
                 FontSize="18"
                 VerticalOptions="Center"
                 HorizontalOptions="FillAndExpand"
-                IsEnabled="False"
-                BackgroundColor="LightGray"
-                TextColor="SlateGray">
+                IsEnabled="False">
                 <Picker.Items>
                     <x:String>System Default</x:String>
                     <x:String>Light</x:String>

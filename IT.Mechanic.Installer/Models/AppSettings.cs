@@ -67,7 +67,18 @@ namespace IT.Mechanic.Installer.Models
                 throw new ArgumentException("Theme cannot be null or whitespace.", nameof(theme));
             }
 
-            AppTheme = GetThemeFromName(theme);
+            switch (theme)
+            {
+                case "Light":
+                    AppTheme = AppTheme.Light;
+                    break;
+                case "Dark":
+                    AppTheme = AppTheme.Dark;
+                    break;
+                default:
+                    AppTheme = AppTheme.Unspecified;
+                    break;
+            }
         }
     }
 }
