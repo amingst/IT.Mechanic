@@ -117,6 +117,9 @@
 	  <MauiXaml Update="ProductSelectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\Buttons.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="ReviewBuildPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
