@@ -46,6 +46,7 @@
             <RowDefinition Height="Auto" />
             <!-- Domain Entry Row -->
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <!-- Action Buttons Row -->
         </Grid.RowDefinitions>
 
@@ -93,11 +94,17 @@
                 Text="Back"
                 SemanticProperties.Hint="Advances To The Previous Section"
                 Clicked="OnBackClicked" />
-            <!--<buttons:LinkButton
+            <Button
+                x:Name="NeedHelpBtn"
                 Style="{StaticResource ActionButtonStyle}"
-                Text="Back"
-                Link="///ProductSelect" />-->
+                Text="Stuck?"
+                SemanticProperties.Hint="Advances To The Previous Section"/>
 
+
+        </HorizontalStackLayout>
+        <HorizontalStackLayout
+            Grid.Row="4"
+            HorizontalOptions="Center">
             <Button
                 x:Name="NextBtn"
                 Style="{StaticResource ActionButtonStyle}"
