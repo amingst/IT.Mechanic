@@ -1,5 +1,4 @@
 ﻿using System;
-using static IT.Mechanic.Installer.Models.AppTheme;
 
 namespace IT.Mechanic.Installer.Models
 {
@@ -29,7 +28,7 @@ namespace IT.Mechanic.Installer.Models
         /// The theme of the app.
         /// This is set to the user's system theme by default.
         /// </summary>
-        public AppThemeEnum AppTheme{ get; private set; } = AppThemeEnum.Default;
+        public AppTheme AppTheme{ get; private set; } = AppTheme.Unspecified;
 
         /// <summary>
         /// Sets the path for the Mechanic CLI executable.
