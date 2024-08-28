@@ -45,6 +45,7 @@
             <RowDefinition Height="Auto" />
             <!-- Second RadioButton Row -->
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <!-- Button Row -->
         </Grid.RowDefinitions>
 
@@ -79,10 +80,20 @@
                 Style="{StaticResource DescriptionLabelStyle}"
                 Text="Choose this if you want a content management system for easy content updates." />
         </HorizontalStackLayout>
+        <HorizontalStackLayout
+         Grid.Row="3"
+         Padding="10"
+         Spacing="15"
+         HorizontalOptions="Fill">
+                <RadioButton Style="{StaticResource RadioButtonStyle}" CheckedChanged="OnCheckedChanged" Content="Socials" />
+            <Label
+             Style="{StaticResource DescriptionLabelStyle}"
+             Text="Choose this if you want a page for all your social links." />
+        </HorizontalStackLayout>
 
         <!-- Action Buttons -->
         <HorizontalStackLayout
-            Grid.Row="3"
+            Grid.Row="4"
             HorizontalOptions="Center">
             <!--<Button
                 x:Name="BackBtn"

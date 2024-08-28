@@ -12,6 +12,7 @@ namespace IT.Mechanic.Models.Configuration
         {
             CMS = 0,
             Business = 1,
+            Socials = 2,
         }
 
         public static IEnumerable<string> GetWebsiteTypesNames()
@@ -27,6 +28,8 @@ namespace IT.Mechanic.Models.Configuration
                     return WebsiteTypes.CMS;
                 case "Business":
                     return WebsiteTypes.Business;
+                case "Socials":
+                    return WebsiteTypes.Socials;
                 default:
                     return WebsiteTypes.CMS;
             }
