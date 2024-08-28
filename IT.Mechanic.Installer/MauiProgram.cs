@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using IT.Mechanic.Installer.Models;
 using IT.Mechanic.Installer.Services;
 using Microsoft.Extensions.Logging;
 
@@ -30,6 +31,7 @@ namespace IT.Mechanic.Installer
 
         public static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
         {
+            builder.Services.AddSingleton<AppSettings>();
             builder.Services.AddSingleton<ConfigService>();
             builder.Services.AddSingleton<ProfileService>();
             return builder;

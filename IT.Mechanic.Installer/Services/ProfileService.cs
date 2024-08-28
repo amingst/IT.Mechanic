@@ -1,4 +1,6 @@
-﻿using IT.Mechanic.Models.Configuration;
+﻿using IT.Mechanic.Installer.Models;
+using IT.Mechanic.Models.Configuration;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,10 +12,12 @@ namespace IT.Mechanic.Installer.Services
 {
     public class ProfileService
     {
+        private IOptions<AppSettings> _appSettings;
         public IEnumerable<MainModel> Profiles { get; private set; }
 
-        public ProfileService()
+        public ProfileService(IOptions<AppSettings> appSettings)
         {
+            _appSettings = appSettings;
             Profiles = new List<MainModel>();
             LoadProfilesFromDisk();
         }
