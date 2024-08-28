@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IT.Mechanic.Models.Configuration.Credentials;
+using System;
 
 namespace IT.Mechanic.Installer.Models
 {
@@ -25,10 +26,35 @@ namespace IT.Mechanic.Installer.Models
         public string MechanicCliPath { get; private set; } = String.Empty;
 
         /// <summary>
-        /// The theme of the app.
+        /// The theme of the app. <see cref="AppTheme"/>
         /// This is set to the user's system theme by default.
         /// </summary>
         public AppTheme AppTheme{ get; private set; } = AppTheme.Unspecified;
+
+        /// <summary>
+        /// Default GoDaddy Account Settings. <see cref="GodaddyModel"/>
+        /// </summary>
+        public GodaddyModel GodaddyCredentials { get; private set; } = new();
+
+        /// <summary>
+        /// Default Rumble Account Settings. <see cref="RumbleModel"/>
+        /// </summary>
+        public RumbleModel RumbleCredentials { get; private set; } = new();
+
+        /// <summary>
+        /// Default Aws Account Settings. <see cref="AWSModel"/>
+        /// </summary>
+        public AWSModel AWSCredentials { get; private set; } = new();
+
+        /// <summary>
+        /// Default Azure Account Settings. <see cref="AzureModel"/>
+        /// </summary>
+        public AzureModel AzureCredentials { get; private set; } = new();
+
+        /// <summary>
+        /// Default DigitalOcean Account Settings. <see cref="DigitalOceanModel"/>
+        /// </summary>
+        public DigitalOceanModel DigitalOceanModel { get; private set; } = new();
 
         /// <summary>
         /// Sets the path for the Mechanic CLI executable.
