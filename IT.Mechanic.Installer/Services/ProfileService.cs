@@ -52,8 +52,7 @@ namespace IT.Mechanic.Installer.Services
             {
                 var profilesToSave = Profiles.ToList();
 
-                var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                var filePath = Path.Combine(desktopPath, "it_profiles.json");
+                var filePath = Path.Combine(_appSettings.Value.ProfilesDownloadFilePath, _appSettings.Value.ProfilesFileName);
 
                 await using var fileStream = File.Create(filePath);
                 await JsonSerializer.SerializeAsync(fileStream, profilesToSave);
@@ -62,8 +61,7 @@ namespace IT.Mechanic.Installer.Services
 
         public void LoadProfilesFromDisk()
         {
-            var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            var filePath = Path.Combine(desktopPath, "it_profiles.json");
+            var filePath = Path.Combine(_appSettings.Value.ProfilesDownloadFilePath, _appSettings.Value.ProfilesFileName);
 
             if (File.Exists(filePath))
             {
