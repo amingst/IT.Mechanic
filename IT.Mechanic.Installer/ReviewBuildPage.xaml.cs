@@ -32,7 +32,7 @@ public partial class ReviewBuildPage : ContentPage
 			{
 				_profileService.AddProfile(_configService.Model);
 				await _profileService.SaveProfileToDisk();
-                Application.Current.Quit();
+				await AppShell.Current.GoToAsync("//MainPage");
             }
         }
 	}

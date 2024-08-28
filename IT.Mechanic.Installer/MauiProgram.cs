@@ -2,6 +2,8 @@
 using IT.Mechanic.Installer.Models;
 using IT.Mechanic.Installer.Services;
 using Microsoft.Extensions.Logging;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace IT.Mechanic.Installer
 {
@@ -31,6 +33,15 @@ namespace IT.Mechanic.Installer
 
         public static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
         {
+            builder.Services.AddSingleton<JsonSerializerOptions>(new JsonSerializerOptions()
+            {
+                WriteIndented = true,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                Converters =
+                {
+                    new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+                },
+            });
             builder.Services.AddSingleton<AppSettings>();
             builder.Services.AddSingleton<ConfigService>();
             builder.Services.AddSingleton<ProfileService>();
