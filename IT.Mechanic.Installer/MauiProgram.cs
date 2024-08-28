@@ -43,6 +43,7 @@ namespace IT.Mechanic.Installer
                 },
             });
             builder.Services.AddSingleton<AppSettings>();
+            builder.Services.AddSingleton<SettingsService>();
             builder.Services.AddSingleton<ConfigService>();
             builder.Services.AddSingleton<ProfileService>();
             return builder;
