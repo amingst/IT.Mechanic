@@ -6,6 +6,23 @@
              xmlns:Icons="clr-namespace:IT.Mechanic.Installer.Components.FontIcons"
              xmlns:components="clr-namespace:IT.Mechanic.Installer.Components.FontIcons"
              Title="Mechanic">
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="New Profile" Clicked="OnStartClicked"/>
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="Settings" Clicked="OnSettingsClicked"/>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem Text="Update Mechanic" />
+            <MenuFlyoutItem Text="Quit" Clicked="OnQuitClicked"/>
+        </MenuBarItem>
+        <MenuBarItem Text="Help">
+            <MenuFlyoutItem Text="Knowledge Base" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="About" />
+            <MenuFlyoutItem Text="Inverted Tech Website" />
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
     <ScrollView>
         <VerticalStackLayout Spacing="30" Margin="50">
             <!-- Header and Create Profile Button Inline -->

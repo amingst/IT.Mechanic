@@ -72,6 +72,9 @@
 	  <MauiXaml Update="DNSPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="MechanicSettings.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Credentials\GoDaddyCredentialsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

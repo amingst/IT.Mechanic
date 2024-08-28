@@ -55,5 +55,15 @@ namespace IT.Mechanic.Installer
             // Navigate to the ProfileDetails page and pass the SiteId
             await Shell.Current.GoToAsync($"//ProfileDetails?siteId={siteId}");
         }
+
+        private void OnQuitClicked(object sender, EventArgs e)
+        {
+            Application.Current.Quit();
+        }
+
+        private async void OnSettingsClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//Settings");
+        }
     }
 }
