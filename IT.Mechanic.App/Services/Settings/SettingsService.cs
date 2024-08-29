@@ -1,10 +1,10 @@
-﻿using IT.Mechanic.Models.Configuration;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using IT.Mechanic.Models.Configuration;
 
 namespace IT.Mechanic.App.Services.Settings
 {
@@ -14,7 +14,8 @@ namespace IT.Mechanic.App.Services.Settings
         private readonly JsonSerializerOptions _jsonSerializerOptions;
         public MechanicSettings Settings { get; set; }
 
-        public SettingsService(JsonSerializerOptions jsonSerializerOptions) {
+        public SettingsService(JsonSerializerOptions jsonSerializerOptions)
+        {
             _jsonSerializerOptions = jsonSerializerOptions;
             Settings = new();
             InitializeSync();
@@ -27,6 +28,13 @@ namespace IT.Mechanic.App.Services.Settings
             Settings = GetOrCreateSettingsFile();
         }
 
+        public void SaveSettingsSync()
+        {
+            string filePath = Path.Combine(Settings.MechanicDirectory, MechanicSettingsFileName);
+            string settingsJson = JsonSerializer.Serialize(Settings, _jsonSerializerOptions);
+            File.WriteAllText(filePath, settingsJson);
+        }
+
         private void InitializeBaseDirectory()
         {
             if (!Directory.Exists(Settings.MechanicDirectory))
@@ -37,7 +45,7 @@ namespace IT.Mechanic.App.Services.Settings
 
         private void InitializeProfilesSubDirectory()
         {
-            if  (!Directory.Exists(Settings.ProfilesDirectory))
+            if (!Directory.Exists(Settings.ProfilesDirectory))
             {
                 Directory.CreateDirectory(Settings.ProfilesDirectory);
             }
@@ -50,7 +58,8 @@ namespace IT.Mechanic.App.Services.Settings
             if (File.Exists(filePath))
             {
                 string json = File.ReadAllText(filePath);
-                return JsonSerializer.Deserialize<MechanicSettings>(json, _jsonSerializerOptions) ?? new MechanicSettings();
+                return JsonSerializer.Deserialize<MechanicSettings>(json, _jsonSerializerOptions)
+                    ?? new MechanicSettings();
             }
             else
             {
