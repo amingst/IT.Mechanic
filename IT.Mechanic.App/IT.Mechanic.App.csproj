@@ -65,4 +65,8 @@
         <PackageReference Include="MudBlazor" Version="7.6.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Models\Configuration\IT.Mechanic.Models.Configuration.csproj" />
+    </ItemGroup>
+
 </Project>
