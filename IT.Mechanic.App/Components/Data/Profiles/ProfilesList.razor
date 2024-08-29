@@ -4,14 +4,14 @@
 @inject IProfileService _profileService
 
 <MudPaper Width="300">
-    <MudText>Recent Profiles:</MudText>
+    <MudText Typo="Typo.h4">Recent Profiles:</MudText>
     @if (profiles.Any())
     {
         <MudList T="MainModel">
             @foreach (var profile in profiles)
             {
                 <MudListItem @onclick="() => NavigateToProfile(profile.SiteId.ToString())">
-                    @profile.DNS.DomainName
+                    <MudText Typo="Typo.h6">@profile.DNS.DomainName</MudText>
                 </MudListItem>
                 <MudDivider />
             }
@@ -19,7 +19,7 @@
     }
     else
     {
-        <MudText>Click Add Profile to Get Started!</MudText>
+        <MudText Typo="Typo.h5">Click Add Profile to Get Started!</MudText>
     }
     <MudButton Variant="Variant.Filled">Add Profile</MudButton>
 </MudPaper>

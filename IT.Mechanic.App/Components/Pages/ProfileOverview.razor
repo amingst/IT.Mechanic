@@ -3,7 +3,9 @@
 @using IT.Mechanic.App.Services.Profiles
 @using IT.Mechanic.Models.Configuration
 
-<h3>@Profile.DNS.DomainName</h3>
+<MudPaper Width="300">
+    <MudText Typo="Typo.h4">@Profile.DNS.DomainName</MudText>
+</MudPaper>
 
 @code {
     [Parameter]
