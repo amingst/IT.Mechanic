@@ -1,9 +1,20 @@
 ﻿@using IT.Mechanic.App.Services.Profiles
+@using IT.Mechanic.Models.Configuration
 @page "/create/select-server-host"
 @inject IProfileFactory ProfileFactory
 
 <MudText Typo="Typo.h4">Select Your Server Hosting Provider</MudText>
 <MudPaper Width="300">
+    <MudText Typo="Typo.h6">This Is Where You Will Host The Services</MudText>
+    <MudSelect T="ServerModel.HostingProviderEnum" Value="ProfileFactory.Server.HostingProvider">
+        <MudSelectItem Value="ServerModel.HostingProviderEnum.Rumble" />
+        <MudSelectItem Value="ServerModel.HostingProviderEnum.Digitalocean" />
+        <MudSelectItem Value="ServerModel.HostingProviderEnum.Azure" />
+        <MudSelectItem Value="ServerModel.HostingProviderEnum.AWS" />
+        <MudSelectItem Value="ServerModel.HostingProviderEnum.GCP" />
+        <MudSelectItem Value="ServerModel.HostingProviderEnum.Invertedtech" />
+        <MudSelectItem Value="ServerModel.HostingProviderEnum.Expertmode" />
+    </MudSelect>
     <IT.Mechanic.App.Components.Buttons.NavButtonGroup BackRoute="/create/select-dns-host" ForwardRoute="/" />
 </MudPaper>
 
