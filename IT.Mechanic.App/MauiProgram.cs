@@ -41,6 +41,7 @@ namespace IT.Mechanic.App
             );
             builder.Services.AddSingleton<ISettingsService, SettingsService>();
             builder.Services.AddSingleton<IProfileService, ProfileService>();
+            builder.Services.AddSingleton<IProfileFactory, ProfileFactory>();
 
             return builder;
         }

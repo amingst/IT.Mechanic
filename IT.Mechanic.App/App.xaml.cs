@@ -9,19 +9,27 @@ namespace IT.Mechanic.App
         private readonly JsonSerializerOptions _jsonSerializerOptions;
         private readonly ISettingsService _settingsService;
         private readonly IProfileService _profileService;
+        private readonly IProfileFactory _profileFactory;
 
         public App(
             JsonSerializerOptions jsonSerializerOptions,
             ISettingsService settingsService,
-            IProfileService profileService
+            IProfileService profileService,
+            IProfileFactory profileFactory
         )
         {
             _jsonSerializerOptions = jsonSerializerOptions;
             _settingsService = settingsService;
             _profileService = profileService;
+            _profileFactory = profileFactory;
             InitializeComponent();
 
-            MainPage = new MainPage(_jsonSerializerOptions, _settingsService, _profileService);
+            MainPage = new MainPage(
+                _jsonSerializerOptions,
+                _settingsService,
+                _profileService,
+                _profileFactory
+            );
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

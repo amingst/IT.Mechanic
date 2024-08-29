@@ -9,16 +9,19 @@ namespace IT.Mechanic.App
         private readonly JsonSerializerOptions _jsonSerializerOptions;
         private readonly ISettingsService _settingsService;
         private readonly IProfileService _profileService;
+        private readonly IProfileFactory _profileFactory;
 
         public MainPage(
             JsonSerializerOptions jsonSerializerOptions,
             ISettingsService settingsService,
-            IProfileService profileService
+            IProfileService profileService,
+            IProfileFactory profileFactory
         )
         {
             _jsonSerializerOptions = jsonSerializerOptions;
             _settingsService = settingsService;
             _profileService = profileService;
+            _profileFactory = profileFactory;
             InitializeComponent();
         }
     }
