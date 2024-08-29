@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MudBlazor.Services;
 
 namespace IT.Mechanic.App
 {
@@ -15,6 +16,7 @@ namespace IT.Mechanic.App
                 });
 
             builder.Services.AddMauiBlazorWebView();
+            builder.Services.AddMudServices();
 
 #if DEBUG
     		builder.Services.AddBlazorWebViewDeveloperTools();
