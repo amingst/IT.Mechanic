@@ -1,0 +1,33 @@
+﻿@using IT.Mechanic.App.Services.Profiles
+@using IT.Mechanic.Models.Configuration
+@inject IProfileService _profileService
+
+<MudPaper Width="300">
+    <MudText>Recent Profiles:</MudText>
+    @if (profiles.Count() > 0)
+    {
+        <MudList T="MainModel">
+            @foreach (var profile in profiles)
+            {
+                <MudListItem>
+                    @profile.DNS.DomainName
+                </MudListItem>
+                <MudDivider />
+            }
+        </MudList>
+    } else
+    {
+        <MudText>Click Add Profile to Get Started!</MudText>
+    }
+    <MudButton Variant="Variant.Filled">Add Profile</MudButton>
+</MudPaper>
+
+@code {
+    private IEnumerable<MainModel> profiles { get; set; } = new List<MainModel>();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        profiles = _profileService.Profiles;
+    }
+}

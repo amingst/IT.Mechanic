@@ -47,6 +47,7 @@ namespace IT.Mechanic.App.Services.Profiles
                             if (profile != null)
                             {
                                 profiles.Add(profile);
+                                Console.WriteLine(profile.DNS.DomainName);
                             }
                         }
                         catch (Exception ex)
