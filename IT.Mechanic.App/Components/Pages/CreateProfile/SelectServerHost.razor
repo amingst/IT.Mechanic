@@ -2,20 +2,8 @@
 @page "/create/select-server-host"
 <MudText Typo="Typo.h4">Select Your Server Hosting Provider</MudText>
 <MudPaper Width="300">
-    <MudButtonGroup Variant="Variant.Filled" Color="Color.Primary">
-        <MudButton @onclick="() => OnBackClicked()">Back</MudButton>
-        @* <MudButton @onclick="() => OnNextClicked()">Next</MudButton> *@
-    </MudButtonGroup>
+    <IT.Mechanic.App.Components.Buttons.NavButtonGroup BackRoute="/create/select-dns-host" ForwardRoute="/" />
 </MudPaper>
 
 @code {
-    public void OnBackClicked()
-    {
-        Navigation.NavigateTo("/create/select-dns-host");
-    }
-
-    public void OnNextClicked()
-    {
-        Navigation.NavigateTo($"/create/select-dns-host");
-    }
 }

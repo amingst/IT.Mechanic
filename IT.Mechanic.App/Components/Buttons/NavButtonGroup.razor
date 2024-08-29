@@ -1,0 +1,24 @@
+﻿@inject NavigationManager Navigation;
+
+<MudButtonGroup Variant="Variant.Filled" Color="Color.Primary">
+    <MudButton @onclick="() => OnBackClicked()">Back</MudButton>
+    <MudButton @onclick="() => OnNextClicked()">Next</MudButton>
+</MudButtonGroup>
+
+@code {
+    [Parameter]
+    public string BackRoute { get; set; } = "/";
+
+    [Parameter]
+    public string ForwardRoute { get; set; } = "/";
+
+    public void OnBackClicked()
+    {
+        Navigation.NavigateTo(BackRoute);
+    }
+
+    public void OnNextClicked()
+    {
+        Navigation.NavigateTo(ForwardRoute);
+    }
+}

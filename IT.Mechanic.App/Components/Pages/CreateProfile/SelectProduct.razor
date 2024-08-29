@@ -10,22 +10,9 @@
         <MudRadio Value="ProductSelectionModel.WebsiteTypes.Business">Business</MudRadio>
         <MudRadio Value="ProductSelectionModel.WebsiteTypes.Socials">Socials</MudRadio>
     </MudRadioGroup>
-    <MudButtonGroup Variant="Variant.Filled" Color="Color.Primary">
-        <MudButton @onclick="() => OnBackClicked()">Back</MudButton>
-        <MudButton @onclick="() => OnNextClicked()">Next</MudButton>
-    </MudButtonGroup>
+    <IT.Mechanic.App.Components.Buttons.NavButtonGroup BackRoute="/" ForwardRoute="/create/select-dns-host" />
 </MudPaper>
 
 @code {
     public ProductSelectionModel.WebsiteTypes WebsiteType { get; set; } = ProductSelectionModel.WebsiteTypes.CMS;
-
-    public void OnBackClicked()
-    {
-        Navigation.NavigateTo("/");
-    }
-
-    public void OnNextClicked()
-    {
-        Navigation.NavigateTo("/create/select-dns-host");
-    }
 }

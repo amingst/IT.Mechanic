@@ -8,21 +8,9 @@
     <MudRadioGroup T="DNSModel.ProviderEnum" @bind-Value="Provider">
         <MudRadio Value="DNSModel.ProviderEnum.Godaddy">GoDaddy</MudRadio>
     </MudRadioGroup>
-    <MudButtonGroup Variant="Variant.Filled" Color="Color.Primary">
-        <MudButton @onclick="() => OnBackClicked()">Back</MudButton>
-        <MudButton @onclick="() => OnNextClicked()">Next</MudButton>
-    </MudButtonGroup>
+    <IT.Mechanic.App.Components.Buttons.NavButtonGroup BackRoute="/create/select-product" ForwardRoute=@($"/create/select-credentials/{Provider.ToString()}") />
 </MudPaper>
 
 @code {
     public DNSModel.ProviderEnum Provider { get; set; } = DNSModel.ProviderEnum.Godaddy;
-    public void OnBackClicked()
-    {
-        Navigation.NavigateTo("/create/select-product");
-    }
-
-    public void OnNextClicked()
-    {
-        Navigation.NavigateTo($"/create/select-credentials/{Provider.ToString()}");
-    }
 }
