@@ -1,8 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
-using MudBlazor.Services;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Text.Json;
+using IT.Mechanic.App.Services.Profiles;
 using IT.Mechanic.App.Services.Settings;
+using Microsoft.Extensions.Logging;
+using MudBlazor.Services;
 
 namespace IT.Mechanic.App
 {
@@ -16,10 +17,11 @@ namespace IT.Mechanic.App
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                }).RegisterServices();
+                })
+                .RegisterServices();
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
-    		builder.Logging.AddDebug();
+            builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
@@ -29,16 +31,16 @@ namespace IT.Mechanic.App
         {
             builder.Services.AddMauiBlazorWebView();
             builder.Services.AddMudServices();
-            builder.Services.AddSingleton<JsonSerializerOptions>(new JsonSerializerOptions()
-            {
-                WriteIndented = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                Converters =
+            builder.Services.AddSingleton<JsonSerializerOptions>(
+                new JsonSerializerOptions()
                 {
-                    new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
-                },
-            });
+                    WriteIndented = true,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) },
+                }
+            );
             builder.Services.AddSingleton<ISettingsService, SettingsService>();
+            builder.Services.AddSingleton<IProfileService, ProfileService>();
 
             return builder;
         }
