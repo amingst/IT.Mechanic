@@ -42,6 +42,7 @@ namespace IT.Mechanic.Installer
                     new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
                 },
             });
+            builder.Services.AddSingleton<MechanicSettings>();
             builder.Services.AddSingleton<SettingsService>();
             builder.Services.AddSingleton<ConfigService>();
             builder.Services.AddSingleton<ProfileService>();
