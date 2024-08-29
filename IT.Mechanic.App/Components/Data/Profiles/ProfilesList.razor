@@ -1,21 +1,23 @@
 ﻿@using IT.Mechanic.App.Services.Profiles
 @using IT.Mechanic.Models.Configuration
+@inject NavigationManager Navigation
 @inject IProfileService _profileService
 
 <MudPaper Width="300">
     <MudText>Recent Profiles:</MudText>
-    @if (profiles.Count() > 0)
+    @if (profiles.Any())
     {
         <MudList T="MainModel">
             @foreach (var profile in profiles)
             {
-                <MudListItem>
+                <MudListItem @onclick="() => NavigateToProfile(profile.SiteId.ToString())">
                     @profile.DNS.DomainName
                 </MudListItem>
                 <MudDivider />
             }
         </MudList>
-    } else
+    }
+    else
     {
         <MudText>Click Add Profile to Get Started!</MudText>
     }
@@ -29,5 +31,10 @@
     {
         base.OnInitialized();
         profiles = _profileService.Profiles;
+    }
+
+    private void NavigateToProfile(string profileId)
+    {
+        Navigation.NavigateTo($"/profiles/{profileId}");
     }
 }

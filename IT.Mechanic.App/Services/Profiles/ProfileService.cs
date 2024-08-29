@@ -22,6 +22,38 @@ namespace IT.Mechanic.App.Services.Profiles
             InitializeProfiles();
         }
 
+        public async Task<MainModel?> GetProfileByIdAsync(string id)
+        {
+            var profileDirectory = _settingsService.Settings.ProfilesDirectory;
+            var filePath = Path.Combine(profileDirectory, $"{id}.json");
+
+            if (File.Exists(filePath))
+            {
+                try
+                {
+                    var jsonString = await File.ReadAllTextAsync(filePath);
+                    return JsonSerializer.Deserialize<MainModel>(jsonString, _jsonOptions);
+                }
+                catch (JsonException jsonEx)
+                {
+                    // Handle JSON deserialization errors
+                    Console.WriteLine($"Error deserializing file {filePath}: {jsonEx.Message}");
+                }
+                catch (IOException ioEx)
+                {
+                    // Handle file I/O errors
+                    Console.WriteLine($"Error reading file {filePath}: {ioEx.Message}");
+                }
+            }
+            else
+            {
+                // Handle case where the file does not exist
+                Console.WriteLine($"File not found: {filePath}");
+            }
+
+            return null;
+        }
+
         private void InitializeProfiles()
         {
             var profileDirectory = _settingsService.Settings.ProfilesDirectory;

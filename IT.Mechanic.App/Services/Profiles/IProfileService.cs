@@ -10,5 +10,6 @@ namespace IT.Mechanic.App.Services.Profiles
     public interface IProfileService
     {
         public IEnumerable<MainModel> Profiles { get; set; }
+        public Task<MainModel?> GetProfileByIdAsync(string id);
     }
 }
