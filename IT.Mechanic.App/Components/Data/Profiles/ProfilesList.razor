@@ -7,7 +7,7 @@
     <MudText Typo="Typo.h4">Recent Profiles:</MudText>
     @if (profiles.Any())
     {
-        <MudList T="MainModel">
+        <MudList T="MainModel" >
             @foreach (var profile in profiles)
             {
                 <MudListItem @onclick="() => NavigateToProfile(profile.SiteId.ToString())">
@@ -21,7 +21,7 @@
     {
         <MudText Typo="Typo.h5">Click Add Profile to Get Started!</MudText>
     }
-    <MudButton Variant="Variant.Filled">Add Profile</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary">Add Profile</MudButton>
 </MudPaper>
 
 @code {

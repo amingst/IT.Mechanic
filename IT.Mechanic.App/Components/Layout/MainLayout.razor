@@ -1,26 +1,27 @@
 ﻿@inherits LayoutComponentBase
-<MudThemeProvider IsDarkMode="true"/>
+<MudThemeProvider IsDarkMode="true"Theme="MechanicTheme"/>
 <MudPopoverProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
-@* <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div> *@
 <MudLayout>
     <MudMainContent>
         @Body
     </MudMainContent>
 </MudLayout>
+
+@code {
+    MudTheme MechanicTheme = new MudTheme()
+        {
+            PaletteDark = new PaletteDark()
+            {
+                Primary = "#1C448E",                    // Marian Blue
+                PrimaryContrastText = "#FFFFFF",        // White
+                Surface = "#2F2F2F",                    // Jet
+                SecondaryContrastText = "#FFFFFF",      // White
+                Background = "#2F2F2F",                 // Jet
+                Error = "#A76D60",                      // Redwood
+                Warning = "#CEC288"                     // Ecru
+            }
+        };
+}
