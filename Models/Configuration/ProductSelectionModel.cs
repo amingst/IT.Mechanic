@@ -12,6 +12,7 @@ namespace IT.Mechanic.Models.Configuration
         {
             CMS = 0,
             Business = 1,
+            Socials = 2
         }
     }
 }

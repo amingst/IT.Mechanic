@@ -1,0 +1,31 @@
+﻿@page "/create/select-product"
+@inject NavigationManager Navigation
+@using IT.Mechanic.Models.Configuration
+
+<MudText Typo="Typo.h4">Select A Product</MudText>
+<MudPaper Width="300">
+    <MudText Typo="Typo.h6">What Type Of Website Do You Want?</MudText>
+    <MudRadioGroup @bind-Value="WebsiteType" T="ProductSelectionModel.WebsiteTypes">
+        <MudRadio Value="ProductSelectionModel.WebsiteTypes.CMS">CMS</MudRadio>
+        <MudRadio Value="ProductSelectionModel.WebsiteTypes.Business">Business</MudRadio>
+        <MudRadio Value="ProductSelectionModel.WebsiteTypes.Socials">Socials</MudRadio>
+    </MudRadioGroup>
+    <MudButtonGroup Variant="Variant.Filled" Color="Color.Primary">
+        <MudButton @onclick="() => OnBackClicked()">Back</MudButton>
+        <MudButton @onclick="() => OnNextClicked()">Next</MudButton>
+    </MudButtonGroup>
+</MudPaper>
+
+@code {
+    public ProductSelectionModel.WebsiteTypes WebsiteType { get; set; } = ProductSelectionModel.WebsiteTypes.CMS;
+
+    public void OnBackClicked()
+    {
+        Navigation.NavigateTo("/");
+    }
+
+    public void OnNextClicked()
+    {
+        Navigation.NavigateTo("/");
+    }
+}

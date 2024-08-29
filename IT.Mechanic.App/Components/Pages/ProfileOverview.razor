@@ -1,10 +1,12 @@
 ﻿@inject IProfileService _profileService
+@inject NavigationManager Navigation
 @page "/profiles/{profileId}"
 @using IT.Mechanic.App.Services.Profiles
 @using IT.Mechanic.Models.Configuration
 
 <MudPaper Width="300">
     <MudText Typo="Typo.h4">@Profile.DNS.DomainName</MudText>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="() => OnBackClicked()">Back</MudButton>
 </MudPaper>
 
 @code {
@@ -18,5 +20,10 @@
         {
             Profile = await _profileService.GetProfileByIdAsync(ProfileId);
         }
+    }
+    
+    public void OnBackClicked()
+    {
+        Navigation.NavigateTo("/");
     }
 }
