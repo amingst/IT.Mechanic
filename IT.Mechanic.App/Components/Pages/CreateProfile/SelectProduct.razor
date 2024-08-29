@@ -1,18 +1,15 @@
-﻿@page "/create/select-product"
-@inject NavigationManager Navigation
+﻿@using IT.Mechanic.App.Services.Profiles
 @using IT.Mechanic.Models.Configuration
+@page "/create/select-product"
+@inject IProfileFactory ProfileFactory
 
 <MudText Typo="Typo.h4">Select A Product</MudText>
 <MudPaper Width="300">
     <MudText Typo="Typo.h6">What Type Of Website Do You Want?</MudText>
-    <MudRadioGroup @bind-Value="WebsiteType" T="ProductSelectionModel.WebsiteTypes">
+    <MudRadioGroup @bind-Value="ProfileFactory.ProductSelection.WebsiteType" T="ProductSelectionModel.WebsiteTypes">
         <MudRadio Value="ProductSelectionModel.WebsiteTypes.CMS">CMS</MudRadio>
         <MudRadio Value="ProductSelectionModel.WebsiteTypes.Business">Business</MudRadio>
         <MudRadio Value="ProductSelectionModel.WebsiteTypes.Socials">Socials</MudRadio>
     </MudRadioGroup>
     <IT.Mechanic.App.Components.Buttons.NavButtonGroup BackRoute="/" ForwardRoute="/create/select-dns-host" />
 </MudPaper>
-
-@code {
-    public ProductSelectionModel.WebsiteTypes WebsiteType { get; set; } = ProductSelectionModel.WebsiteTypes.CMS;
-}

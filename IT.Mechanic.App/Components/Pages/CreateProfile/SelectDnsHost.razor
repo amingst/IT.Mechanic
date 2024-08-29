@@ -1,16 +1,13 @@
-﻿@inject NavigationManager Navigation
-@page "/create/select-dns-host"
+﻿@using IT.Mechanic.App.Services.Profiles
 @using IT.Mechanic.Models.Configuration
+@page "/create/select-dns-host"
+@inject IProfileFactory ProfileFactory
 
 <MudText Typo="Typo.h4">Select DNS Provider</MudText>
 <MudPaper Width="300">
     <MudText Typo="Typo.h6">This Is Where You Bought The Domain From.</MudText>
-    <MudRadioGroup T="DNSModel.ProviderEnum" @bind-Value="Provider">
+    <MudRadioGroup T="DNSModel.ProviderEnum" @bind-Value="ProfileFactory.DNS.Provider">
         <MudRadio Value="DNSModel.ProviderEnum.Godaddy">GoDaddy</MudRadio>
     </MudRadioGroup>
-    <IT.Mechanic.App.Components.Buttons.NavButtonGroup BackRoute="/create/select-product" ForwardRoute=@($"/create/select-credentials/{Provider.ToString()}") />
+    <IT.Mechanic.App.Components.Buttons.NavButtonGroup BackRoute="/create/select-product" ForwardRoute=@($"/create/select-credentials/{ProfileFactory.DNS.Provider.ToString()}") />
 </MudPaper>
-
-@code {
-    public DNSModel.ProviderEnum Provider { get; set; } = DNSModel.ProviderEnum.Godaddy;
-}
