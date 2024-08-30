@@ -1,3 +1,14 @@
 ﻿@page "/"
+@inject NavigationManager Navigation
 
+<MudAppBar>
+    <MudIconButton Class="ml-auto" Icon="@Icons.Material.Filled.Settings" @onclick="OnSettingsClicked"/>
+</MudAppBar>
 <IT.Mechanic.App.Components.Data.Profiles.ProfilesList />
+
+@code {
+    public void OnSettingsClicked()
+    {
+        Navigation.NavigateTo("/settings");    
+    }
+}
