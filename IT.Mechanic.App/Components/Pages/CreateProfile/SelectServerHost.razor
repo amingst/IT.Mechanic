@@ -37,6 +37,6 @@
 
     public void OnNextClicked()
     {
-        Navigation.NavigateTo($"/create/select-server-host-credentials?host={SelectedHost.ToString()}");
+        Navigation.NavigateTo($"/create/select-server-host-credentials/{SelectedHost.ToString()}");
     }
 }

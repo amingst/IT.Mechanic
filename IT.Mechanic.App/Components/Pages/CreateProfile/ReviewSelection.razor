@@ -1,0 +1,22 @@
+﻿@using IT.Mechanic.App.Services.Profiles
+@using IT.Mechanic.App.Services.Settings
+@using IT.Mechanic.Models.Configuration
+@using IT.Mechanic.Models.Configuration.App
+@using IT.Mechanic.Models.Configuration.Credentials
+@page "/create/review-selection"
+@inject IProfileFactory ProfileFactory;
+@inject ICredentialService CredentialService;
+@inject NavigationManager Navigation;
+<MudText Typo="Typo.h4">Review Selections</MudText>
+<MudPaper Width="300"></MudPaper>
+<MudButtonGroup Variant="Variant.Filled">
+    <MudButton Color="Color.Primary">Back</MudButton>
+    <MudButton Color="Color.Secondary" @onclick="OnNextClicked">Next</MudButton>
+</MudButtonGroup>
+
+@code {
+    public void OnNextClicked()
+    {
+        Navigation.NavigateTo("/");
+    }
+}

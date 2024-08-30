@@ -13,5 +13,6 @@ namespace IT.Mechanic.App.Services.Settings
         public CredentialsState CredentialsState { get; set; }
         public void InitializeSync();
         public Task AddGodaddyCredentialAsync(string name, GodaddyModel model);
+        public Task AddRumbleCredentialAsync(string name, RumbleModel model);
     }
 }

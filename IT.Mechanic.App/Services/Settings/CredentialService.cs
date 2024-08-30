@@ -62,6 +62,13 @@ namespace IT.Mechanic.App.Services.Settings
             await SaveStateAsync();
         }
 
+        public async Task AddRumbleCredentialAsync(string name, RumbleModel model)
+        {
+            var newCredential = new CredentialRecord<RumbleModel>(name, model);
+            CredentialsState.RumbleCredentials.Add(newCredential);
+            await SaveStateAsync();
+        }
+
         private async Task SaveStateAsync()
         {
             var stateString = JsonSerializer.Serialize<CredentialsState>(
