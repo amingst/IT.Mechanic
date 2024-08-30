@@ -9,5 +9,5 @@
     <MudRadioGroup T="DNSModel.ProviderEnum" @bind-Value="ProfileFactory.DNS.Provider">
         <MudRadio Value="DNSModel.ProviderEnum.Godaddy">GoDaddy</MudRadio>
     </MudRadioGroup>
-    <IT.Mechanic.App.Components.Buttons.NavButtonGroup BackRoute="/create/select-product" ForwardRoute=@($"/create/select-credentials?provider={ProfileFactory.DNS.Provider.ToString()}") />
+    <IT.Mechanic.App.Components.Buttons.NavButtonGroup BackRoute="/create/select-product" ForwardRoute=@($"/create/select-dns-credentials?provider={ProfileFactory.DNS.Provider.ToString()}") />
 </MudPaper>
