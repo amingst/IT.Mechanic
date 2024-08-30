@@ -2,11 +2,12 @@
 @using IT.Mechanic.Models.Configuration
 @page "/create/select-server-host"
 @inject IProfileFactory ProfileFactory
+@inject NavigationManager Navigation;
 
 <MudText Typo="Typo.h4">Select Your Server Hosting Provider</MudText>
 <MudPaper Width="300">
     <MudText Typo="Typo.h6">This Is Where You Will Host The Services</MudText>
-    <MudSelect T="ServerModel.HostingProviderEnum" Value="ProfileFactory.Server.HostingProvider">
+    <MudSelect T="ServerModel.HostingProviderEnum" @bind-Value="SelectedHost">
         <MudSelectItem Value="ServerModel.HostingProviderEnum.Rumble" />
         <MudSelectItem Value="ServerModel.HostingProviderEnum.Digitalocean" />
         <MudSelectItem Value="ServerModel.HostingProviderEnum.Azure" />
@@ -15,8 +16,27 @@
         <MudSelectItem Value="ServerModel.HostingProviderEnum.Invertedtech" />
         <MudSelectItem Value="ServerModel.HostingProviderEnum.Expertmode" />
     </MudSelect>
-    <IT.Mechanic.App.Components.Buttons.NavButtonGroup BackRoute="/create/select-dns-host" ForwardRoute="/" />
+    <MudButtonGroup Variant="Variant.Filled">
+        <MudButton Color="Color.Primary" @onclick="OnBackClicked">Back</MudButton>
+        <MudButton Color="Color.Secondary" @onclick="OnNextClicked">Next</MudButton>
+    </MudButtonGroup>
 </MudPaper>
 
 @code {
+    public ServerModel.HostingProviderEnum SelectedHost { get; set; }
+
+    protected override void OnInitialized() {
+        SelectedHost = ProfileFactory.Server.HostingProvider;
+        base.OnInitialized();
+    }
+
+    public void OnBackClicked()
+    {
+        Navigation.NavigateTo("/create/select-dns-credentials");    
+    }
+
+    public void OnNextClicked()
+    {
+        Navigation.NavigateTo($"/create/select-server-host-credentials?host={SelectedHost.ToString()}");
+    }
 }
