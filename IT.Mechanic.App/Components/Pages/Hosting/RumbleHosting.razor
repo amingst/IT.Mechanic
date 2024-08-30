@@ -4,7 +4,7 @@
 @inject NavigationManager Navigation
 @inject IProfileFactory ProfileFactory;
 
-<MudText Typo="Typo.h4">Set Server Settings</MudText>
+<MudText Typo="Typo.h4">Set Rumble Host Settings</MudText>
 <MudPaper Width="300">
     <MudTextField Label="Server Sku" T="string" @bind-Value="ServerSKU" Required="true" RequiredError="Required" />
     <MudTextField Label="Server Location" T="string" @bind-Value="ServerLocation" Required="true" RequiredError="Required" />
@@ -49,7 +49,7 @@
             Navigation.NavigateTo(To);
         } else
         {
-            Navigation.NavigateTo("/create/review-selection");
+            Navigation.NavigateTo("/create/server-settings");
         }
     }
 }
