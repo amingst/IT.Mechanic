@@ -6,10 +6,13 @@
 
 <MudText Typo="Typo.h4">Set Server Settings</MudText>
 <MudPaper Width="300">
-    <MudTextField Label="Server Sku" T="string" @bind-Value="ServerSku" Required="true" RequiredError="Required" />
+    <MudTextField Label="Server Sku" T="string" @bind-Value="ServerSKU" Required="true" RequiredError="Required" />
     <MudTextField Label="Server Location" T="string" @bind-Value="ServerLocation" Required="true" RequiredError="Required" />
 </MudPaper>
-<MudButtonGroup Variant="Variant.Filled"></MudButtonGroup>
+<MudButtonGroup Variant="Variant.Filled">
+    <MudButton Color="Color.Primary" @onclick="OnBackClicked">Back</MudButton>
+    <MudButton Color="Color.Primary" @onclick="OnNextClicked">Next</MudButton>
+</MudButtonGroup>
 @code {
     [Parameter, SupplyParameterFromQuery(Name = "from")]
     public string? From { get; set; }

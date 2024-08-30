@@ -54,6 +54,55 @@ namespace IT.Mechanic.App.Services.Profiles
             return null;
         }
 
+        public async Task SaveModelAsync(MainModel model)
+        {
+            if (model == null)
+            {
+                Console.WriteLine("Cannot save a null model.");
+                return;
+            }
+
+            var profileDirectory = _settingsService.Settings.ProfilesDirectory;
+            var filePath = Path.Combine(profileDirectory, $"{model.SiteId}.json");
+
+            try
+            {
+                // Serialize the model to JSON
+                var jsonString = JsonSerializer.Serialize(model, _jsonOptions);
+
+                // Write the JSON string to the file
+                await File.WriteAllTextAsync(filePath, jsonString);
+
+                // Only add to Profiles if saving was successful
+                var profiles = Profiles.ToList();
+                if (profiles.All(p => p.SiteId != model.SiteId))
+                {
+                    profiles.Add(model);
+                    Profiles = profiles;
+                    Console.WriteLine($"Profile with SiteId {model.SiteId} saved successfully.");
+                }
+                else
+                {
+                    Console.WriteLine($"Profile with SiteId {model.SiteId} already exists.");
+                }
+            }
+            catch (JsonException jsonEx)
+            {
+                // Handle JSON serialization errors
+                Console.WriteLine($"Error serializing model: {jsonEx.Message}");
+            }
+            catch (IOException ioEx)
+            {
+                // Handle file I/O errors
+                Console.WriteLine($"Error writing file {filePath}: {ioEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                // Handle any other unexpected errors
+                Console.WriteLine($"Unexpected error: {ex.Message}");
+            }
+        }
+
         private void InitializeProfiles()
         {
             var profileDirectory = _settingsService.Settings.ProfilesDirectory;

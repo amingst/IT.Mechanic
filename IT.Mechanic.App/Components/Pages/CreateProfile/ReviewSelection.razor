@@ -6,6 +6,7 @@
 @page "/create/review-selection"
 @inject IProfileFactory ProfileFactory;
 @inject ICredentialService CredentialService;
+@inject IProfileService ProfileService;
 @inject NavigationManager Navigation;
 <MudText Typo="Typo.h4">Review Selections</MudText>
 <MudPaper Width="300"></MudPaper>
@@ -15,8 +16,10 @@
 </MudButtonGroup>
 
 @code {
-    public void OnNextClicked()
+    public async void OnNextClicked()
     {
+        MainModel model = ProfileFactory.BuildProfile();
+        await ProfileService.SaveModelAsync(model);
         Navigation.NavigateTo("/");
     }
 }
