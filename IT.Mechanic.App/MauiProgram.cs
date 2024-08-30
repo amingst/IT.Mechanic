@@ -40,6 +40,7 @@ namespace IT.Mechanic.App
                 }
             );
             builder.Services.AddSingleton<ISettingsService, SettingsService>();
+            builder.Services.AddSingleton<ICredentialService, CredentialService>();
             builder.Services.AddSingleton<IProfileService, ProfileService>();
             builder.Services.AddSingleton<IProfileFactory, ProfileFactory>();
 

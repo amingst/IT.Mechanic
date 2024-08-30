@@ -8,18 +8,21 @@ namespace IT.Mechanic.App
     {
         private readonly JsonSerializerOptions _jsonSerializerOptions;
         private readonly ISettingsService _settingsService;
+        private readonly ICredentialService _credentialService;
         private readonly IProfileService _profileService;
         private readonly IProfileFactory _profileFactory;
 
         public App(
             JsonSerializerOptions jsonSerializerOptions,
             ISettingsService settingsService,
+            ICredentialService credentialService,
             IProfileService profileService,
             IProfileFactory profileFactory
         )
         {
             _jsonSerializerOptions = jsonSerializerOptions;
             _settingsService = settingsService;
+            _credentialService = credentialService;
             _profileService = profileService;
             _profileFactory = profileFactory;
             InitializeComponent();
@@ -27,6 +30,7 @@ namespace IT.Mechanic.App
             MainPage = new MainPage(
                 _jsonSerializerOptions,
                 _settingsService,
+                _credentialService,
                 _profileService,
                 _profileFactory
             );
