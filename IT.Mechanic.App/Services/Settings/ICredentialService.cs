@@ -14,5 +14,9 @@ namespace IT.Mechanic.App.Services.Settings
         public void InitializeSync();
         public Task AddGodaddyCredentialAsync(string name, GodaddyModel model);
         public Task AddRumbleCredentialAsync(string name, RumbleModel model);
+        public Task AddAzureCredentialAsync(string name, AzureModel credential);
+        public Task AddAwsCredentialAsync(string name, AWSModel credential);
+        public Task AddDigitalOceanCredentialAsync(string name, DigitalOceanModel credential);
+        public Task AddMasterCredentialAsync(string name, MasterModel credential);
     }
 }

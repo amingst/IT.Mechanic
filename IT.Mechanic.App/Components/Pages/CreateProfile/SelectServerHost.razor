@@ -37,6 +37,7 @@
 
     public void OnNextClicked()
     {
+        ProfileFactory.Server.HostingProvider = SelectedHost;
         Navigation.NavigateTo($"/create/select-server-host-credentials/{SelectedHost.ToString()}");
     }
 }

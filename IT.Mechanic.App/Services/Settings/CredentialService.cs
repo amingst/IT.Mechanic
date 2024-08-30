@@ -69,6 +69,34 @@ namespace IT.Mechanic.App.Services.Settings
             await SaveStateAsync();
         }
 
+        public async Task AddAzureCredentialAsync(string name, AzureModel credential)
+        {
+            var newCredential = new CredentialRecord<AzureModel>(name, credential);
+            CredentialsState.AzureCredentials.Add(newCredential);
+            await SaveStateAsync();
+        }
+
+        public async Task AddAwsCredentialAsync(string name, AWSModel credential)
+        {
+            var newCredential = new CredentialRecord<AWSModel>(name, credential);
+            CredentialsState.AWSCredentials.Add(newCredential);
+            await SaveStateAsync();
+        }
+
+        public async Task AddDigitalOceanCredentialAsync(string name, DigitalOceanModel credential)
+        {
+            var newCredential = new CredentialRecord<DigitalOceanModel>(name, credential);
+            CredentialsState.DigitalOceanCredentials.Add(newCredential);
+            await SaveStateAsync();
+        }
+
+        public async Task AddMasterCredentialAsync(string name, MasterModel credential)
+        {
+            var newCredential = new CredentialRecord<MasterModel>(name, credential);
+            CredentialsState.MasterCredentials.Add(newCredential);
+            await SaveStateAsync();
+        }
+
         private async Task SaveStateAsync()
         {
             var stateString = JsonSerializer.Serialize<CredentialsState>(
