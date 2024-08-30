@@ -1,0 +1,16 @@
+﻿@using IT.Mechanic.App.Services.Settings;
+@using IT.Mechanic.Models.Configuration;
+@page "/settings"
+@inject NavigationManager Navigation
+@inject ISettingsService SettingsService
+
+<MudText Typo="Typo.h4">Settings</MudText>
+<MudPaper Width="300">
+    <MudTextField Value="SettingsService.Settings.MechanicDirectory" Label="Mechanic Directory" Disabled="true" />
+    <MudTextField Value="SettingsService.Settings.MechanicCliPath" Label="Mechanic CLI Path" Disabled="true" />
+</MudPaper>
+<MudButton @onclick=@(() => Navigation.NavigateTo("/")) Color="Color.Primary" Variant="Variant.Filled">Back</MudButton>
+
+@code {
+
+}
