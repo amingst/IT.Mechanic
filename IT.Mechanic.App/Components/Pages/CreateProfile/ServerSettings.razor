@@ -1,0 +1,48 @@
+﻿@page "/create/server-settings"
+@using IT.Mechanic.App.Services.Profiles
+@inject NavigationManager Navigation
+@inject IProfileFactory ProfileFactory;
+
+<MudText Typo="Typo.h4">Server Settings</MudText>
+<MudPaper Width="300">
+
+</MudPaper>
+<MudButtonGroup Variant="Variant.Filled">
+    <MudButton Color="Color.Primary" @onclick="OnBackClicked">Back</MudButton>
+    <MudButton Color="Color.Secondary" @onclick="OnNextClicked">Next</MudButton>
+</MudButtonGroup>
+@code {
+    [Parameter, SupplyParameterFromQuery(Name = "from")]
+    public string? From { get; set; }
+    public string PublicIp { get; set; } = "";
+    public string ServerName { get; set; } = "";
+    public string User { get; set; } = "";
+    public string SSHPrivateKey { get; set; } = "";
+    public bool IsExpertMode { get; set; } = false;
+
+    protected override void OnInitialized()
+    {
+        if (ProfileFactory.Server.HostingProvider == Models.Configuration.ServerModel.HostingProviderEnum.Expertmode)
+        {
+            IsExpertMode = true;
+        }
+        base.OnInitialized();
+    }
+
+    public void OnBackClicked()
+    {
+        if (!string.IsNullOrEmpty(From))
+        {
+            Navigation.NavigateTo(From);
+        } else
+        {
+            Navigation.NavigateTo("/");
+        } 
+    }
+
+    public void OnNextClicked()
+    {
+        ProfileFactory.SetServerDetails(PublicIp, ServerName, User, SSHPrivateKey);
+        Navigation.NavigateTo("create/review-selection");
+    }
+}

@@ -39,8 +39,16 @@ namespace IT.Mechanic.App.Services.Profiles
                 DNS = DNS,
                 Server = Server,
                 Credentials = Credentials,
-                ProductSelection = ProductSelection
+                ProductSelection = ProductSelection,
             };
+        }
+
+        public void SetServerDetails(string publicIp, string serverName, string user, string sshKey)
+        {
+            Server.ServerName = serverName;
+            Server.User = user;
+            Server.PublicIP = publicIp;
+            Server.SSHPrivateKey = sshKey;
         }
     }
 }

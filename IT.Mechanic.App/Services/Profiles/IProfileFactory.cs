@@ -16,5 +16,12 @@ namespace IT.Mechanic.App.Services.Profiles
         public ProductSelectionModel ProductSelection { get; set; }
         public void Clear();
         public MainModel BuildProfile();
+
+        public void SetServerDetails(
+            string publicIp,
+            string serverName,
+            string user,
+            string sshKey
+        );
     }
 }
