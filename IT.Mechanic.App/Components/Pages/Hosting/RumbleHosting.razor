@@ -4,15 +4,21 @@
 @inject NavigationManager Navigation
 @inject IProfileFactory ProfileFactory;
 
-<MudText Typo="Typo.h4">Set Rumble Host Settings</MudText>
-<MudPaper Width="300">
-    <MudTextField Label="Server Sku" T="string" @bind-Value="ServerSKU" Required="true" RequiredError="Required" />
-    <MudTextField Label="Server Location" T="string" @bind-Value="ServerLocation" Required="true" RequiredError="Required" />
+<MudPaper Width="75%" Class="ml-auto mr-auto">
+    <MudCard Elevation="20">
+        <MudCardHeader>
+            <MudText Typo="Typo.h4">Set Rumble Host Settings</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudTextField Label="Server Sku" T="string" @bind-Value="ServerSKU" Required="true" RequiredError="Required" />
+            <MudTextField Label="Server Location" T="string" @bind-Value="ServerLocation" Required="true" RequiredError="Required" />
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton Color="Color.Primary" @onclick="OnBackClicked">Back</MudButton>
+            <MudButton Color="Color.Primary" @onclick="OnNextClicked">Next</MudButton>
+        </MudCardActions>
+    </MudCard>
 </MudPaper>
-<MudButtonGroup Variant="Variant.Filled">
-    <MudButton Color="Color.Primary" @onclick="OnBackClicked">Back</MudButton>
-    <MudButton Color="Color.Primary" @onclick="OnNextClicked">Next</MudButton>
-</MudButtonGroup>
 @code {
     [Parameter, SupplyParameterFromQuery(Name = "from")]
     public string? From { get; set; }
