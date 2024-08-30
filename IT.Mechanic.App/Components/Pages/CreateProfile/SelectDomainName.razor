@@ -18,10 +18,10 @@
     </MudSelect>
 </MudPaper>
 <MudButtonGroup Variant="Variant.Filled">
-    <MudButton Color="Color.Primary">Back</MudButton>
+    <MudButton Color="Color.Primary" @onclick="OnBackClicked">Back</MudButton>
     @if(!string.IsNullOrEmpty(SelectedDomain))
     {
-        <MudButton Color="Color.Secondary">Next</MudButton>
+        <MudButton Color="Color.Secondary" @onclick="OnNextClicked">Next</MudButton>
     }
 </MudButtonGroup>
 
@@ -30,4 +30,15 @@
     public string CredentialProvider { get; set; } = DNSModel.ProviderEnum.Godaddy.ToString();
     public string? SelectedDomain { get; set; }
     public List<string> Domains { get; set; } = ["example.com"];
+
+    public void OnBackClicked()
+    {
+        Navigation.NavigateTo("/create/select-dns-credentials");
+    }
+
+    public void OnNextClicked()
+    {
+        ProfileFactory.DNS.DomainName = SelectedDomain;
+        Navigation.NavigateTo("/create/select-server-host");
+    }
 }
