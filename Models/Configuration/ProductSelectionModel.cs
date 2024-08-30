@@ -33,6 +33,7 @@ namespace IT.Mechanic.Models.Configuration
                 default:
                     return WebsiteTypes.CMS;
             }
+            Socials = 2
         }
     }
 }
