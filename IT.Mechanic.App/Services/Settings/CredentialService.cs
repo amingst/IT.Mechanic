@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using IT.Mechanic.App.Helpers;
 using IT.Mechanic.Models.Configuration.App;
 using IT.Mechanic.Models.Configuration.Credentials;
 
@@ -104,6 +105,112 @@ namespace IT.Mechanic.App.Services.Settings
                 _serializerOptions
             );
             await File.WriteAllTextAsync(credentialsPath, stateString);
+        }
+
+        public async Task AddCredentialAsync(
+            string name,
+            CredentialHelpers.CredentialTypes CredentialType,
+            CredentialsBase credentials
+        )
+        {
+            switch (CredentialType)
+            {
+                case CredentialHelpers.CredentialTypes.AWS:
+                    if (credentials is AWSModel awsCredentials)
+                    {
+                        var newCredential = new CredentialRecord<AWSModel>(name, awsCredentials);
+                        CredentialsState.AWSCredentials.Add(newCredential);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid credentials type for AWS.");
+                    }
+                    break;
+
+                case CredentialHelpers.CredentialTypes.Azure:
+                    if (credentials is AzureModel azureCredentials)
+                    {
+                        var newCredential = new CredentialRecord<AzureModel>(
+                            name,
+                            azureCredentials
+                        );
+                        CredentialsState.AzureCredentials.Add(newCredential);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid credentials type for Azure.");
+                    }
+                    break;
+
+                case CredentialHelpers.CredentialTypes.DigitalOcean:
+                    if (credentials is DigitalOceanModel digitalOceanCredentials)
+                    {
+                        var newCredential = new CredentialRecord<DigitalOceanModel>(
+                            name,
+                            digitalOceanCredentials
+                        );
+                        CredentialsState.DigitalOceanCredentials.Add(newCredential);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid credentials type for DigitalOcean.");
+                    }
+                    break;
+
+                case CredentialHelpers.CredentialTypes.GoDaddy:
+                    if (credentials is GodaddyModel godaddyCredentials)
+                    {
+                        var newCredential = new CredentialRecord<GodaddyModel>(
+                            name,
+                            godaddyCredentials
+                        );
+                        CredentialsState.GodaddyCredentials.Add(newCredential);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid credentials type for GoDaddy.");
+                    }
+                    break;
+
+                case CredentialHelpers.CredentialTypes.Master:
+                    if (credentials is MasterModel masterCredentials)
+                    {
+                        var newCredential = new CredentialRecord<MasterModel>(
+                            name,
+                            masterCredentials
+                        );
+                        CredentialsState.MasterCredentials.Add(newCredential);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid credentials type for Master.");
+                    }
+                    break;
+
+                case CredentialHelpers.CredentialTypes.Rumble:
+                    if (credentials is RumbleModel rumbleCredentials)
+                    {
+                        var newCredential = new CredentialRecord<RumbleModel>(
+                            name,
+                            rumbleCredentials
+                        );
+                        CredentialsState.RumbleCredentials.Add(newCredential);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid credentials type for Rumble.");
+                    }
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException(
+                        nameof(CredentialType),
+                        CredentialType,
+                        null
+                    );
+            }
+
+            await SaveStateAsync();
         }
     }
 }

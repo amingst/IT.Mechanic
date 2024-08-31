@@ -1,0 +1,49 @@
+﻿@namespace IT.Mechanic.App.Components.Forms
+@using IT.Mechanic.App.Helpers
+@using IT.Mechanic.App.Services.Profiles
+@using IT.Mechanic.Models.Configuration
+@using IT.Mechanic.Models.Configuration.Hosting
+<MudCard Elevation="20" Class="ml-auto mr-auto">
+        <MudCardHeader>
+            <MudText>Set @Provider Host Settings</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudForm @ref="_form">
+                <MudTextField Label="Server Sku" T="string" @bind-Value="ServerSKU" Required="true" RequiredError="Required" />
+                <MudTextField Label="Server Location" T="string" @bind-Value="ServerLocation" Required="true" RequiredError="Required" />
+            </MudForm>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton Color="@ButtonColor" @onclick="OnSaveClicked" StartIcon="@ButtonIcon" Disabled="@(!IsSuccess)">
+                <MudText Typo="Typo.button">@ButtonText</MudText>
+            </MudButton>
+    </MudCardActions>
+</MudCard>
+
+    @code {
+    [Parameter]
+    public IProfileFactory Factory { get; set; }
+
+    [Parameter]
+    public ServerModel.HostingProviderEnum Provider { get; set; } = ServerModel.HostingProviderEnum.Rumble;
+
+    public string ServerSKU { get; set; } = string.Empty;
+    public string ServerLocation { get; set; } = string.Empty;
+    public bool IsSuccess { get; set; } = false;
+    public string ButtonIcon => IsSuccess ? @Icons.Material.Filled.Check : Icons.Material.Filled.Save;
+    public Color ButtonColor => IsSuccess ? Color.Success : Color.Secondary;
+    public string ButtonText => IsSuccess ? "Success" : "Save";
+
+    private MudForm _form;
+
+    private void OnSaveClicked()
+    {
+        var model = ServerModelHelpers.BuildHostingDetailsModel(Provider, ServerSKU, ServerLocation);
+
+        if (model != null)
+        {
+            Factory.Server.HostingDetails = model;
+            StateHasChanged();
+        }
+    }
+}

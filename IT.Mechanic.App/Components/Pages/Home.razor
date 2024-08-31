@@ -2,7 +2,10 @@
 @inject NavigationManager Navigation
 
 <MudAppBar>
-    <MudIconButton Class="ml-auto" Icon="@Icons.Material.Filled.Settings" @onclick="OnSettingsClicked"/>
+    <MudText Class="mr-auto">Mechanic Home</MudText>
+    <MudTooltip Text="Settings">
+        <MudIconButton Class="ml-auto" Icon="@Icons.Material.Filled.Settings" @onclick="OnSettingsClicked" />
+    </MudTooltip>
 </MudAppBar>
 <IT.Mechanic.App.Components.Data.Profiles.ProfilesList />
 
