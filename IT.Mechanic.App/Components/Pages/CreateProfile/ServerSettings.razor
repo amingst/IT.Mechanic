@@ -3,21 +3,29 @@
 @inject NavigationManager Navigation
 @inject IProfileFactory ProfileFactory;
 
-<MudText Typo="Typo.h4">Server Settings</MudText>
 <MudPaper Width="300">
-    <MudTextField Label="Server Name" Required="true" RequiredError="Required" @bind-Value="ServerName" />
-    <MudTextField Label="User" Required="true" RequiredError="Required" @bind-Value="User" />
-    @if (IsExpertMode)
-    {
-        <MudTextField Label="Public IP" Required="IsExpertMode" RequiredError="Required" @bind-Value="PublicIp" />
-        <MudTextField Label="SSH Private Key" Required="IsExpertMode" RequiredError="Required" @bind-Value="SSHPrivateKey" />
+    <MudCardHeader>
+        <MudText Typo="Typo.h4">Server Settings</MudText>
+    </MudCardHeader>
+    <MudCard Elevation="20">
+        <MudCardContent>
+            <MudTextField Label="Server Name" Required="true" RequiredError="Required" @bind-Value="ServerName" />
+            <MudTextField Label="User" Required="true" RequiredError="Required" @bind-Value="User" />
+            @if (IsExpertMode)
+            {
+                <MudTextField Label="Public IP" Required="IsExpertMode" RequiredError="Required" @bind-Value="PublicIp" />
+                <MudTextField Label="SSH Private Key" Required="IsExpertMode" RequiredError="Required" @bind-Value="SSHPrivateKey" />
 
-    }
+            }
+        </MudCardContent>
+        <MudCardActions>
+            <MudButtonGroup Variant="Variant.Filled">
+                <MudButton Color="Color.Primary" @onclick="OnBackClicked">Back</MudButton>
+                <MudButton Color="Color.Secondary" @onclick="OnNextClicked">Next</MudButton>
+            </MudButtonGroup>
+        </MudCardActions>
+    </MudCard>
 </MudPaper>
-<MudButtonGroup Variant="Variant.Filled">
-    <MudButton Color="Color.Primary" @onclick="OnBackClicked">Back</MudButton>
-    <MudButton Color="Color.Secondary" @onclick="OnNextClicked">Next</MudButton>
-</MudButtonGroup>
 @code {
     [Parameter, SupplyParameterFromQuery(Name = "from")]
     public string? From { get; set; }

@@ -3,13 +3,20 @@
 @page "/create/select-product"
 @inject IProfileFactory ProfileFactory
 
-<MudText Typo="Typo.h4">Select A Product</MudText>
 <MudPaper Width="300">
-    <MudText Typo="Typo.h6">What Type Of Website Do You Want?</MudText>
-    <MudRadioGroup @bind-Value="ProfileFactory.ProductSelection.WebsiteType" T="ProductSelectionModel.WebsiteTypes">
-        <MudRadio Value="ProductSelectionModel.WebsiteTypes.CMS">CMS</MudRadio>
-        <MudRadio Value="ProductSelectionModel.WebsiteTypes.Business">Business</MudRadio>
-        <MudRadio Value="ProductSelectionModel.WebsiteTypes.Socials">Socials</MudRadio>
-    </MudRadioGroup>
-    <IT.Mechanic.App.Components.Buttons.NavButtonGroup BackRoute="/" ForwardRoute="/create/select-dns-host" />
+    <MudCard Elevation="20">
+        <MudCardHeader>
+            <MudText Typo="Typo.h4">What Type Of Website Do You Want?</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudRadioGroup @bind-Value="ProfileFactory.ProductSelection.WebsiteType" T="ProductSelectionModel.WebsiteTypes">
+                <MudRadio Value="ProductSelectionModel.WebsiteTypes.CMS">CMS</MudRadio>
+                <MudRadio Value="ProductSelectionModel.WebsiteTypes.Business">Business</MudRadio>
+                <MudRadio Value="ProductSelectionModel.WebsiteTypes.Socials">Socials</MudRadio>
+            </MudRadioGroup>
+        </MudCardContent>
+        <MudCardActions>
+            <IT.Mechanic.App.Components.Buttons.NavButtonGroup BackRoute="/" ForwardRoute="/create/select-dns-host" />
+        </MudCardActions>
+    </MudCard>
 </MudPaper>

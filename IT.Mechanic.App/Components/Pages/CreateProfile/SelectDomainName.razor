@@ -8,22 +8,31 @@
 @inject ICredentialService CredentialService;
 @inject NavigationManager Navigation;
 
-<MudText Typo="Typo.h4">@($"Select Domains From {CredentialProvider}")</MudText>
 <MudPaper Width="300">
-    <MudSelect T="string" @bind-Value="SelectedDomain" Label="Domain Names">
-        @foreach (var name in Domains)
-        {
-            <MudSelectItem Value="@name">@name</MudSelectItem>
-        }
-    </MudSelect>
+    <MudCard Elevation="20">
+        <MudCardHeader>
+            <MudText Typo="Typo.h4">@($"Select Domains From {CredentialProvider}")</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudSelect T="string" @bind-Value="SelectedDomain" Label="Domain Names">
+                @foreach (var name in Domains)
+                {
+                    <MudSelectItem Value="@name">@name</MudSelectItem>
+                }
+            </MudSelect>
+        </MudCardContent>
+    </MudCard>
+    <MudCardActions>
+        <MudButtonGroup Variant="Variant.Filled">
+            <MudButton Color="Color.Primary" @onclick="OnBackClicked">Back</MudButton>
+            @if (!string.IsNullOrEmpty(SelectedDomain))
+            {
+                <MudButton Color="Color.Secondary" @onclick="OnNextClicked">Next</MudButton>
+            }
+        </MudButtonGroup>
+    </MudCardActions>
 </MudPaper>
-<MudButtonGroup Variant="Variant.Filled">
-    <MudButton Color="Color.Primary" @onclick="OnBackClicked">Back</MudButton>
-    @if(!string.IsNullOrEmpty(SelectedDomain))
-    {
-        <MudButton Color="Color.Secondary" @onclick="OnNextClicked">Next</MudButton>
-    }
-</MudButtonGroup>
+
 
 @code {
     [Parameter, SupplyParameterFromQuery(Name = "provider")]
