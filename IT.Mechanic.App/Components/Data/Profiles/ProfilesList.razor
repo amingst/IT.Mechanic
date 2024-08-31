@@ -1,28 +1,32 @@
 ﻿@using IT.Mechanic.App.Services.Profiles
 @using IT.Mechanic.Models.Configuration
+@using IT.Mechanic.App.Components.Data.Profiles
 @inject NavigationManager Navigation
 @inject IProfileService _profileService
 
-<MudPaper Width="300">
-    <MudText Typo="Typo.h4">Recent Profiles:</MudText>
-    @if (profiles.Any())
-    {
-        <MudList T="MainModel" >
-            @foreach (var profile in profiles)
-            {
-                <MudListItem @onclick="() => NavigateToProfile(profile.SiteId.ToString())">
-                    <MudText Typo="Typo.h6">@profile.DNS.DomainName</MudText>
-                </MudListItem>
-                <MudDivider />
-            }
-        </MudList>
-    }
-    else
-    {
-        <MudText Typo="Typo.h5">Click Add Profile to Get Started!</MudText>
-    }
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="() => NavigateToCreateFlow()">Add Profile</MudButton>
-</MudPaper>
+<MudCard Elevation="20" Width="75%" Class="mx-auto">
+    <MudCardHeader>
+        <MudText Typo="Typo.h4">Recent Profiles:</MudText>
+    </MudCardHeader>
+        <MudCardContent>
+        @if (profiles.Any())
+        {
+            <MudExpansionPanels>
+                @foreach(MainModel profile in profiles)
+                {
+                    <ProfileListItem SiteId="@profile.SiteId" DomainName="@profile.DNS.DomainName" DNSProvider="@profile.DNS.Provider" ServerHost="@profile.Server.HostingProvider"/>
+                }
+            </MudExpansionPanels>
+        }
+        else
+        {
+            <MudText Typo="Typo.h5">Click Add Profile to Get Started!</MudText>
+        }
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="() => NavigateToCreateFlow()">Add Profile</MudButton>
+        </MudCardActions>
+</MudCard>
 
 @code {
     private IEnumerable<MainModel> profiles { get; set; } = new List<MainModel>();

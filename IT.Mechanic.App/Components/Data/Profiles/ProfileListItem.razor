@@ -1,0 +1,30 @@
+﻿@namespace IT.Mechanic.App.Components.Data.Profiles
+@using IT.Mechanic.App.Services.Profiles
+@using IT.Mechanic.Models.Configuration
+@inject NavigationManager Navigation
+
+<MudExpansionPanel Text="@DomainName">
+    <MudText Typo="Typo.body1">DNS Provider: @DNSProvider.ToString()</MudText>
+    <MudText Typo="Typo.body1">Server Provider: @ServerHost.ToString()</MudText>
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="OnViewMoreClicked">View More</MudButton>
+</MudExpansionPanel>
+
+    @code {
+
+    [Parameter]
+    public Guid SiteId { get; set; }
+
+    [Parameter]
+    public string DomainName { get; set; }
+
+    [Parameter]
+    public ServerModel.HostingProviderEnum ServerHost { get; set; }
+
+    [Parameter]
+    public DNSModel.ProviderEnum DNSProvider { get; set; }
+
+    public void OnViewMoreClicked()
+    {
+        Navigation.NavigateTo($"/profiles/{SiteId}");
+    }
+}

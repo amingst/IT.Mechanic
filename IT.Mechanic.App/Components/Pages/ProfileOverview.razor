@@ -1,9 +1,10 @@
-﻿@inject IProfileService _profileService
-@inject NavigationManager Navigation
+﻿
 @page "/profiles/{profileId}"
 @using IT.Mechanic.App.Services.Profiles
 @using IT.Mechanic.Models.Configuration
-
+@inject IDialogService DialogService
+@inject IProfileService _profileService
+@inject NavigationManager Navigation
 
 <MudAppBar>
     <MudToolBar>
@@ -24,7 +25,7 @@
         </MudMenu>
         <MudMenu Icon="@Icons.Material.Filled.Delete" Color="Color.Error" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopRight">
             <MudMenuItem>Backup and Delete</MudMenuItem>
-            <MudMenuItem>Force Delete</MudMenuItem>
+            <MudMenuItem @onclick="OnForceDeleteClicked">Force Delete</MudMenuItem>
         </MudMenu>
     </MudToolBar>
 </MudAppBar>
@@ -66,7 +67,17 @@
     </MudExpansionPanels>
 </MudPaper>
 
+    <MudMessageBox @ref="_mudMessageBox" Title="Warning" CancelText="Cancel">
+        <MessageContent>
+            Deleting can <b><i>not</i></b> be undone!
+        </MessageContent>
+        <YesButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Error" StartIcon="@Icons.Material.Filled.DeleteForever">Delete!</MudButton>
+        </YesButton>
+    </MudMessageBox>
+
     @code {
+    private MudMessageBox _mudMessageBox;
     public bool UpdateSoftwareToggle { get; set; } = false;
     public bool IsServerRunningToggle { get; set; } = false;
     [Parameter]
@@ -80,9 +91,14 @@
             Profile = await _profileService.GetProfileByIdAsync(ProfileId);
         }
     }
-    
+
     public void OnBackClicked()
     {
         Navigation.NavigateTo("/");
+    }
+
+    private async void OnForceDeleteClicked()
+    {
+        bool? result = await _mudMessageBox.ShowAsync();
     }
 }

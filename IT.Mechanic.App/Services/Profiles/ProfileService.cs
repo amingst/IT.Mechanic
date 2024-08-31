@@ -24,8 +24,9 @@ namespace IT.Mechanic.App.Services.Profiles
 
         public async Task<MainModel?> GetProfileByIdAsync(string id)
         {
+            var fileName = string.Concat(id, ".json");
             var profileDirectory = _settingsService.Settings.ProfilesDirectory;
-            var filePath = Path.Combine(profileDirectory, $"{id}.json");
+            var filePath = Path.Combine(profileDirectory, fileName);
 
             if (File.Exists(filePath))
             {
