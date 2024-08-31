@@ -67,4 +67,8 @@
       <ProjectReference Include="..\Models\Configuration\IT.Mechanic.Models.Configuration.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Pages\CreateFlow\" />
+    </ItemGroup>
+
 </Project>

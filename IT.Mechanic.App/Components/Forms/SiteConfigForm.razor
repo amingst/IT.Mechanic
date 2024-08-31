@@ -39,8 +39,8 @@
             </MudStack>
         </MudForm>
     </MudCardContent>
-    <MudCardActions>
-        <MudButton Color="@ButtonColor" @onclick="OnCreateClicked" StartIcon="@ButtonIcon" >
+    <MudCardActions Class="ml-auto mr-auto">
+        <MudButton Variant="Variant.Filled" Color="@ButtonColor" @onclick="OnCreateClicked" StartIcon="@ButtonIcon" >
             <MudText Typo="Typo.button">@ButtonText</MudText>
         </MudButton>
     </MudCardActions>
@@ -54,8 +54,8 @@
     public ServerModel.HostingProviderEnum HostingProvider { get; set; } = ServerModel.HostingProviderEnum.Rumble;
     public ProductSelectionModel.WebsiteTypes WebsiteType { get; set; } = ProductSelectionModel.WebsiteTypes.CMS;
     public bool IsSuccess { get; set; } = false;
-    public string ButtonIcon => IsSuccess ? @Icons.Material.Filled.Check : Icons.Material.Filled.Add;
-    public Color ButtonColor => IsSuccess ? Color.Success : Color.Secondary;
+    public string ButtonIcon => IsSuccess ? @Icons.Material.Filled.Check : Icons.Material.Filled.Create;
+    public Color ButtonColor => IsSuccess ? Color.Success : Color.Primary;
     public string ButtonText => IsSuccess ? "Success" : "Create";
 
     private MudForm _form;

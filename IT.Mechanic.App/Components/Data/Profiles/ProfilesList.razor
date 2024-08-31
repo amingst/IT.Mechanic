@@ -4,7 +4,7 @@
 @inject NavigationManager Navigation
 @inject IProfileService _profileService
 
-<MudCard Elevation="20" Width="75%" Class="mx-auto">
+<MudCard Elevation="20" Width="75%">
     <MudCardHeader>
         <MudText Typo="Typo.h4">Recent Profiles:</MudText>
     </MudCardHeader>
@@ -23,8 +23,8 @@
             <MudText Typo="Typo.h5">Click Add Profile to Get Started!</MudText>
         }
         </MudCardContent>
-        <MudCardActions>
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="() => NavigateToCreateFlow()">Add Profile</MudButton>
+    <MudCardActions Class="ml-auto mr-auto">
+            <MudButton StartIcon="@Icons.Material.Filled.Add" Variant="Variant.Filled" Color="Color.Primary" @onclick="() => NavigateToCreateFlow()">Add Profile</MudButton>
         </MudCardActions>
 </MudCard>
 
@@ -44,6 +44,6 @@
 
     private void NavigateToCreateFlow()
     {
-        Navigation.NavigateTo("/create/select-product");
+        Navigation.NavigateTo("/create");
     }
 }

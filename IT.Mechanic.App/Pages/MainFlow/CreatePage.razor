@@ -1,0 +1,24 @@
+﻿@page "/create"
+@using IT.Mechanic.App.Services.Profiles
+@inject IProfileFactory ProfileFactory
+@inject NavigationManager Navigation;
+
+<MudAppBar>
+    <MudTooltip Text="Back">
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack"  @onclick="OnBackClicked"/>
+    </MudTooltip>
+</MudAppBar>
+<SiteConfigForm Factory="ProfileFactory" />
+
+@code {
+    protected override void OnInitialized()
+    {
+        ProfileFactory.Clear();
+        base.OnInitialized();
+    }
+
+    private void OnBackClicked()
+    {
+        Navigation.NavigateTo("/");
+    }
+}

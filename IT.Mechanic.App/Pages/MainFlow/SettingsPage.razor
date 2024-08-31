@@ -14,7 +14,7 @@
     <MudTextField Value="SettingsService.Settings.MechanicDirectory" Label="Mechanic Directory" Disabled="true" />
     <MudTextField Value="SettingsService.Settings.MechanicCliPath" Label="Mechanic CLI Path" Disabled="true" />
 </MudPaper>
-<MudButton @onclick=@(() => Navigation.NavigateTo("/settings/credentials")) Color="Color.Primary" Variant="Variant.Filled">Credentials</MudButton>
+<MudButton @onclick=@(() => Navigation.NavigateTo("/credentials")) Color="Color.Primary" Variant="Variant.Filled">Credentials</MudButton>
 
 @code {
     private void OnBackClicked()
