@@ -1,0 +1,66 @@
+﻿@namespace IT.Mechanic.App.Components.Forms
+@using IT.Mechanic.App.Services.Profiles
+@using IT.Mechanic.Models.Configuration
+
+<MudCard Elevation="20" Class="ml-auto mr-auto" Height="60%">
+    <MudCardHeader>
+        <MudText>Configure Your Platform</MudText>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudForm @ref="_form">
+            <MudStack>
+                <MudText>What Kind Of Website Do You Want?</MudText>
+                <MudSelect T="ProductSelectionModel.WebsiteTypes" @bind-Value="WebsiteType">
+                    @foreach (var type in ProductSelectionModel.GetWebsiteTypesNames())
+                    {
+                        <MudSelectItem Value="ProductSelectionModel.GetWebsiteTypesFromName(type)">@type</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudStack>
+            <MudSpacer />
+            <MudStack>
+                <MudText>Where Did You Get Your Domain Name?</MudText>
+                <MudSelect T="DNSModel.ProviderEnum" @bind-Value="DNSProvider">
+                    @foreach (var type in DNSModel.GetDomainNameProvidersNames())
+                    {
+                        <MudSelectItem Value="DNSModel.GetProviderFromName(type)">@type</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudStack>
+            <MudSpacer />
+            <MudStack>
+                <MudText>Where Are You Hosting Your Server?</MudText>
+                <MudSelect T="ServerModel.HostingProviderEnum" @bind-Value="HostingProvider">
+                    @foreach (var type in ServerModel.GetHostingProvidersNames())
+                    {
+                        <MudSelectItem Value="ServerModel.GetHostingProviderFromName(type)">@type</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudStack>
+        </MudForm>
+    </MudCardContent>
+    <MudCardActions>
+        <MudButton Color="@ButtonColor" @onclick="OnCreateClicked" StartIcon="@ButtonIcon" >
+            <MudText Typo="Typo.button">@ButtonText</MudText>
+        </MudButton>
+    </MudCardActions>
+</MudCard>
+
+    @code {
+    [Parameter]
+    public IProfileFactory Factory { get; set; }
+
+    public DNSModel.ProviderEnum DNSProvider { get; set; } = DNSModel.ProviderEnum.Godaddy;
+    public ServerModel.HostingProviderEnum HostingProvider { get; set; } = ServerModel.HostingProviderEnum.Rumble;
+    public ProductSelectionModel.WebsiteTypes WebsiteType { get; set; } = ProductSelectionModel.WebsiteTypes.CMS;
+    public bool IsSuccess { get; set; } = false;
+    public string ButtonIcon => IsSuccess ? @Icons.Material.Filled.Check : Icons.Material.Filled.Add;
+    public Color ButtonColor => IsSuccess ? Color.Success : Color.Secondary;
+    public string ButtonText => IsSuccess ? "Success" : "Create";
+
+    private MudForm _form;
+
+    private void OnCreateClicked()
+    {
+    }
+}
