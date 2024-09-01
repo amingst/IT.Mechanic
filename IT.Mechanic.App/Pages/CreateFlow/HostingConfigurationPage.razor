@@ -7,20 +7,46 @@
 @inject IProfileService Profiles
 
 <MudAppBar>
-    <MudTooltip Text="Back">
-        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" @onclick="OnBackClicked" />
-    </MudTooltip>
-    <MudTooltip Text="Next">
-        <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" @onclick="OnNextClicked"/>
-    </MudTooltip>
+    <MudText>Configure Your Server</MudText>
 </MudAppBar>
-<MudTabs>
-    <MudTabPanel Text="Provider"></MudTabPanel>
-    <MudTabPanel Text="Credentials"></MudTabPanel>
-    <MudTabPanel Text="Configure"></MudTabPanel>
+<MudTabs @ref="Tabs">
+    <MudTabPanel Text="Provider" @ref="ProviderTab">
+        <MudButton @onclick="OnBackClicked">
+            <MudText Typo="@Typo.button">Back</MudText>
+        </MudButton>
+        <MudButton @onclick="() => Activate(1)">
+            <MudText Typo="@Typo.button">Next</MudText>
+        </MudButton>
+    </MudTabPanel>
+    <MudTabPanel Text="Credentials" @ref="CredentialsTab">
+        <MudButton @onclick="() => Activate(0)">
+            <MudText Typo="@Typo.button">Back</MudText>
+        </MudButton>
+        <MudButton @onclick="() => Activate(2)">
+            <MudText Typo="@Typo.button">Next</MudText>
+        </MudButton>
+    </MudTabPanel>
+    <MudTabPanel Text="Configure" @ref="ConfigureTab">
+        <MudButton @onclick="() => Activate(1)">
+            <MudText Typo="@Typo.button">Back</MudText>
+        </MudButton>
+        <MudButton @onclick="OnNextClicked">
+            <MudText Typo="@Typo.button">Next</MudText>
+        </MudButton>
+    </MudTabPanel>
 </MudTabs>
 
 @code {
+    private MudTabs Tabs;
+    private MudTabPanel ProviderTab;
+    private MudTabPanel CredentialsTab;
+    private MudTabPanel ConfigureTab;
+
+    private void Activate(int index)
+    {
+        Tabs.ActivatePanel(index);
+    }
+
     private void OnBackClicked()
     {
         Navigation.NavigateTo("/create/dns");

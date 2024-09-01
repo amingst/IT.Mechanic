@@ -22,6 +22,11 @@
 </MudTabs>
 
 @code {
+    private MudTabs Tabs;
+    private MudTabPanel ConfigurationTab;
+    private MudTabPanel DNSTab;
+    private MudTabPanel HostingTab;
+
     private void OnBackClicked()
     {
         Navigation.NavigateTo("/create/dns");
