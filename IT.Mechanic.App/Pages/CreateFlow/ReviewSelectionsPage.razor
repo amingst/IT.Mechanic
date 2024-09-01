@@ -1,0 +1,35 @@
+﻿@page "/create/review"
+@using IT.Mechanic.App.Services.Profiles
+@using IT.Mechanic.App.Services.Settings
+@inject NavigationManager Navigation
+@inject IProfileFactory ProfileFactory
+@inject ICredentialService Credentials
+@inject IProfileService Profiles
+
+<MudAppBar>
+    <MudTooltip Text="Back">
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" @onclick="OnBackClicked" />
+    </MudTooltip>
+    <MudTooltip Text="Next">
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" @onclick="OnNextClicked"/>
+    </MudTooltip>
+</MudAppBar>
+<MudTabs>
+    <MudTabPanel Text="Configuration"></MudTabPanel>
+    <MudTabPanel Text="DNS"></MudTabPanel>
+    <MudTabPanel Text="Hosting"></MudTabPanel>
+    <MudTabPanel Text="Finalize"></MudTabPanel>
+</MudTabs>
+
+@code {
+    private void OnBackClicked()
+    {
+        Navigation.NavigateTo("/create/dns");
+    }
+
+    private void OnNextClicked()
+    {
+        Navigation.NavigateTo("/create/review");
+    }
+}
+}

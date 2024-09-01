@@ -7,8 +7,9 @@
     <MudTooltip Text="Back">
         <MudIconButton Icon="@Icons.Material.Filled.ArrowBack"  @onclick="OnBackClicked"/>
     </MudTooltip>
+    <MudText>Create Your Platform</MudText>
 </MudAppBar>
-<SiteConfigForm Factory="ProfileFactory" />
+<SiteConfigForm Factory="ProfileFactory" Navigation="Navigation"/>
 
 @code {
     protected override void OnInitialized()

@@ -1,0 +1,34 @@
+﻿@page "/create/dns"
+@using IT.Mechanic.App.Services.Profiles
+@using IT.Mechanic.App.Services.Settings
+@inject NavigationManager Navigation
+@inject IProfileFactory ProfileFactory
+@inject ICredentialService Credentials
+@inject IProfileService Profiles
+
+<MudAppBar>
+    <MudTooltip Text="Back">
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" @onclick="OnBackClicked"/>
+    </MudTooltip>
+    <MudTooltip Text="Next">
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" @onclick="OnNextClicked"/>
+    </MudTooltip>
+</MudAppBar>
+<MudTabs>
+    <MudTabPanel Text="Provider"></MudTabPanel>
+    <MudTabPanel Text="Credentials"></MudTabPanel>
+    <MudTabPanel Text="Domain Name"></MudTabPanel>
+</MudTabs>
+
+@code {
+    private void OnBackClicked()
+    {
+        Navigation.NavigateTo("/create");
+    }
+
+    private void OnNextClicked()
+    {
+        Navigation.NavigateTo("/create/hosting");
+    }
+}
+}

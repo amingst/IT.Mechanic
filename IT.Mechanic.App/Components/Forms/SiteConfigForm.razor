@@ -50,6 +50,9 @@
     [Parameter]
     public IProfileFactory Factory { get; set; }
 
+    [Parameter]
+    public NavigationManager Navigation { get; set; }
+
     public DNSModel.ProviderEnum DNSProvider { get; set; } = DNSModel.ProviderEnum.Godaddy;
     public ServerModel.HostingProviderEnum HostingProvider { get; set; } = ServerModel.HostingProviderEnum.Rumble;
     public ProductSelectionModel.WebsiteTypes WebsiteType { get; set; } = ProductSelectionModel.WebsiteTypes.CMS;
@@ -62,5 +65,7 @@
 
     private void OnCreateClicked()
     {
+        Factory.Clear();
+        Navigation.NavigateTo("/create/dns");
     }
 }
