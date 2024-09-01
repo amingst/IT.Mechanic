@@ -18,7 +18,8 @@
             <MudText Typo="@Typo.button">Next</MudText>
         </MudButton>
     </MudTabPanel>
-    <MudTabPanel Text="Credentials" @ref="CredentialsTab">
+    <MudTabPanel Text="Provider Configuration" @ref="ProviderConfigurationTab">
+        <HostingForm />
         <MudButton @onclick="() => Activate(0)">
             <MudText Typo="@Typo.button">Back</MudText>
         </MudButton>
@@ -26,8 +27,18 @@
             <MudText Typo="@Typo.button">Next</MudText>
         </MudButton>
     </MudTabPanel>
-    <MudTabPanel Text="Configure" @ref="ConfigureTab">
+    <MudTabPanel Text="Credentials" @ref="CredentialsTab">
+        <CredentialsForm CredentialService="Credentials" />
         <MudButton @onclick="() => Activate(1)">
+            <MudText Typo="@Typo.button">Back</MudText>
+        </MudButton>
+        <MudButton @onclick="() => Activate(3)">
+            <MudText Typo="@Typo.button">Next</MudText>
+        </MudButton>
+    </MudTabPanel>
+    <MudTabPanel Text="Configure" @ref="ConfigureTab">
+        <ServerSettingsForm Factory="ProfileFactory" ExpertMode="true"/>
+        <MudButton @onclick="() => Activate(2)">
             <MudText Typo="@Typo.button">Back</MudText>
         </MudButton>
         <MudButton @onclick="OnNextClicked">
@@ -39,8 +50,11 @@
 @code {
     private MudTabs Tabs;
     private MudTabPanel ProviderTab;
+    private MudTabPanel ProviderConfigurationTab;
     private MudTabPanel CredentialsTab;
     private MudTabPanel ConfigureTab;
+    private bool ShowServerSettingsForm { get; set; } = false;
+    private bool ShowCredentialsForm { get; set; } = false;
 
     private void Activate(int index)
     {

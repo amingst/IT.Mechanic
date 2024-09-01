@@ -1,19 +1,17 @@
 ﻿@using IT.Mechanic.App.Services.Profiles
-@inject NavigationManager Navigation
-@inject IProfileFactory ProfileFactory;
 
-<MudPaper Width="300">
+<MudCard Elevation="20">
     <MudCardHeader>
-        <MudText Typo="Typo.h4">Server Settings</MudText>
+        <MudText>Server Settings</MudText>
     </MudCardHeader>
-    <MudCard Elevation="20">
         <MudCardContent>
             <MudTextField Label="Server Name" Required="true" RequiredError="Required" @bind-Value="ServerName" />
             <MudTextField Label="User" Required="true" RequiredError="Required" @bind-Value="User" />
-            @if (IsExpertMode)
+            @if (ExpertMode)
             {
-                <MudTextField Mask="@ipv4Mask" Label="Public IP" Required="IsExpertMode" RequiredError="Required" @bind-Value="PublicIp" />
-                <MudTextField Label="SSH Private Key" Required="IsExpertMode" RequiredError="Required" @bind-Value="SSHPrivateKey" />
+                <MudTextField Mask="@ipv4Mask" Label="Public IP (IPv4)" Required="ExpertMode" RequiredError="Required" @bind-Value="PublicIPv4" />
+                <MudTextField Mask="@ipv6Mask" Label="Public IP (IPv6)"  @bind-Value="PublicIPv6" />
+                <MudTextField Label="SSH Private Key" Required="ExpertMode" RequiredError="Required" @bind-Value="SSHPrivateKey" />
 
             }
         </MudCardContent>
@@ -24,20 +22,26 @@
             </MudButtonGroup>
         </MudCardActions>
     </MudCard>
-</MudPaper>
 @code {
-    public string PublicIp { get; set; } = "";
+    [Parameter]
+    public IProfileFactory Factory { get; set; }
+
+    [Parameter]
+    public bool ExpertMode { get; set; } = false;
+
+    public string PublicIPv4 { get; set; } = "";
+    public string PublicIPv6 { get; set; } = "";
     public string ServerName { get; set; } = "";
     public string User { get; set; } = "";
     public string SSHPrivateKey { get; set; } = "";
-    public bool IsExpertMode { get; set; } = false;
     public IMask ipv4Mask = RegexMask.IPv4();
+    public IMask ipv6Mask = RegexMask.IPv6();
 
     protected override void OnInitialized()
     {
-        if (ProfileFactory.Server.HostingProvider == Models.Configuration.ServerModel.HostingProviderEnum.Expertmode)
+        if (Factory.Server.HostingProvider == Models.Configuration.ServerModel.HostingProviderEnum.Expertmode)
         {
-            IsExpertMode = true;
+            ExpertMode = true;
         }
         base.OnInitialized();
     }
@@ -48,6 +52,6 @@
 
     public void OnNextClicked()
     {
-        ProfileFactory.SetServerDetails(PublicIp, ServerName, User, SSHPrivateKey);
+        Factory.SetServerDetails(PublicIPv4, ServerName, User, SSHPrivateKey);
     }
 }
