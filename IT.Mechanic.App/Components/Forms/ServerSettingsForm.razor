@@ -1,5 +1,4 @@
-﻿@page "/create/server-settings"
-@using IT.Mechanic.App.Services.Profiles
+﻿@using IT.Mechanic.App.Services.Profiles
 @inject NavigationManager Navigation
 @inject IProfileFactory ProfileFactory;
 
@@ -13,7 +12,7 @@
             <MudTextField Label="User" Required="true" RequiredError="Required" @bind-Value="User" />
             @if (IsExpertMode)
             {
-                <MudTextField Label="Public IP" Required="IsExpertMode" RequiredError="Required" @bind-Value="PublicIp" />
+                <MudTextField Mask="@ipv4Mask" Label="Public IP" Required="IsExpertMode" RequiredError="Required" @bind-Value="PublicIp" />
                 <MudTextField Label="SSH Private Key" Required="IsExpertMode" RequiredError="Required" @bind-Value="SSHPrivateKey" />
 
             }
@@ -27,13 +26,12 @@
     </MudCard>
 </MudPaper>
 @code {
-    [Parameter, SupplyParameterFromQuery(Name = "from")]
-    public string? From { get; set; }
     public string PublicIp { get; set; } = "";
     public string ServerName { get; set; } = "";
     public string User { get; set; } = "";
     public string SSHPrivateKey { get; set; } = "";
     public bool IsExpertMode { get; set; } = false;
+    public IMask ipv4Mask = RegexMask.IPv4();
 
     protected override void OnInitialized()
     {
@@ -46,18 +44,10 @@
 
     public void OnBackClicked()
     {
-        if (!string.IsNullOrEmpty(From))
-        {
-            Navigation.NavigateTo(From);
-        } else
-        {
-            Navigation.NavigateTo("/");
-        } 
     }
 
     public void OnNextClicked()
     {
         ProfileFactory.SetServerDetails(PublicIp, ServerName, User, SSHPrivateKey);
-        Navigation.NavigateTo("create/review-selection");
     }
 }
