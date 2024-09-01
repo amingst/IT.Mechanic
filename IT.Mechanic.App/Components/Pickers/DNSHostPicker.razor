@@ -1,0 +1,13 @@
+﻿@using IT.Mechanic.Models.Configuration
+
+<MudSelect T="DNSModel.ProviderEnum" Label="DNS Hosts" Value="DNSProviderValue">
+    @foreach (var provider in DNSModel.GetDomainNameProvidersNames())
+    {
+        <MudSelectItem Value="DNSModel.GetProviderFromName(provider)">@provider</MudSelectItem>
+    }
+</MudSelect>
+
+@code {
+    [Parameter]
+    public DNSModel.ProviderEnum DNSProviderValue { get; set; }
+}

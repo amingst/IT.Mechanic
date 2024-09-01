@@ -11,6 +11,7 @@
 </MudAppBar>
 <MudTabs @ref="Tabs">
     <MudTabPanel Text="Provider" @ref="ProviderTab">
+        <IT.Mechanic.App.Components.Pickers.ServerHostPicker />
         <MudButton @onclick="OnBackClicked">
             <MudText Typo="@Typo.button">Back</MudText>
         </MudButton>
