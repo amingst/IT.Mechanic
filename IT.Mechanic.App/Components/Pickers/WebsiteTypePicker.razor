@@ -1,0 +1,12 @@
+﻿@using IT.Mechanic.Models.Configuration
+<MudSelect T="ProductSelectionModel.WebsiteTypes" @bind-Value="@WebsiteType">
+    @foreach (var type in ProductSelectionModel.GetWebsiteTypesNames())
+    {
+        <MudSelectItem Value="ProductSelectionModel.GetWebsiteTypesFromName(type)">@type</MudSelectItem>
+    }
+</MudSelect>
+
+@code {
+    [Parameter]
+    public  ProductSelectionModel.WebsiteTypes WebsiteType { get; set; }
+}

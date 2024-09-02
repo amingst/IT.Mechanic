@@ -9,7 +9,7 @@
     </MudTooltip>
     <MudText>Create Your Platform</MudText>
 </MudAppBar>
-<SiteConfigForm Factory="ProfileFactory" Navigation="Navigation"/>
+<SiteConfigForm Factory="@ProfileFactory" Navigation="Navigation" NextRoute="@("/create/dns")"/>
 
 @code {
     protected override void OnInitialized()

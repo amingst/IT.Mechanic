@@ -53,9 +53,12 @@
     [Parameter]
     public NavigationManager Navigation { get; set; }
 
-    public DNSModel.ProviderEnum DNSProvider { get; set; } = DNSModel.ProviderEnum.Godaddy;
-    public ServerModel.HostingProviderEnum HostingProvider { get; set; } = ServerModel.HostingProviderEnum.Rumble;
-    public ProductSelectionModel.WebsiteTypes WebsiteType { get; set; } = ProductSelectionModel.WebsiteTypes.CMS;
+    [Parameter]
+    public string NextRoute { get; set; } = string.Empty;
+
+    public DNSModel.ProviderEnum DNSProvider { get; set; }
+    public ServerModel.HostingProviderEnum HostingProvider { get; set; }
+    public ProductSelectionModel.WebsiteTypes WebsiteType { get; set; }
     public bool IsSuccess { get; set; } = false;
     public string ButtonIcon => IsSuccess ? @Icons.Material.Filled.Check : Icons.Material.Filled.Create;
     public Color ButtonColor => IsSuccess ? Color.Success : Color.Primary;
@@ -65,7 +68,15 @@
 
     private void OnCreateClicked()
     {
-        Factory.Clear();
-        Navigation.NavigateTo("/create/dns");
+        Factory.DNS.Provider = DNSProvider;
+        Factory.Server.HostingProvider = HostingProvider;
+        Factory.ProductSelection.WebsiteType = WebsiteType;
+        if (!string.IsNullOrEmpty(NextRoute))
+        {
+            Navigation.NavigateTo(NextRoute);
+        } else
+        {
+            Navigation.NavigateTo("/create/dns");
+        }
     }
 }

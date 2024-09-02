@@ -1,0 +1,21 @@
+﻿@using IT.Mechanic.Models.Configuration
+<MudCard Elevation="20" Class="mr-auto ml-auto">
+    <MudCardHeader>
+        <MudText>Review DNS Configuration</MudText>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudStack Row="true">
+            <MudText>DNS Provider:</MudText>
+            <MudTextField Disabled="true" Value="@DNS.Provider" />
+        </MudStack>
+        <MudStack Row="true">
+            <MudText>Domain Name:</MudText>
+            <MudTextField Disabled="true" Value="@DNS.DomainName" />
+        </MudStack>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    [Parameter]
+    public DNSModel DNS { get; set; }
+}
