@@ -1,5 +1,7 @@
 ﻿@page "/"
+@using IT.Mechanic.App.Services.Settings
 @inject NavigationManager Navigation
+@inject ICredentialService CredentialService
 
 <MudAppBar>
     <MudText Class="mr-auto">Mechanic Home</MudText>
@@ -7,11 +9,38 @@
         <MudIconButton Class="ml-auto" Icon="@Icons.Material.Filled.Settings" @onclick="OnSettingsClicked" />
     </MudTooltip>
 </MudAppBar>
+@if (ShowCredentialsAlert)
+{
+    <MudAlert 
+        Severity="Severity.Warning" 
+        Variant="Variant.Filled" 
+        ShowCloseIcon="true" 
+        CloseIconClicked="()=>CloseCredentialsAlert()"
+        >No Credentials Found, Click <MudLink Color="Color.Info" Href="/credentials">Here</MudLink> To Create Credentials</MudAlert>
+}
 <IT.Mechanic.App.Components.Data.Profiles.ProfilesList />
 
 @code {
+    public bool ShowCredentialsAlert { get; set; } = false;
+
     public void OnSettingsClicked()
     {
         Navigation.NavigateTo("/settings");    
+    }
+
+    protected override void OnInitialized()
+    {
+        var credsAlertNeeded = !CredentialService.CredentialsExist();
+
+        if (credsAlertNeeded)
+        {
+            ShowCredentialsAlert = true;
+        }
+        base.OnInitialized();
+    }
+
+    private void CloseCredentialsAlert()
+    {
+        ShowCredentialsAlert = false;
     }
 }

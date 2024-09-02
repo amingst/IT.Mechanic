@@ -19,6 +19,8 @@ namespace IT.Mechanic.App.Services.Settings
             CredentialHelpers.CredentialTypes CredentialType,
             CredentialsBase credentials
         );
+
+        public bool CredentialsExist();
         public Task AddGodaddyCredentialAsync(string name, GodaddyModel model);
         public Task AddRumbleCredentialAsync(string name, RumbleModel model);
         public Task AddAzureCredentialAsync(string name, AzureModel credential);

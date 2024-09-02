@@ -56,6 +56,23 @@ namespace IT.Mechanic.App.Services.Settings
             }
         }
 
+        public bool CredentialsExist()
+        {
+            var godaddyCreds = CredentialsState.GodaddyCredentials.Count() > 0;
+            var awsCreds = CredentialsState.AWSCredentials.Count() > 0;
+            var azureCreds = CredentialsState.AzureCredentials.Count() > 0;
+            var digitaloceanCreds = CredentialsState.DigitalOceanCredentials.Count() > 0;
+            var masterCreds = CredentialsState.MasterCredentials.Count() > 0;
+            var rumbleCreds = CredentialsState.RumbleCredentials.Count() > 0;
+
+            return godaddyCreds
+                || awsCreds
+                || azureCreds
+                || digitaloceanCreds
+                || masterCreds
+                || rumbleCreds;
+        }
+
         public async Task AddGodaddyCredentialAsync(string name, GodaddyModel model)
         {
             var newCredential = new CredentialRecord<GodaddyModel>(name, model);
