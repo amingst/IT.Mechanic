@@ -1,0 +1,13 @@
+﻿<MudSelect @bind-Value="@DomainName">
+    @foreach (var Domain in _domains)
+    {
+        <MudSelectItem Value="@Domain" />
+    }
+</MudSelect>
+
+@code {
+    [Parameter]
+    public string DomainName { get; set; }
+
+    private List<string> _domains = ["example1.com", "example2.com", "example3.com"];
+}

@@ -1,6 +1,6 @@
 ﻿@using IT.Mechanic.Models.Configuration
 
-<MudSelect T="ServerModel.HostingProviderEnum">
+<MudSelect T="ServerModel.HostingProviderEnum" @bind-Value="@HostingProvider">
     @foreach (var provider in ServerModel.GetHostingProvidersNames())
     {
         <MudSelectItem Value="ServerModel.GetHostingProviderFromName(provider)">@provider</MudSelectItem>

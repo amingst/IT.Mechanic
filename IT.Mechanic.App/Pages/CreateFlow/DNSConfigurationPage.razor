@@ -2,6 +2,7 @@
 @using IT.Mechanic.App.Services.Profiles
 @using IT.Mechanic.App.Services.Settings
 @using IT.Mechanic.Models.Configuration
+@using IT.Mechanic.Models.Configuration.Credentials
 @inject NavigationManager Navigation
 @inject IProfileFactory ProfileFactory
 @inject ICredentialService Credentials
@@ -19,9 +20,7 @@
                 </MudCardHeader>
                 <MudCardContent>
                     <MudText Typo="Typo.h6">This Is Where You Bought The Domain From.</MudText>
-                    <MudRadioGroup T="DNSModel.ProviderEnum" @bind-Value="DNSProvider">
-                        <MudRadio Value="DNSModel.ProviderEnum.Godaddy">GoDaddy</MudRadio>
-                    </MudRadioGroup>
+                    <IT.Mechanic.App.Components.Pickers.DNSHostPicker  DNSProviderValue="@DNS.Provider" />
                 </MudCardContent>
                 <MudCardActions>
                     <MudButton @onclick="OnBackClicked">
@@ -35,6 +34,7 @@
         </MudPaper>
     </MudTabPanel>
     <MudTabPanel Text="Credentials" @ref="CredentialsTab" @ID="@("#Credentials")">
+        <IT.Mechanic.App.Components.Pickers.GodaddyCredentialsPicker CredentialsService="Credentials" />
         <MudButton @onclick="() => Activate(0)">
             <MudText Typo="@Typo.button">Back</MudText>
         </MudButton><MudButton @onclick="() => Activate(2)">
@@ -42,6 +42,7 @@
         </MudButton>
     </MudTabPanel>
     <MudTabPanel Text="Domain Name" @ref="DomainNameTabPanel" @ID="@("#Domain")">
+        <IT.Mechanic.App.Components.Pickers.DomainNamePicker DomainName="@DNS.DomainName" />
         <MudButton @onclick="() => Activate(1)">
             <MudText Typo="@Typo.button">Back</MudText>
         </MudButton>
@@ -52,7 +53,7 @@
 </MudTabs>
 
 @code {
-    public DNSModel.ProviderEnum DNSProvider { get; set; }
+    public DNSModel DNS { get; set; } = new();
 
     private MudTabs Tabs;
     private MudTabPanel ProviderTab;
@@ -79,6 +80,7 @@
 
     private void OnNextClicked()
     {
+        ProfileFactory.DNS = DNS;
         Navigation.NavigateTo("/create/hosting");
     }
 }
