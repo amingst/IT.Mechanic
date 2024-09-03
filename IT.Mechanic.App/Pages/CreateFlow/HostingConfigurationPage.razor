@@ -1,6 +1,7 @@
 ﻿@page "/create/hosting"
 @using IT.Mechanic.App.Services.Profiles
 @using IT.Mechanic.App.Services.Settings
+@using IT.Mechanic.Models.Configuration
 @inject NavigationManager Navigation
 @inject IProfileFactory ProfileFactory
 @inject ICredentialService Credentials
@@ -11,7 +12,9 @@
 </MudAppBar>
 <MudTabs @ref="Tabs">
     <MudTabPanel Text="Provider" @ref="ProviderTab">
-        <IT.Mechanic.App.Components.Pickers.ServerHostPicker />
+        <IT.Mechanic.App.Components.Pickers.ServerHostPicker 
+            HostingProvider="@ProfileFactory.Server.HostingProvider"
+            HostingProviderChanged="@HostingProviderChanged"/>
         <MudButton @onclick="OnBackClicked">
             <MudText Typo="@Typo.button">Back</MudText>
         </MudButton>
@@ -38,7 +41,16 @@
         </MudButton>
     </MudTabPanel>
     <MudTabPanel Text="Configure" @ref="ConfigureTab">
-        <ServerSettingsForm Factory="ProfileFactory" ExpertMode="true"/>
+        <ServerSettingsForm 
+            PublicIPv4="@ProfileFactory.Server.PublicIP"
+            PublicIPv4Changed="@PublicIPv4Changed"
+            User="@ProfileFactory.Server.User"
+            UserChanged="@UserChanged"
+            ServerName="@ProfileFactory.Server.ServerName"
+            ServerNameChanged="@ServerNameChanged"
+            SSHPrivateKey="@ProfileFactory.Server.SSHPrivateKey"
+            SSHPrivateKeyChanged="@SSHPrivateKeyChanged"
+            />
         <MudButton @onclick="() => Activate(2)">
             <MudText Typo="@Typo.button">Back</MudText>
         </MudButton>
@@ -70,5 +82,30 @@
     private void OnNextClicked()
     {
         Navigation.NavigateTo("/create/review");
+    }
+
+    public void HostingProviderChanged(ServerModel.HostingProviderEnum hostingProvider)
+    {
+        ProfileFactory.Server.HostingProvider = hostingProvider;
+    }
+
+    public void PublicIPv4Changed(string ipv4)
+    {
+        ProfileFactory.Server.PublicIP = ipv4;
+    }
+
+    public void ServerNameChanged(string name)
+    {
+        ProfileFactory.Server.ServerName = name;
+    }
+
+    public void UserChanged(string user)
+    {
+        ProfileFactory.Server.User = user;
+    }
+
+    public void SSHPrivateKeyChanged(string key)
+    {
+        ProfileFactory.Server.SSHPrivateKey = key;
     }
 }

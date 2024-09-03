@@ -9,15 +9,22 @@
         </MudCardHeader>
         <MudCardContent>
             <MudForm @ref="_form">
-                <MudTextField Label="Server Sku" T="string" @bind-Value="ServerSKU" Required="true" RequiredError="Required" />
-                <MudTextField Label="Server Location" T="string" @bind-Value="ServerLocation" Required="true" RequiredError="Required" />
+                <MudTextField 
+                    Label="Server Sku" 
+                    T="string"
+                    Value="@ServerSKU" 
+                    ValueChanged="@ServerSkuChanged"
+                    Required="true" 
+                    RequiredError="Required" />
+                <MudTextField 
+                    Label="Server Location" 
+                    T="string"
+                    Value="@ServerLocation"
+                    ValueChanged="@ServerLocationChanged"
+                    Required="true"
+                    RequiredError="Required" />
             </MudForm>
         </MudCardContent>
-        <MudCardActions>
-            <MudButton Color="@ButtonColor" @onclick="OnSaveClicked" StartIcon="@ButtonIcon" Disabled="@(!IsSuccess)">
-                <MudText Typo="Typo.button">@ButtonText</MudText>
-            </MudButton>
-    </MudCardActions>
 </MudCard>
 
     @code {
@@ -25,25 +32,19 @@
     public IProfileFactory Factory { get; set; }
 
     [Parameter]
-    public ServerModel.HostingProviderEnum Provider { get; set; } = ServerModel.HostingProviderEnum.Rumble;
+    public ServerModel.HostingProviderEnum Provider { get; set; }
 
+    [Parameter]
     public string ServerSKU { get; set; } = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> ServerSkuChanged { get; set; }
+
+    [Parameter]
     public string ServerLocation { get; set; } = string.Empty;
-    public bool IsSuccess { get; set; } = false;
-    public string ButtonIcon => IsSuccess ? @Icons.Material.Filled.Check : Icons.Material.Filled.Save;
-    public Color ButtonColor => IsSuccess ? Color.Success : Color.Secondary;
-    public string ButtonText => IsSuccess ? "Success" : "Save";
+
+    [Parameter]
+    public EventCallback<string> ServerLocationChanged { get; set; }
 
     private MudForm _form;
-
-    private void OnSaveClicked()
-    {
-        var model = ServerModelHelpers.BuildHostingDetailsModel(Provider, ServerSKU, ServerLocation);
-
-        if (model != null)
-        {
-            Factory.Server.HostingDetails = model;
-            StateHasChanged();
-        }
-    }
 }

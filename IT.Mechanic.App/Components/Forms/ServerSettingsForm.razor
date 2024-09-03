@@ -3,55 +3,55 @@
 <MudCard Elevation="20">
     <MudCardHeader>
         <MudText>Server Settings</MudText>
+        <MudSwitch @bind-Value="@ExpertMode">Expert Mode</MudSwitch>
     </MudCardHeader>
         <MudCardContent>
-            <MudTextField Label="Server Name" Required="true" RequiredError="Required" @bind-Value="ServerName" />
-            <MudTextField Label="User" Required="true" RequiredError="Required" @bind-Value="User" />
-            @if (ExpertMode)
+            <MudTextField Label="Server Name" Required="true" RequiredError="Required" Value="@ServerName" ValueChanged="@ServerNameChanged"/>
+            <MudTextField Label="User" Required="true" RequiredError="Required" Value="@User" ValueChanged="@UserChanged"/>
+            @if (ExpertMode == true)
             {
-                <MudTextField Mask="@ipv4Mask" Label="Public IP (IPv4)" Required="ExpertMode" RequiredError="Required" @bind-Value="PublicIPv4" />
-                <MudTextField Mask="@ipv6Mask" Label="Public IP (IPv6)"  @bind-Value="PublicIPv6" />
-                <MudTextField Label="SSH Private Key" Required="ExpertMode" RequiredError="Required" @bind-Value="SSHPrivateKey" />
+                <MudTextField Mask="@ipv4Mask" Label="Public IP (IPv4)" Required="ExpertMode" RequiredError="Required" Value="@PublicIPv4" ValueChanged="@PublicIPv4Changed"/>
+                <MudTextField Mask="@ipv6Mask" Label="Public IP (IPv6)"  Value="@PublicIPv6" ValueChanged="@PublicIPv6Changed"/>
+                <MudTextField Label="SSH Private Key" Required="ExpertMode" RequiredError="Required" Value="@SSHPrivateKey" ValueChanged="@SSHPrivateKeyChanged"/>
 
             }
         </MudCardContent>
-        <MudCardActions>
-            <MudButtonGroup Variant="Variant.Filled">
-                <MudButton Color="Color.Primary" @onclick="OnBackClicked">Back</MudButton>
-                <MudButton Color="Color.Secondary" @onclick="OnNextClicked">Next</MudButton>
-            </MudButtonGroup>
-        </MudCardActions>
     </MudCard>
 @code {
-    [Parameter]
-    public IProfileFactory Factory { get; set; }
 
     [Parameter]
     public bool ExpertMode { get; set; } = false;
 
+    [Parameter]
     public string PublicIPv4 { get; set; } = "";
+
+    [Parameter]
+    public EventCallback<string> PublicIPv4Changed { get; set; }
+
+    [Parameter]
     public string PublicIPv6 { get; set; } = "";
+
+    [Parameter]
+    public EventCallback<string> PublicIPv6Changed { get; set; }
+
+    [Parameter]
     public string ServerName { get; set; } = "";
+
+    [Parameter]
+    public EventCallback<string> ServerNameChanged { get; set; }
+
+    [Parameter]
     public string User { get; set; } = "";
+
+    [Parameter]
+    public EventCallback<string> UserChanged { get;set; }
+
+    [Parameter]
     public string SSHPrivateKey { get; set; } = "";
+
+    [Parameter]
+    public EventCallback<string>SSHPrivateKeyChanged { get; set; }
+
     public IMask ipv4Mask = RegexMask.IPv4();
     public IMask ipv6Mask = RegexMask.IPv6();
-
-    protected override void OnInitialized()
-    {
-        if (Factory.Server.HostingProvider == Models.Configuration.ServerModel.HostingProviderEnum.Expertmode)
-        {
-            ExpertMode = true;
-        }
-        base.OnInitialized();
-    }
-
-    public void OnBackClicked()
-    {
-    }
-
-    public void OnNextClicked()
-    {
-        Factory.SetServerDetails(PublicIPv4, ServerName, User, SSHPrivateKey);
-    }
 }
