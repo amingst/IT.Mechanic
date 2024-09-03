@@ -1,0 +1,16 @@
+﻿<MudSelect Value="@ServerLocationValue" ValueChanged="@ServerLocationValueChanged">
+    @foreach(var location in _locations)
+    {
+        <MudSelectItem Value="@location" />
+    }
+</MudSelect>
+
+@code {
+    [Parameter]
+    public string ServerLocationValue { get; set; }
+
+    [Parameter]
+    public EventCallback<string> ServerLocationValueChanged { get;set; }
+
+    private List<string> _locations = ["us-east-1", "us-east-2", "us-west-1", "us-west-2"];
+}

@@ -16,13 +16,7 @@
                     ValueChanged="@ServerSkuChanged"
                     Required="true" 
                     RequiredError="Required" />
-                <MudTextField 
-                    Label="Server Location" 
-                    T="string"
-                    Value="@ServerLocation"
-                    ValueChanged="@ServerLocationChanged"
-                    Required="true"
-                    RequiredError="Required" />
+                <IT.Mechanic.App.Components.Pickers.ServerLocationPicker ServerLocationValue="@ServerLocation" ServerLocationValueChanged="@ServerLocationChanged" />
             </MudForm>
         </MudCardContent>
 </MudCard>

@@ -21,5 +21,9 @@ namespace IT.Mechanic.Models.Configuration.App
             new List<CredentialRecord<MasterModel>>();
         public List<CredentialRecord<RumbleModel>> RumbleCredentials { get; set; } =
             new List<CredentialRecord<RumbleModel>>();
+        public List<CredentialRecord<GCPModel>> GCPCredentials { get; set; } =
+            new List<CredentialRecord<GCPModel>>();
+        public List<CredentialRecord<InvertedTechModel>> InvertedTechCredentials { get; set; } =
+            new List<CredentialRecord<InvertedTechModel>>();
     }
 }

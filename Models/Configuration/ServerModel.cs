@@ -1,6 +1,6 @@
-﻿using IT.Mechanic.Models.Configuration.Hosting;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using IT.Mechanic.Models.Configuration.Hosting;
 
 namespace IT.Mechanic.Models.Configuration
 {
@@ -9,12 +9,12 @@ namespace IT.Mechanic.Models.Configuration
         public HostingProviderEnum HostingProvider { get; set; } = HostingProviderEnum.Rumble;
         public HostingDetailsBase? HostingDetails { get; set; }
 
-
         /***** Needed for expert mode or will be filled in automatically *****/
         public string PublicIP { get; set; } = "";
         public string ServerName { get; set; } = "";
         public string User { get; set; } = "";
         public string SSHPrivateKey { get; set; } = "";
+
         /***** Needed for expert mode or will be filled in automatically *****/
 
 
@@ -38,11 +38,11 @@ namespace IT.Mechanic.Models.Configuration
         {
             switch (name)
             {
-                case "Expert Mode":
+                case "Expertmode":
                     return HostingProviderEnum.Expertmode;
                 case "Rumble":
                     return HostingProviderEnum.Rumble;
-                case "Digital Ocean":
+                case "Digitalocean":
                     return HostingProviderEnum.Digitalocean;
                 case "Azure":
                     return HostingProviderEnum.Azure;
@@ -50,7 +50,7 @@ namespace IT.Mechanic.Models.Configuration
                     return HostingProviderEnum.AWS;
                 case "GCP":
                     return HostingProviderEnum.GCP;
-                case "Inverted Tech":
+                case "Invertedtech":
                     return HostingProviderEnum.Invertedtech;
                 default:
                     return HostingProviderEnum.Rumble;

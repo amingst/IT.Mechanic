@@ -1,7 +1,9 @@
 ﻿@page "/create/hosting"
 @using IT.Mechanic.App.Services.Profiles
 @using IT.Mechanic.App.Services.Settings
+@using IT.Mechanic.App.Components.Pickers;
 @using IT.Mechanic.Models.Configuration
+@using IT.Mechanic.Models.Configuration.Credentials
 @inject NavigationManager Navigation
 @inject IProfileFactory ProfileFactory
 @inject ICredentialService Credentials
@@ -12,51 +14,108 @@
 </MudAppBar>
 <MudTabs @ref="Tabs">
     <MudTabPanel Text="Provider" @ref="ProviderTab">
-        <IT.Mechanic.App.Components.Pickers.ServerHostPicker 
-            HostingProvider="@ProfileFactory.Server.HostingProvider"
-            HostingProviderChanged="@HostingProviderChanged"/>
-        <MudButton @onclick="OnBackClicked">
-            <MudText Typo="@Typo.button">Back</MudText>
-        </MudButton>
-        <MudButton @onclick="() => Activate(1)">
-            <MudText Typo="@Typo.button">Next</MudText>
-        </MudButton>
+        <MudCard Class="mr-auto ml-auto" Elevation="20">
+            <MudCardHeader>
+                <MudText>Select Server Provider</MudText>
+            </MudCardHeader>
+            <MudCardContent>
+                <IT.Mechanic.App.Components.Pickers.ServerHostPicker HostingProvider="@ProfileFactory.Server.HostingProvider"
+                                                                     HostingProviderChanged="@HostingProviderChanged" />
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton @onclick="OnBackClicked">
+                    <MudText Typo="@Typo.button">Back</MudText>
+                </MudButton>
+                <MudButton @onclick="() => Activate(1)">
+                    <MudText Typo="@Typo.button">Next</MudText>
+                </MudButton>
+            </MudCardActions>
+        </MudCard>
     </MudTabPanel>
     <MudTabPanel Text="Provider Configuration" @ref="ProviderConfigurationTab">
-        <HostingForm />
-        <MudButton @onclick="() => Activate(0)">
-            <MudText Typo="@Typo.button">Back</MudText>
-        </MudButton>
-        <MudButton @onclick="() => Activate(2)">
-            <MudText Typo="@Typo.button">Next</MudText>
-        </MudButton>
+        <MudCard Class="mr-auto ml-auto" Elevation="20">
+            <MudCardHeader>
+                <MudText>Configure Server Provider</MudText>
+            </MudCardHeader>
+            <MudCardContent>
+                <HostingForm Provider="@ProfileFactory.Server.HostingProvider"/>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton @onclick="() => Activate(0)">
+                    <MudText Typo="@Typo.button">Back</MudText>
+                </MudButton>
+                <MudButton @onclick="() => Activate(2)">
+                    <MudText Typo="@Typo.button">Next</MudText>
+                </MudButton>
+            </MudCardActions>
+        </MudCard>
     </MudTabPanel>
     <MudTabPanel Text="Credentials" @ref="CredentialsTab">
-        <CredentialsForm CredentialService="Credentials" />
-        <MudButton @onclick="() => Activate(1)">
-            <MudText Typo="@Typo.button">Back</MudText>
-        </MudButton>
-        <MudButton @onclick="() => Activate(3)">
-            <MudText Typo="@Typo.button">Next</MudText>
-        </MudButton>
+        <MudCard Class="mr-auto ml-auto" Elevation="20">
+            <MudCardHeader>
+                <MudText>Select Credentials For @ProfileFactory.Server.HostingProvider</MudText>
+            </MudCardHeader>
+            <MudCardContent>
+                @if (ProfileFactory.Server.HostingProvider == ServerModel.HostingProviderEnum.Rumble)
+                {
+                    // RUMBLE
+                    <RumbleCredentialsPicker CredentialService="@Credentials" RumbleModelValue="@SelectedRumbleCredential" RumbleModelValueChanged="@SelectedRumbleCredentialChanged"/>
+                } else if (ProfileFactory.Server.HostingProvider == ServerModel.HostingProviderEnum.AWS)
+                {
+                    // AWS
+                    <AWSCredentialsPicker CredentialsService="@Credentials" AWSModelValue="@SelectedAWSCredential" AWSModelValueChanged="@SelectedAWSCredentialChanged" />
+                } else if (ProfileFactory.Server.HostingProvider == ServerModel.HostingProviderEnum.Azure)
+                {
+                    // AZURE
+                    <AzureCredentialsPicker CredentialsService="@Credentials" AzureModelValue="@SelectedAzureCredential" AzureModelValueChanged="@SelectedAzureCredentialChanged" />
+                } else if (ProfileFactory.Server.HostingProvider == ServerModel.HostingProviderEnum.Digitalocean)
+                {
+                    // DigitalOcean
+                    <DigitalOceanCredentialsPicker CredentialsService="@Credentials" DigitalOceanModelValue="@SelectedDigitalOceanCredential" DigitalOceanModelValueChanged="@SelectedDigitalOceanCredentialChanged" />
+                } 
+                else if (ProfileFactory.Server.HostingProvider == ServerModel.HostingProviderEnum.GCP)
+                {
+                    <GCPCredentialsPicker CredentialService="@Credentials" GCPModelValue="@SelectedGCPCredential" GCPModelValueChanged="@SelectedGCPChanged" />
+                }
+                else if (ProfileFactory.Server.HostingProvider == ServerModel.HostingProviderEnum.Invertedtech)
+                {
+                    <InvertedTechCredentialsPicker CredentialService="@Credentials" InvertedTechModelValue="@SelectedInvertedTechCredential" InvertedTechModelValueChanged="@SelectedInvertedTechCredentialChanged" />
+                }
+            </MudCardContent>
+            <MudCardActions>
+                    <MudButton @onclick="() => Activate(1)">
+                        <MudText Typo="@Typo.button">Back</MudText>
+                    </MudButton>
+                    <MudButton @onclick="() => Activate(3)">
+                        <MudText Typo="@Typo.button">Next</MudText>
+                    </MudButton>
+            </MudCardActions>
+        </MudCard>
     </MudTabPanel>
     <MudTabPanel Text="Configure" @ref="ConfigureTab">
-        <ServerSettingsForm 
-            PublicIPv4="@ProfileFactory.Server.PublicIP"
-            PublicIPv4Changed="@PublicIPv4Changed"
-            User="@ProfileFactory.Server.User"
-            UserChanged="@UserChanged"
-            ServerName="@ProfileFactory.Server.ServerName"
-            ServerNameChanged="@ServerNameChanged"
-            SSHPrivateKey="@ProfileFactory.Server.SSHPrivateKey"
-            SSHPrivateKeyChanged="@SSHPrivateKeyChanged"
-            />
-        <MudButton @onclick="() => Activate(2)">
-            <MudText Typo="@Typo.button">Back</MudText>
-        </MudButton>
-        <MudButton @onclick="OnNextClicked">
-            <MudText Typo="@Typo.button">Next</MudText>
-        </MudButton>
+        <MudCard Class="mr-auto ml-auto" Elevation="20">
+                <MudCardHeader>
+                    <MudText>Configure Server</MudText>
+            </MudCardHeader>
+                <MudCardContent>
+                    <ServerSettingsForm PublicIPv4="@ProfileFactory.Server.PublicIP"
+                                        PublicIPv4Changed="@PublicIPv4Changed"
+                                        User="@ProfileFactory.Server.User"
+                                        UserChanged="@UserChanged"
+                                        ServerName="@ProfileFactory.Server.ServerName"
+                                        ServerNameChanged="@ServerNameChanged"
+                                        SSHPrivateKey="@ProfileFactory.Server.SSHPrivateKey"
+                                        SSHPrivateKeyChanged="@SSHPrivateKeyChanged" />
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton @onclick="() => Activate(2)">
+                        <MudText Typo="@Typo.button">Back</MudText>
+                    </MudButton>
+                    <MudButton @onclick="OnNextClicked">
+                        <MudText Typo="@Typo.button">Next</MudText>
+                    </MudButton>
+                </MudCardActions>
+        </MudCard>
     </MudTabPanel>
 </MudTabs>
 
@@ -68,6 +127,12 @@
     private MudTabPanel ConfigureTab;
     private bool ShowServerSettingsForm { get; set; } = false;
     private bool ShowCredentialsForm { get; set; } = false;
+    public RumbleModel SelectedRumbleCredential { get; set; }
+    public AWSModel SelectedAWSCredential { get; set; }
+    public AzureModel SelectedAzureCredential { get; set; }
+    public DigitalOceanModel SelectedDigitalOceanCredential { get; set; }
+    public GCPModel SelectedGCPCredential { get; set; }
+    public InvertedTechModel SelectedInvertedTechCredential { get; set; }
 
     private void Activate(int index)
     {
@@ -81,6 +146,25 @@
 
     private void OnNextClicked()
     {
+        if (SelectedRumbleCredential != null)
+        {
+            ProfileFactory.Credentials.Add(SelectedRumbleCredential);
+        } else if (SelectedAWSCredential != null)
+        {
+            ProfileFactory.Credentials.Add(SelectedAWSCredential);
+        } else if (SelectedAzureCredential != null)
+        {
+            ProfileFactory.Credentials.Add(SelectedAzureCredential);
+        } else if (SelectedDigitalOceanCredential != null)
+        {
+            ProfileFactory.Credentials.Add(SelectedDigitalOceanCredential);
+        } else if (SelectedGCPCredential != null)
+        {
+            ProfileFactory.Credentials.Add(SelectedGCPCredential);
+        } else if (SelectedInvertedTechCredential != null)
+        {
+            ProfileFactory.Credentials.Add(SelectedInvertedTechCredential);
+        }
         Navigation.NavigateTo("/create/review");
     }
 
@@ -107,5 +191,35 @@
     public void SSHPrivateKeyChanged(string key)
     {
         ProfileFactory.Server.SSHPrivateKey = key;
+    }
+
+    public void SelectedRumbleCredentialChanged(RumbleModel model)
+    {
+        SelectedRumbleCredential = model;
+    }
+
+    public void SelectedAWSCredentialChanged(AWSModel model)
+    {
+        SelectedAWSCredential = model;
+    }
+
+    public void SelectedAzureCredentialChanged(AzureModel model)
+    {
+        SelectedAzureCredential = model;
+    }
+
+    public void SelectedDigitalOceanCredentialChanged(DigitalOceanModel model)
+    {
+        SelectedDigitalOceanCredential = model;
+    }
+
+    public void SelectedGCPChanged(GCPModel model)
+    {
+        SelectedGCPCredential = model;
+    }
+
+    public void SelectedInvertedTechCredentialChanged(InvertedTechModel model)
+    {
+        SelectedInvertedTechCredential = model;
     }
 }

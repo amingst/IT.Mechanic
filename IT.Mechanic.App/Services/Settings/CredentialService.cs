@@ -218,7 +218,31 @@ namespace IT.Mechanic.App.Services.Settings
                         throw new ArgumentException("Invalid credentials type for Rumble.");
                     }
                     break;
-
+                case CredentialHelpers.CredentialTypes.GCP:
+                    if (credentials is GCPModel gcpCredentials)
+                    {
+                        var newCredential = new CredentialRecord<GCPModel>(name, gcpCredentials);
+                        CredentialsState.GCPCredentials.Add(newCredential);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid credentials type for GCP.");
+                    }
+                    break;
+                case CredentialHelpers.CredentialTypes.Invertedtech:
+                    if (credentials is InvertedTechModel invertedTechCredentials)
+                    {
+                        var newCredential = new CredentialRecord<InvertedTechModel>(
+                            name,
+                            invertedTechCredentials
+                        );
+                        CredentialsState.InvertedTechCredentials.Add(newCredential);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid credentials type for InvertedTech.");
+                    }
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(
                         nameof(CredentialType),

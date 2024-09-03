@@ -30,6 +30,10 @@ namespace IT.Mechanic.App.Helpers
                     return new MasterModel() { MasterKey = MasterKey };
                 case CredentialTypes.Rumble:
                     return new RumbleModel() { ApiKey = ApiKey };
+                case CredentialTypes.GCP:
+                    return new GCPModel() { ApiKey = ApiKey };
+                case CredentialTypes.Invertedtech:
+                    return new InvertedTechModel() { ApiKey = ApiKey };
                 default:
                     return null;
             }
@@ -40,7 +44,9 @@ namespace IT.Mechanic.App.Helpers
             AWS,
             Azure,
             DigitalOcean,
+            GCP,
             GoDaddy,
+            Invertedtech,
             Master,
             Rumble,
         }
