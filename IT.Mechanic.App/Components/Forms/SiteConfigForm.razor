@@ -10,45 +10,48 @@
         <MudForm @ref="_form">
             <MudStack>
                 <MudText>What Kind Of Website Do You Want?</MudText>
-                <MudSelect T="ProductSelectionModel.WebsiteTypes" @bind-Value="WebsiteType">
+@*                 <MudSelect T="ProductSelectionModel.WebsiteTypes" @bind-Value="WebsiteType">
                     @foreach (var type in ProductSelectionModel.GetWebsiteTypesNames())
                     {
                         <MudSelectItem Value="ProductSelectionModel.GetWebsiteTypesFromName(type)">@type</MudSelectItem>
                     }
-                </MudSelect>
+                </MudSelect> *@
+                <IT.Mechanic.App.Components.Pickers.WebsiteTypePicker WebsiteType="@WebsiteType" WebsiteTypeChanged="@WebsiteTypeChanged" />
             </MudStack>
             <MudSpacer />
             <MudStack>
                 <MudText>Where Did You Get Your Domain Name?</MudText>
-                <MudSelect T="DNSModel.ProviderEnum" @bind-Value="DNSProvider">
+@*                 <MudSelect T="DNSModel.ProviderEnum" @bind-Value="DNSProvider">
                     @foreach (var type in DNSModel.GetDomainNameProvidersNames())
                     {
                         <MudSelectItem Value="DNSModel.GetProviderFromName(type)">@type</MudSelectItem>
                     }
-                </MudSelect>
+                </MudSelect> *@
+                <IT.Mechanic.App.Components.Pickers.DNSHostPicker DNSProviderValue="@DNSProvider" ProviderChanged="@DNSProviderChanged" />
             </MudStack>
             <MudSpacer />
             <MudStack>
                 <MudText>Where Are You Hosting Your Server?</MudText>
-                <MudSelect T="ServerModel.HostingProviderEnum" @bind-Value="HostingProvider">
+                @* <MudSelect T="ServerModel.HostingProviderEnum" @bind-Value="HostingProvider">
                     @foreach (var type in ServerModel.GetHostingProvidersNames())
                     {
                         <MudSelectItem Value="ServerModel.GetHostingProviderFromName(type)">@type</MudSelectItem>
                     }
-                </MudSelect>
+                </MudSelect> *@
+                <IT.Mechanic.App.Components.Pickers.ServerHostPicker HostingProvider="@HostingProvider" HostingProviderChanged="@HostingProviderChanged" />
             </MudStack>
         </MudForm>
     </MudCardContent>
-    <MudCardActions Class="ml-auto mr-auto">
+@*     <MudCardActions Class="ml-auto mr-auto">
         <MudButton Variant="Variant.Filled" Color="@ButtonColor" @onclick="OnCreateClicked" StartIcon="@ButtonIcon" >
             <MudText Typo="Typo.button">@ButtonText</MudText>
         </MudButton>
-    </MudCardActions>
+    </MudCardActions> *@
 </MudCard>
 
-    @code {
-    [Parameter]
-    public IProfileFactory Factory { get; set; }
+@code {
+    // [Parameter]
+    // public IProfileFactory Factory { get; set; }
 
     [Parameter]
     public NavigationManager Navigation { get; set; }
@@ -56,9 +59,24 @@
     [Parameter]
     public string NextRoute { get; set; } = string.Empty;
 
+    [Parameter]
     public DNSModel.ProviderEnum DNSProvider { get; set; }
+
+    [Parameter]
+    public EventCallback<DNSModel.ProviderEnum> DNSProviderChanged { get; set; }
+
+    [Parameter]
     public ServerModel.HostingProviderEnum HostingProvider { get; set; }
+
+    [Parameter]
+    public EventCallback<ServerModel.HostingProviderEnum> HostingProviderChanged { get; set; }
+
+    [Parameter]
     public ProductSelectionModel.WebsiteTypes WebsiteType { get; set; }
+
+    [Parameter]
+    public EventCallback<ProductSelectionModel.WebsiteTypes> WebsiteTypeChanged { get; set; }
+
     public bool IsSuccess { get; set; } = false;
     public string ButtonIcon => IsSuccess ? @Icons.Material.Filled.Check : Icons.Material.Filled.Create;
     public Color ButtonColor => IsSuccess ? Color.Success : Color.Primary;
@@ -66,17 +84,17 @@
 
     private MudForm _form;
 
-    private void OnCreateClicked()
-    {
-        Factory.DNS.Provider = DNSProvider;
-        Factory.Server.HostingProvider = HostingProvider;
-        Factory.ProductSelection.WebsiteType = WebsiteType;
-        if (!string.IsNullOrEmpty(NextRoute))
-        {
-            Navigation.NavigateTo(NextRoute);
-        } else
-        {
-            Navigation.NavigateTo("/create/dns");
-        }
-    }
+    // private void OnCreateClicked()
+    // {
+    //     Factory.DNS.Provider = DNSProvider;
+    //     Factory.Server.HostingProvider = HostingProvider;
+    //     Factory.ProductSelection.WebsiteType = WebsiteType;
+    //     if (!string.IsNullOrEmpty(NextRoute))
+    //     {
+    //         Navigation.NavigateTo(NextRoute);
+    //     } else
+    //     {
+    //         Navigation.NavigateTo("/create/dns");
+    //     }
+    // }
 }

@@ -1,5 +1,6 @@
 ﻿@page "/create"
 @using IT.Mechanic.App.Services.Profiles
+@using IT.Mechanic.Models.Configuration
 @inject IProfileFactory ProfileFactory
 @inject NavigationManager Navigation;
 
@@ -9,7 +10,16 @@
     </MudTooltip>
     <MudText>Create Your Platform</MudText>
 </MudAppBar>
-<SiteConfigForm Factory="@ProfileFactory" Navigation="Navigation" NextRoute="@("/create/dns")"/>
+<SiteConfigForm DNSProvider="@ProfileFactory.DNS.Provider" 
+                DNSProviderChanged="@DNSProviderChanged"
+                HostingProvider="@ProfileFactory.Server.HostingProvider"
+                HostingProviderChanged="@HostingProviderChanged"
+                WebsiteType="@ProfileFactory.ProductSelection.WebsiteType"
+                WebsiteTypeChanged="@WebsiteTypeChanged"
+                Navigation="Navigation" NextRoute="@("/create/dns")"/>
+<MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="OnCreateClicked" StartIcon="@Icons.Material.Filled.Add">
+    <MudText Typo="Typo.button">Create</MudText>
+</MudButton>
 
 @code {
     protected override void OnInitialized()
@@ -21,5 +31,25 @@
     private void OnBackClicked()
     {
         Navigation.NavigateTo("/");
+    }
+
+    public void DNSProviderChanged(DNSModel.ProviderEnum dnsProvider)
+    {
+        ProfileFactory.DNS.Provider = dnsProvider;
+    }
+
+    public void HostingProviderChanged(ServerModel.HostingProviderEnum hostingProvider)
+    {
+        ProfileFactory.Server.HostingProvider = hostingProvider;
+    }
+
+    public void WebsiteTypeChanged(ProductSelectionModel.WebsiteTypes websiteType)
+    {
+        ProfileFactory.ProductSelection.WebsiteType = websiteType;
+    }
+
+    public void OnCreateClicked()
+    {
+        Navigation.NavigateTo("/create/dns");
     }
 }

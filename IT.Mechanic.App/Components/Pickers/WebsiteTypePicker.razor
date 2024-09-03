@@ -1,5 +1,5 @@
 ﻿@using IT.Mechanic.Models.Configuration
-<MudSelect T="ProductSelectionModel.WebsiteTypes" @bind-Value="@WebsiteType">
+<MudSelect T="ProductSelectionModel.WebsiteTypes" Value="@WebsiteType" ValueChanged="@WebsiteTypeChanged">
     @foreach (var type in ProductSelectionModel.GetWebsiteTypesNames())
     {
         <MudSelectItem Value="ProductSelectionModel.GetWebsiteTypesFromName(type)">@type</MudSelectItem>
@@ -9,4 +9,7 @@
 @code {
     [Parameter]
     public  ProductSelectionModel.WebsiteTypes WebsiteType { get; set; }
+
+    [Parameter]
+    public EventCallback<ProductSelectionModel.WebsiteTypes> WebsiteTypeChanged { get; set; }
 }
