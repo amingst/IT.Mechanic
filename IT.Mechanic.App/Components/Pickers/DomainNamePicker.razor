@@ -1,13 +1,16 @@
-﻿<MudSelect @bind-Value="@DomainName">
-    @foreach (var Domain in _domains)
+﻿<MudSelect Value="@Domain" ValueChanged="DomainChanged">
+    @foreach (var domainName in _domains)
     {
-        <MudSelectItem Value="@Domain" />
+        <MudSelectItem Value="@domainName" />
     }
 </MudSelect>
 
 @code {
     [Parameter]
-    public string DomainName { get; set; }
+    public string Domain { get; set; }
+
+    [Parameter]
+    public EventCallback<string> DomainChanged  { get; set; }
 
     private List<string> _domains = ["example1.com", "example2.com", "example3.com"];
 }
