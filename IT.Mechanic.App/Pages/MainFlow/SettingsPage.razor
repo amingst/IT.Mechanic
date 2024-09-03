@@ -10,6 +10,10 @@
     </MudTooltip>
     <MudText>Settings</MudText>
 </MudAppBar>
+@if (IsEditMode)
+{
+    <MudAlert Severity="Severity.Info">Editing Settings</MudAlert>
+}
 <MudPaper Width="300" Height="Auto">
     <MudCard Class="mr-auto ml-auto" Elevation="20">
         <MudCardHeader>
