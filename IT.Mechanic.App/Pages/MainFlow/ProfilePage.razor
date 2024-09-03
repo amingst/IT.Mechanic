@@ -8,25 +8,40 @@
 
 <MudAppBar>
     <MudToolBar>
-        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Default" @onclick="OnBackClicked" Class="mr-auto" />
-        <MudToggleIconButton @bind-Toggled="IsServerRunningToggle" Icon="@Icons.Material.Filled.PlayArrow" ToggledIcon="@Icons.Material.Filled.Stop" Color="Color.Success" ToggledColor="Color.Error" />
-        <MudToggleIconButton @bind-Toggled="UpdateSoftwareToggle" Icon="@Icons.Material.Filled.Update" ToggledIcon="@Icons.Material.Filled.UpdateDisabled" Color="Color.Warning" ToggledColor="Color.Default" />
-        <MudMenu Icon="@Icons.Material.Filled.Merge" Color="Color.Default" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopRight">
-            <MudMenuItem>Change Server Provider</MudMenuItem>
-            <MudMenuItem>Migrate Location</MudMenuItem>
-            <MudMenuItem>Size</MudMenuItem>
-        </MudMenu><MudMenu Icon="@Icons.Material.Filled.Backup" Color="Color.Info" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopRight">
-            <MudMenuItem>Backup</MudMenuItem>
-            <MudMenuItem>Install New Backup Service</MudMenuItem>
-        </MudMenu>
-        <MudMenu Icon="@Icons.Material.Filled.Dns" Color="Color.Default" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopRight">
-            <MudMenuItem>Change DNS Name</MudMenuItem>
-            <MudMenuItem>Chanege DNS Provider</MudMenuItem>
-        </MudMenu>
-        <MudMenu Icon="@Icons.Material.Filled.Delete" Color="Color.Error" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopRight">
-            <MudMenuItem>Backup and Delete</MudMenuItem>
-            <MudMenuItem @onclick="OnForceDeleteClicked">Force Delete</MudMenuItem>
-        </MudMenu>
+        <MudTooltip Text="Back">
+            <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Default" @onclick="OnBackClicked" Class="mr-auto" />
+        </MudTooltip>
+        <MudTooltip Text="Start/Stop">
+            <MudToggleIconButton @bind-Toggled="IsServerRunningToggle" Icon="@Icons.Material.Filled.PlayArrow" ToggledIcon="@Icons.Material.Filled.Stop" Color="Color.Success" ToggledColor="Color.Error" />
+        </MudTooltip>
+        <MudTooltip Text="Update Software (docker)">
+            <MudToggleIconButton @bind-Toggled="UpdateSoftwareToggle" Icon="@Icons.Material.Filled.Update" ToggledIcon="@Icons.Material.Filled.UpdateDisabled" Color="Color.Warning" ToggledColor="Color.Default" />
+        </MudTooltip>
+        <MudTooltip Text="Hosting">
+            <MudMenu Icon="@Icons.Material.Filled.Merge" Color="Color.Default" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopRight">
+                <MudMenuItem>Change Server Provider</MudMenuItem>
+                <MudMenuItem>Migrate Location</MudMenuItem>
+                <MudMenuItem>Size</MudMenuItem>
+            </MudMenu>
+        </MudTooltip>
+        <MudTooltip Text="Backup">
+            <MudMenu Icon="@Icons.Material.Filled.Backup" Color="Color.Info" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopRight">
+                <MudMenuItem>Backup</MudMenuItem>
+                <MudMenuItem>Install New Backup Service</MudMenuItem>
+            </MudMenu>
+        </MudTooltip>
+        <MudTooltip Text="DNS">
+            <MudMenu Icon="@Icons.Material.Filled.Dns" Color="Color.Default" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopRight">
+                <MudMenuItem>Change DNS Name</MudMenuItem>
+                <MudMenuItem>Chanege DNS Provider</MudMenuItem>
+            </MudMenu>
+        </MudTooltip>
+        <MudTooltip Text="Delete">
+            <MudMenu Icon="@Icons.Material.Filled.Delete" Color="Color.Error" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopRight">
+                <MudMenuItem>Backup and Delete</MudMenuItem>
+                <MudMenuItem @onclick="OnForceDeleteClicked">Force Delete</MudMenuItem>
+            </MudMenu>
+        </MudTooltip>
     </MudToolBar>
 </MudAppBar>
 <MudPaper Width="300" Elevation="15">
