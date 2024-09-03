@@ -20,7 +20,13 @@
                 </MudCardHeader>
                 <MudCardContent>
                     <MudText Typo="Typo.h6">This Is Where You Bought The Domain From.</MudText>
-                    <IT.Mechanic.App.Components.Pickers.DNSHostPicker  DNSProviderValue="@DNS.Provider" />
+                    @* <IT.Mechanic.App.Components.Pickers.DNSHostPicker  DNSProviderValue="@DNS.Provider" /> *@
+                    <MudSelect T="DNSModel.ProviderEnum" Label="DNS Hosts" Value="@DNS.Provider">
+                        @foreach (var provider in DNSModel.GetDomainNameProvidersNames())
+                        {
+                            <MudSelectItem Value="DNSModel.GetProviderFromName(provider)">@provider</MudSelectItem>
+                        }
+                    </MudSelect>
                 </MudCardContent>
                 <MudCardActions>
                     <MudButton @onclick="OnBackClicked">
@@ -42,7 +48,14 @@
         </MudButton>
     </MudTabPanel>
     <MudTabPanel Text="Domain Name" @ref="DomainNameTabPanel" @ID="@("#Domain")">
-        <IT.Mechanic.App.Components.Pickers.DomainNamePicker DomainName="@DNS.DomainName" />
+        @* <IT.Mechanic.App.Components.Pickers.DomainNamePicker DomainName="@DNS.DomainName" /> *@
+        <MudSelect @bind-Value="@DNS.DomainName">
+            @foreach (var Domain in _domains)
+            {
+                <MudSelectItem Value="@Domain" />
+            }
+        </MudSelect>
+
         <MudButton @onclick="() => Activate(1)">
             <MudText Typo="@Typo.button">Back</MudText>
         </MudButton>
@@ -59,6 +72,8 @@
     private MudTabPanel ProviderTab;
     private MudTabPanel CredentialsTab;
     private MudTabPanel DomainNameTabPanel;
+
+    private List<string> _domains = ["example1.com", "example2.com", "example3.com"];
 
 
     private enum DNSTabs
