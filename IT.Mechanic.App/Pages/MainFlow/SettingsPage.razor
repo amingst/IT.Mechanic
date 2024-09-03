@@ -10,15 +10,48 @@
     </MudTooltip>
     <MudText>Settings</MudText>
 </MudAppBar>
-<MudPaper Width="300">
-    <MudTextField Value="SettingsService.Settings.MechanicDirectory" Label="Mechanic Directory" Disabled="true" />
-    <MudTextField Value="SettingsService.Settings.MechanicCliPath" Label="Mechanic CLI Path" Disabled="true" />
+<MudPaper Width="300" Height="Auto">
+    <MudCard Class="mr-auto ml-auto" Elevation="20">
+        <MudCardHeader>
+            <MudText>General</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudTextField Value="SettingsService.Settings.MechanicDirectory" Label="Mechanic Directory" Disabled="@(!IsEditMode)" />
+            <MudTextField Value="SettingsService.Settings.MechanicCliPath" Label="Mechanic CLI Path" Disabled="@(!IsEditMode)" />
+        </MudCardContent>
+        <MudCardActions>
+            @if (IsEditMode)
+            {
+                <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Delete" @onclick="ResetForm">Clear</MudButton>
+                <MudButton Color="Color.Info" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Save" @onclick="SaveChanges">Save</MudButton>
+            } else
+            {
+                <MudButton Color="Color.Info" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Edit" @onclick="ToggleEdit">Edit Settings</MudButton>
+            }
+        </MudCardActions>
+    </MudCard>
 </MudPaper>
 <MudButton @onclick=@(() => Navigation.NavigateTo("/credentials")) Color="Color.Primary" Variant="Variant.Filled">Credentials</MudButton>
 
 @code {
+    public bool IsEditMode { get; set; } = false;
     private void OnBackClicked()
     {
         Navigation.NavigateTo("/");
+    }
+
+    public void ToggleEdit()
+    {
+        IsEditMode = !IsEditMode;
+    }
+
+    public void ResetForm()
+    {
+        IsEditMode = false;
+    }
+
+    public void SaveChanges()
+    {
+        IsEditMode = false;
     }
 }
