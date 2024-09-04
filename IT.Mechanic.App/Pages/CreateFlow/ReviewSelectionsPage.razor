@@ -79,14 +79,17 @@
                     <MudText>Server User</MudText>
                     <MudTextField Disabled="true" Value="@ProfileFactory.Server.User" />
                 </MudStack>
-                <MudStack Row="true">
-                    <MudText>Public IP:</MudText>
-                    <MudTextField Disabled="true" Value="@ProfileFactory.Server.PublicIP" />
-                </MudStack>
-                <MudStack Row="true">
-                    <MudText>SSHPrivateKey:</MudText>
-                    <MudTextField Disabled="true" Value="@ProfileFactory.Server.SSHPrivateKey" />
-                </MudStack>
+                @if (ProfileFactory.Server.HostingProvider == ServerModel.HostingProviderEnum.Expertmode)
+                {
+                    <MudStack Row="true">
+                        <MudText>Public IP:</MudText>
+                        <MudTextField Disabled="true" Value="@ProfileFactory.Server.PublicIP" />
+                    </MudStack>
+                    <MudStack Row="true">
+                        <MudText>SSHPrivateKey:</MudText>
+                        <MudTextField Disabled="true" Value="@ProfileFactory.Server.SSHPrivateKey" />
+                    </MudStack>
+                }
             </MudCardContent>
             <MudCardActions>
                 <MudButton @onclick="() => Activate(1)">
