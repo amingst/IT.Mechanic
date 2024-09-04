@@ -1,0 +1,39 @@
+﻿@using IT.Mechanic.Models.Configuration.Hosting
+<MudCard Elevation="20" Class="ml-auto mr-auto">
+    <MudCardHeader>
+        <MudText>Set DigitalOcean Host Settings</MudText>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudForm @ref="_form">
+            <MudTextField Label="Server Sku"
+                          T="string"
+                          Value="@DigitalOceanHostModel.ServerSKU"
+                          ValueChanged="@ServerSkuChanged"
+                          Required="true"
+                          RequiredError="Required" />
+            <IT.Mechanic.App.Components.Pickers.ServerLocationPicker ServerLocationValue="@DigitalOceanHostModel.ServerLocation" ServerLocationValueChanged="@ServerLocationChanged" />
+        </MudForm>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    private MudForm _form;
+
+    [Parameter]
+    public DigitalOceanModel DigitalOceanHostModel { get; set; }
+
+    public void ServerSkuChanged(string newSku)
+    {
+        DigitalOceanHostModel.ServerSKU = newSku;
+        DigitalOceanHostModelChanged.InvokeAsync(DigitalOceanHostModel);
+    }
+
+    public void ServerLocationChanged(string newLocation)
+    {
+        DigitalOceanHostModel.ServerLocation = newLocation;
+        DigitalOceanHostModelChanged.InvokeAsync(DigitalOceanHostModel);
+    }
+
+    [Parameter]
+    public EventCallback<DigitalOceanModel> DigitalOceanHostModelChanged { get; set; }
+}

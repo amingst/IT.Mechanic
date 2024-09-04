@@ -38,7 +38,19 @@
                 <MudText>Configure Server Provider</MudText>
             </MudCardHeader>
             <MudCardContent>
-                <HostingForm Provider="@ProfileFactory.Server.HostingProvider"/>
+                @* <HostingForm Provider="@ProfileFactory.Server.HostingProvider"/> *@
+                @if (ProfileFactory.Server.HostingProvider == ServerModel.HostingProviderEnum.Rumble)
+                {
+                    <IT.Mechanic.App.Components.Forms.Hosting.RumbleHostDetailsForm RumbleHostModel="@RumbleHostingModel"  RumbleHostModelChanged="@RumbleHostingDetailsChanged"/>
+                }
+                else if (ProfileFactory.Server.HostingProvider == ServerModel.HostingProviderEnum.Azure)
+                {
+                    <IT.Mechanic.App.Components.Forms.Hosting.AzureHostDetailsForm AzureHostModel="@AzureHostingModel" AzureHostModelChanged="@AzureHostingDetailsChanged" />
+                }
+                else if (ProfileFactory.Server.HostingProvider == ServerModel.HostingProviderEnum.Digitalocean)
+                {
+                    <IT.Mechanic.App.Components.Forms.Hosting.DigitalOceanHostDetailsForm DigitalOceanHostModel="@DigitalOceanHostingModel" DigitalOceanHostModelChanged="@DigitalOceanHostingDetailsChanged" />                   
+                }
             </MudCardContent>
             <MudCardActions>
                 <MudButton @onclick="() => Activate(0)">
@@ -127,12 +139,15 @@
     private MudTabPanel ConfigureTab;
     private bool ShowServerSettingsForm { get; set; } = false;
     private bool ShowCredentialsForm { get; set; } = false;
-    public RumbleModel SelectedRumbleCredential { get; set; }
-    public AWSModel SelectedAWSCredential { get; set; }
-    public AzureModel SelectedAzureCredential { get; set; }
-    public DigitalOceanModel SelectedDigitalOceanCredential { get; set; }
-    public GCPModel SelectedGCPCredential { get; set; }
-    public InvertedTechModel SelectedInvertedTechCredential { get; set; }
+    public IT.Mechanic.Models.Configuration.Credentials.RumbleModel SelectedRumbleCredential { get; set; }
+    public IT.Mechanic.Models.Configuration.Credentials.AWSModel SelectedAWSCredential { get; set; }
+    public IT.Mechanic.Models.Configuration.Credentials.AzureModel SelectedAzureCredential { get; set; }
+    public IT.Mechanic.Models.Configuration.Credentials.DigitalOceanModel SelectedDigitalOceanCredential { get; set; }
+    public IT.Mechanic.Models.Configuration.Credentials.GCPModel SelectedGCPCredential { get; set; }
+    public IT.Mechanic.Models.Configuration.Credentials.InvertedTechModel SelectedInvertedTechCredential { get; set; }
+    public IT.Mechanic.Models.Configuration.Hosting.RumbleModel RumbleHostingModel { get; set; } = new();
+    public IT.Mechanic.Models.Configuration.Hosting.AzureModel AzureHostingModel { get; set; } = new();
+    public IT.Mechanic.Models.Configuration.Hosting.DigitalOceanModel DigitalOceanHostingModel { get; set; } = new();
 
     private void Activate(int index)
     {
@@ -144,27 +159,55 @@
         Navigation.NavigateTo("/create/dns");
     }
 
-    private void OnNextClicked()
+    private void SetCredentials()
     {
         if (SelectedRumbleCredential != null)
         {
             ProfileFactory.Credentials.Add(SelectedRumbleCredential);
-        } else if (SelectedAWSCredential != null)
+        }
+        else if (SelectedAWSCredential != null)
         {
             ProfileFactory.Credentials.Add(SelectedAWSCredential);
-        } else if (SelectedAzureCredential != null)
+        }
+        else if (SelectedAzureCredential != null)
         {
             ProfileFactory.Credentials.Add(SelectedAzureCredential);
-        } else if (SelectedDigitalOceanCredential != null)
+        }
+        else if (SelectedDigitalOceanCredential != null)
         {
             ProfileFactory.Credentials.Add(SelectedDigitalOceanCredential);
-        } else if (SelectedGCPCredential != null)
+        }
+        else if (SelectedGCPCredential != null)
         {
             ProfileFactory.Credentials.Add(SelectedGCPCredential);
-        } else if (SelectedInvertedTechCredential != null)
+        }
+        else if (SelectedInvertedTechCredential != null)
         {
             ProfileFactory.Credentials.Add(SelectedInvertedTechCredential);
         }
+    }
+
+    private void SetHostingDetails()
+    {
+        if (ProfileFactory.Server.HostingProvider == ServerModel.HostingProviderEnum.Rumble)
+        {
+            ProfileFactory.Server.HostingDetails = RumbleHostingModel;
+        }
+        else if (ProfileFactory.Server.HostingProvider == ServerModel.HostingProviderEnum.Azure)
+        {
+            ProfileFactory.Server.HostingDetails = AzureHostingModel;
+        }
+        else if (ProfileFactory.Server.HostingProvider == ServerModel.HostingProviderEnum.Digitalocean)
+        {
+            ProfileFactory.Server.HostingDetails = DigitalOceanHostingModel;
+        }
+    }
+
+    private void OnNextClicked()
+    {
+        SetCredentials();
+        SetHostingDetails();
+
         Navigation.NavigateTo("/create/review");
     }
 
@@ -221,5 +264,20 @@
     public void SelectedInvertedTechCredentialChanged(InvertedTechModel model)
     {
         SelectedInvertedTechCredential = model;
+    }
+
+    public void RumbleHostingDetailsChanged(IT.Mechanic.Models.Configuration.Hosting.RumbleModel model )
+    {
+        RumbleHostingModel = model;
+    }
+
+    public void AzureHostingDetailsChanged(IT.Mechanic.Models.Configuration.Hosting.AzureModel model)
+    {
+       AzureHostingModel = model;
+    }
+
+    public void DigitalOceanHostingDetailsChanged(IT.Mechanic.Models.Configuration.Hosting.DigitalOceanModel model)
+    {
+       DigitalOceanHostingModel = model;
     }
 }

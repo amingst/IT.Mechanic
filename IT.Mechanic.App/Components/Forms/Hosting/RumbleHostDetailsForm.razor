@@ -1,0 +1,39 @@
+﻿@using IT.Mechanic.Models.Configuration.Hosting
+<MudCard Elevation="20" Class="ml-auto mr-auto">
+    <MudCardHeader>
+        <MudText>Set Rumble Host Settings</MudText>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudForm @ref="_form">
+            <MudTextField Label="Server Sku"
+                          T="string"
+                          Value="@RumbleHostModel.ServerSKU"
+                          ValueChanged="@ServerSkuChanged"
+                          Required="true"
+                          RequiredError="Required" />
+            <IT.Mechanic.App.Components.Pickers.ServerLocationPicker ServerLocationValue="@RumbleHostModel.ServerLocation" ServerLocationValueChanged="@ServerLocationChanged" />
+        </MudForm>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    private MudForm _form;
+
+    [Parameter]
+    public RumbleModel RumbleHostModel { get; set; }
+
+    public void ServerSkuChanged(string newSku)
+    {
+        RumbleHostModel.ServerSKU = newSku;
+        RumbleHostModelChanged.InvokeAsync(RumbleHostModel);
+    }
+
+    public void ServerLocationChanged(string newLocation)
+    {
+        RumbleHostModel.ServerLocation = newLocation;
+        RumbleHostModelChanged.InvokeAsync(RumbleHostModel);
+    }
+
+    [Parameter]
+    public EventCallback<RumbleModel> RumbleHostModelChanged { get; set; }
+}

@@ -1,0 +1,39 @@
+﻿@using IT.Mechanic.Models.Configuration.Hosting
+<MudCard Elevation="20" Class="ml-auto mr-auto">
+    <MudCardHeader>
+        <MudText>Set Azure Host Settings</MudText>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudForm @ref="_form">
+            <MudTextField Label="Server Sku"
+                          T="string"
+                          Value="@AzureHostModel.ServerSKU"
+                          ValueChanged="@ServerSkuChanged"
+                          Required="true"
+                          RequiredError="Required" />
+            <IT.Mechanic.App.Components.Pickers.ServerLocationPicker ServerLocationValue="@AzureHostModel.ServerLocation" ServerLocationValueChanged="@ServerLocationChanged" />
+        </MudForm>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    private MudForm _form;
+
+    [Parameter]
+    public AzureModel AzureHostModel { get; set; }
+
+    public void ServerSkuChanged(string newSku)
+    {
+        AzureHostModel.ServerSKU = newSku;
+        AzureHostModelChanged.InvokeAsync(AzureHostModel);
+    }
+
+    public void ServerLocationChanged(string newLocation)
+    {
+        AzureHostModel.ServerLocation = newLocation;
+        AzureHostModelChanged.InvokeAsync(AzureHostModel);
+    }
+
+    [Parameter]
+    public EventCallback<AzureModel> AzureHostModelChanged { get; set; }
+}
