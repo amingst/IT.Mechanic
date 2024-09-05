@@ -2,6 +2,7 @@
 using System.Text.Json.Serialization;
 using IT.Mechanic.App.Services.Profiles;
 using IT.Mechanic.App.Services.Settings;
+using IT.Mechanic.App.Validators;
 using Microsoft.Extensions.Logging;
 using MudBlazor.Services;
 
@@ -43,6 +44,9 @@ namespace IT.Mechanic.App
             builder.Services.AddSingleton<ICredentialService, CredentialService>();
             builder.Services.AddSingleton<IProfileService, ProfileService>();
             builder.Services.AddSingleton<IProfileFactory, ProfileFactory>();
+            builder.Services.AddSingleton<DNSValidator>();
+            builder.Services.AddSingleton<ServerValidator>();
+            builder.Services.AddSingleton<ProductSelectionValidator>();
 
             return builder;
         }
