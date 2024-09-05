@@ -41,7 +41,7 @@ namespace IT.Mechanic.App
                 _profileService,
                 _profileFactory,
                 _dnsValidator,
-                _serverValidator
+                _serverValidator,
                 _productSelectionValidator
             );
         }
