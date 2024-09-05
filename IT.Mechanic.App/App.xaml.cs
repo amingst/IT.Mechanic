@@ -40,8 +40,8 @@ namespace IT.Mechanic.App
         {
             var window = base.CreateWindow(activationState);
 
-            const int newWidth = 800;
-            const int newHeight = 600;
+            const int newWidth = 1280;
+            const int newHeight = 720;
 
             window.Width = newWidth;
             window.Height = newHeight;
