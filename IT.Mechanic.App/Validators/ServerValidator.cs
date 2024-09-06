@@ -18,6 +18,7 @@ namespace IT.Mechanic.App.Validators
                 .NotNull()
                 .IsInEnum<ServerModel, ServerModel.HostingProviderEnum>();
 
+            // TODO: CHANGE THIS BEFORE YOU CROWDSTRIKE YOURSELF
             RuleFor(server => server.PublicIP)
                 .NotNull()
                 .NotEmpty()
