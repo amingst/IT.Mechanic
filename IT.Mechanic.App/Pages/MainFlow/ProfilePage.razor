@@ -19,21 +19,21 @@
         </MudTooltip>
         <MudTooltip Text="Hosting">
             <MudMenu Icon="@Icons.Material.Filled.Merge" Color="Color.Default" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopRight">
-                <MudMenuItem>Change Server Provider</MudMenuItem>
-                <MudMenuItem>Migrate Location</MudMenuItem>
+                <MudMenuItem @onclick="@OnChangeServerClicked">Change Server Provider</MudMenuItem>
+                <MudMenuItem @onclick="@OnMigrateClicked">Migrate Location</MudMenuItem>
                 <MudMenuItem>Size</MudMenuItem>
             </MudMenu>
         </MudTooltip>
         <MudTooltip Text="Backup">
             <MudMenu Icon="@Icons.Material.Filled.Backup" Color="Color.Info" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopRight">
-                <MudMenuItem>Backup</MudMenuItem>
-                <MudMenuItem>Install New Backup Service</MudMenuItem>
+                <MudMenuItem @onclick="@OnBackupClicked">Backup</MudMenuItem>
+                <MudMenuItem @onclick="@OnInstallBackupServiceClicked">Install New Backup Service</MudMenuItem>
             </MudMenu>
         </MudTooltip>
         <MudTooltip Text="DNS">
             <MudMenu Icon="@Icons.Material.Filled.Dns" Color="Color.Default" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopRight">
-                <MudMenuItem>Change DNS Name</MudMenuItem>
-                <MudMenuItem>Chanege DNS Provider</MudMenuItem>
+                <MudMenuItem @onclick="@OnChangeDomainClicked">Change DNS Name</MudMenuItem>
+                <MudMenuItem @onclick="@OnChangeDNSProviderClicked">Chanege DNS Provider</MudMenuItem>
             </MudMenu>
         </MudTooltip>
         <MudTooltip Text="Delete">
@@ -115,5 +115,35 @@
     private async void OnForceDeleteClicked()
     {
         bool? result = await _mudMessageBox.ShowAsync();
+    }
+
+    public void OnBackupClicked()
+    {
+        Navigation.NavigateTo($"/profile/{ProfileId}/backup");
+    }
+
+    public void OnInstallBackupServiceClicked()
+    {
+        Navigation.NavigateTo($"/profile/{ProfileId}/backup/install");
+    }
+
+    public void OnMigrateClicked()
+    {
+        Navigation.NavigateTo($"/profile/{ProfileId}/migrate");
+    }
+
+    public void OnChangeServerClicked()
+    {
+        Navigation.NavigateTo($"/profile/{ProfileId}/migrate/change-server");
+    }
+
+    public void OnChangeDomainClicked()
+    {
+        Navigation.NavigateTo($"/profile/{ProfileId}/dns/change-domain");
+    }
+
+    public void OnChangeDNSProviderClicked()
+    {
+        Navigation.NavigateTo($"/profile/{ProfileId}/dns/change-provider");
     }
 }

@@ -1,0 +1,20 @@
+﻿@page "/profile/{ProfileID}/dns/change-provider"
+@inject NavigationManager Navigation
+
+<MudAppBar>
+    <MudTooltip Text="Back">
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" @onclick="OnBackClicked" />
+    </MudTooltip>
+    <MudText>Settings</MudText>
+</MudAppBar>
+<h3>ChangeDNSProviderPage</h3>
+
+@code {
+    [Parameter]
+    public string ProfileID { get; set; }
+
+    private void OnBackClicked(MouseEventArgs e)
+    {
+        Navigation.NavigateTo($"/profile/{ProfileID}");
+    }
+}

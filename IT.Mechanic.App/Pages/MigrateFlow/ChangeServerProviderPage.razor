@@ -1,0 +1,21 @@
+﻿@page "/profile/{ProfileID}/migrate/change-server"
+@inject NavigationManager Navigation
+
+<MudAppBar>
+    <MudTooltip Text="Back">
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" @onclick="OnBackClicked" />
+    </MudTooltip>
+    <MudText>Settings</MudText>
+</MudAppBar>
+<h1>Change Server Provider</h1>
+
+@code {
+    [Parameter]
+    public string ProfileID { get; set; }
+
+    private void OnBackClicked(MouseEventArgs e)
+    {
+        Navigation.NavigateTo($"/profile/{ProfileID}");
+    }
+
+}
