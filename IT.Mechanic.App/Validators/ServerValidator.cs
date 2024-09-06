@@ -21,16 +21,17 @@ namespace IT.Mechanic.App.Validators
             RuleFor(server => server.PublicIP)
                 .NotNull()
                 .NotEmpty()
-                .When(
-                    server =>
-                        server.HostingProvider.Equals(ServerModel.HostingProviderEnum.Expertmode)
+                .Matches(
+                    "(\\b25[0-5]|\\b2[0-4][0-9]|\\b[01]?[0-9][0-9]?)(\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}"
+                )
+                .When(server =>
+                    server.HostingProvider.Equals(ServerModel.HostingProviderEnum.Expertmode)
                 );
             RuleFor(server => server.SSHPrivateKey)
                 .NotNull()
                 .NotEmpty()
-                .When(
-                    server =>
-                        server.HostingProvider.Equals(ServerModel.HostingProviderEnum.Expertmode)
+                .When(server =>
+                    server.HostingProvider.Equals(ServerModel.HostingProviderEnum.Expertmode)
                 );
         }
     }
