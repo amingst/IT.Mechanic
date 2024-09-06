@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Pulumi" Version="3.66.2" />
+    <PackageReference Include="Pulumi.Aws" Version="6.50.1" />
+    <PackageReference Include="Pulumi.Azure" Version="5.89.0" />
+    <PackageReference Include="Pulumi.DigitalOcean" Version="4.31.1" />
+    <PackageReference Include="Pulumi.Docker" Version="4.5.5" />
+    <PackageReference Include="Pulumi.Gcp" Version="7.38.0" />
+    <PackageReference Include="Pulumi.Kubernetes" Version="4.17.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Models\Configuration\IT.Mechanic.Models.Configuration.csproj" />
   </ItemGroup>
 
