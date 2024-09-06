@@ -1,8 +1,8 @@
 {
   "profiles": {
-    "IT.Mechanic.CLI": {
-      "commandName": "Project",
-      "commandLineArgs": "-h"
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
     }
   }
 }
