@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IT.Mechanic.App", "IT.Mecha
 		{5DDABB53-38AE-44EE-BA23-38F90FA3451A} = {5DDABB53-38AE-44EE-BA23-38F90FA3451A}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IT.Mechanic.CLI", "IT.Mechanic.CLI\IT.Mechanic.CLI.csproj", "{8433A671-112B-4A0B-9522-5C75E09E73F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IT.Mechanic.CLI", "IT.Mechanic.CLI\IT.Mechanic.CLI.csproj", "{8433A671-112B-4A0B-9522-5C75E09E73F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
