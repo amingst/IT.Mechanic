@@ -12,10 +12,11 @@ namespace IT.Mechanic.App.Validators
     {
         public DNSValidator()
         {
-            RuleFor(dns => dns.DomainName).NotEmpty().NotNull();
+            RuleFor(dns => dns.DomainName).NotEmpty().NotNull().WithMessage("Domain Name Required");
             RuleFor(dns => dns.Provider)
                 .NotEmpty()
                 .NotNull()
+                .WithMessage("Provider Required")
                 .IsInEnum<DNSModel, DNSModel.ProviderEnum>();
         }
     }

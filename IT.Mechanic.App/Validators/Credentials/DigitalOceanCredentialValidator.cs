@@ -12,7 +12,7 @@ namespace IT.Mechanic.App.Validators.Credentials
     {
         public DigitalOceanCredentialValidator()
         {
-            RuleFor(digitalOcean => digitalOcean.ApiKey).NotEmpty();
+            RuleFor(digitalOcean => digitalOcean.ApiKey).NotEmpty().WithMessage("API Key Required");
         }
     }
 }

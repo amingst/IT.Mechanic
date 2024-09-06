@@ -12,8 +12,14 @@ namespace IT.Mechanic.App.Validators.Hosting
     {
         public DigitalOceanHostValidator()
         {
-            RuleFor(digitalOcean => digitalOcean.ServerSKU).NotEmpty();
-            RuleFor(digitalOcean => digitalOcean.ServerLocation).NotEmpty();
+            RuleFor(digitalOcean => digitalOcean.ServerSKU)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("SKU Required");
+            RuleFor(digitalOcean => digitalOcean.ServerLocation)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("Location Required");
         }
     }
 }

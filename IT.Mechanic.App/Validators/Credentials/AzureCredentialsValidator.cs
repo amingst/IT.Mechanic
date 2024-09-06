@@ -12,7 +12,7 @@ namespace IT.Mechanic.App.Validators.Credentials
     {
         public AzureCredentialsValidator()
         {
-            RuleFor(azure => azure.ApiKey).NotEmpty();
+            RuleFor(azure => azure.ApiKey).NotEmpty().WithMessage("API Key Required");
         }
     }
 }

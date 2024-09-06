@@ -12,8 +12,8 @@ namespace IT.Mechanic.App.Validators.Credentials
     {
         public GodaddyCredentialValidator()
         {
-            RuleFor(godaddy => godaddy.ApiKey).NotEmpty();
-            RuleFor(godaddy => godaddy.ApiSecret).NotEmpty();
+            RuleFor(godaddy => godaddy.ApiKey).NotEmpty().WithMessage("API Key Required");
+            RuleFor(godaddy => godaddy.ApiSecret).NotEmpty().WithMessage("API Secret Required");
         }
     }
 }

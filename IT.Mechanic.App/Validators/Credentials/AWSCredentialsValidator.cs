@@ -12,7 +12,7 @@ namespace IT.Mechanic.App.Validators.Credentials
     {
         public AWSCredentialsValidator()
         {
-            RuleFor(aws => aws.ApiKey).NotEmpty();
+            RuleFor(aws => aws.ApiKey).NotEmpty().WithMessage("API Key Required");
         }
     }
 }

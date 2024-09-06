@@ -12,7 +12,7 @@ namespace IT.Mechanic.App.Validators.Credentials
     {
         public MasterCredentialValidator()
         {
-            RuleFor(master => master.MasterKey).NotEmpty();
+            RuleFor(master => master.MasterKey).NotEmpty().WithMessage("API Key Required");
         }
     }
 }

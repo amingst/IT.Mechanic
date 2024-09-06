@@ -12,8 +12,11 @@ namespace IT.Mechanic.App.Validators.Hosting
     {
         public AzureHostValidator()
         {
-            RuleFor(azure => azure.ServerSKU).NotEmpty();
-            RuleFor(azure => azure.ServerLocation).NotEmpty();
+            RuleFor(azure => azure.ServerSKU).NotEmpty().WithMessage("SKU Required");
+            RuleFor(azure => azure.ServerLocation)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("Location Required");
         }
     }
 }

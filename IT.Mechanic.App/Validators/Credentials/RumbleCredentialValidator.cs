@@ -12,7 +12,7 @@ namespace IT.Mechanic.App.Validators.Credentials
     {
         public RumbleCredentialValidator()
         {
-            RuleFor(rumble => rumble.ApiKey).NotEmpty();
+            RuleFor(rumble => rumble.ApiKey).NotEmpty().WithMessage("API Key Required");
         }
     }
 }

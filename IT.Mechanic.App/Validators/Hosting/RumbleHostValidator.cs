@@ -12,8 +12,15 @@ namespace IT.Mechanic.App.Validators.Hosting
     {
         public RumbleHostValidator()
         {
-            RuleFor(rumble => rumble.ServerSKU).NotEmpty();
-            RuleFor(rumble => rumble.ServerLocation).NotEmpty();
+            RuleFor(rumble => rumble.ServerSKU)
+                .NotEmpty()
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("SKU Required");
+            RuleFor(rumble => rumble.ServerLocation)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("Location Required");
         }
     }
 }

@@ -12,7 +12,7 @@ namespace IT.Mechanic.App.Validators.Credentials
     {
         public GCPCredentialValidator()
         {
-            RuleFor(gcp => gcp.ApiKey).NotEmpty();
+            RuleFor(gcp => gcp.ApiKey).NotEmpty().WithMessage("API Key Required");
         }
     }
 }

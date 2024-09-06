@@ -12,7 +12,7 @@ namespace IT.Mechanic.App.Validators.Credentials
     {
         public InvertedTechCredentialValidator()
         {
-            RuleFor(invertedTech => invertedTech.ApiKey).NotEmpty();
+            RuleFor(invertedTech => invertedTech.ApiKey).NotEmpty().WithMessage("API Key Required");
         }
     }
 }
