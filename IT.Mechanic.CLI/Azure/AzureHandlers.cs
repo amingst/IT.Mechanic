@@ -12,6 +12,8 @@ namespace IT.Mechanic.CLI.Azure
         public static void Create(MainModel model)
         {
             Console.WriteLine("Create Azure Server");
+            //AzureCliHelpers.InstallAzureCli();
+            AzureCliHelpers.IsAzureCliInstalled();
         }
 
         public static void Start()
