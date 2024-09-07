@@ -18,9 +18,22 @@ namespace IT.Mechanic.CLI.Helpers
             Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) },
         };
 
-        public static MainModel ReadProfile(string profileId)
+        public static MainModel ReadProfile(string path)
         {
-            return new MainModel { };
+            if (!File.Exists(path) || path == null)
+            {
+                throw new ArgumentException("file at specified path does not exist");
+            }
+
+            string json = File.ReadAllText(path);
+            MainModel parsed = JsonSerializer.Deserialize<MainModel>(json, _jsonSerializerOpts);
+
+            if (parsed == null)
+            {
+                throw new Exception("parsed results are null");
+            }
+
+            return parsed;
         }
     }
 }

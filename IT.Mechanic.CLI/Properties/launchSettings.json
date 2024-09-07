@@ -3,6 +3,10 @@
     "WSL": {
       "commandName": "WSL2",
       "distributionName": ""
+    },
+    "Profile 2": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\Andrew\\Desktop\\mechanic\\profiles\\18a6c49e-3e85-4087-b61a-86246038e4d3.json create"
     }
   }
 }
