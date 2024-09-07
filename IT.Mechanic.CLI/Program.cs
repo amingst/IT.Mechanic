@@ -8,6 +8,11 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        ParseArguments(args);
+    }
+
+    public static void ParseArguments(string[] args)
+    {
         if (
             args.Any(arg => arg.Equals("-h"))
             || args.Any(arg => arg.Equals("--help"))
@@ -19,18 +24,13 @@ public class Program
         }
         else
         {
-            ParseArguments(args);
+            Console.WriteLine("Reading Profile From Specified Path...");
+            var profile = JSONHelpers.ReadProfile(args[0]);
+            Console.WriteLine("Profile Loaded...");
+            Console.WriteLine("Detecting Command...");
+            var command = DetectCommand(args[1]);
+            HandleCommand(command, profile);
         }
-    }
-
-    public static void ParseArguments(string[] args)
-    {
-        Console.WriteLine("Reading Profile From Specified Path...");
-        var profile = JSONHelpers.ReadProfile(args[0]);
-        Console.WriteLine("Profile Loaded...");
-        Console.WriteLine("Detecting Command...");
-        var command = DetectCommand(args[1]);
-        HandleCommand(command, profile);
     }
 
     public static void WriteHelpMessage()
