@@ -1,8 +1,11 @@
 ﻿@page "/create"
+@using FluentValidation
 @using IT.Mechanic.App.Services.Profiles
+@using IT.Mechanic.App.ViewModels
 @using IT.Mechanic.Models.Configuration
 @inject IProfileFactory ProfileFactory
 @inject NavigationManager Navigation;
+@inject IValidator<SiteConfigViewModel> Validator
 
 <MudAppBar>
     <MudTooltip Text="Back">
@@ -10,11 +13,15 @@
     </MudTooltip>
     <MudText>Create Your Platform</MudText>
 </MudAppBar>
-<SiteConfigForm DNSProvider="@ProfileFactory.DNS.Provider" 
+@if (ShowFormErrorAlert)
+{
+    <MudAlert Severity="MudBlazor.Severity.Error" ContentAlignment="HorizontalAlignment.End" ShowCloseIcon="true">End</MudAlert>
+}
+<SiteConfigForm DNSProvider="@ViewModel.DNSProvider" 
                 DNSProviderChanged="@DNSProviderChanged"
-                HostingProvider="@ProfileFactory.Server.HostingProvider"
+                HostingProvider="@ViewModel.HostingProvider"
                 HostingProviderChanged="@HostingProviderChanged"
-                WebsiteType="@ProfileFactory.ProductSelection.WebsiteType"
+                WebsiteType="@ViewModel.WebsiteType"
                 WebsiteTypeChanged="@WebsiteTypeChanged"
                 Navigation="Navigation" NextRoute="@("/create/dns")"/>
 <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="OnCreateClicked" StartIcon="@Icons.Material.Filled.Add">
@@ -22,9 +29,15 @@
 </MudButton>
 
 @code {
+    public bool ShowFormErrorAlert { get; set; } = false;
+    public SiteConfigViewModel ViewModel { get; set; } = new SiteConfigViewModel();
+
     protected override void OnInitialized()
     {
         ProfileFactory.Clear();
+        ViewModel.DNSProvider = ProfileFactory.DNS.Provider;
+        ViewModel.HostingProvider = ProfileFactory.Server.HostingProvider;
+        ViewModel.WebsiteType = ProfileFactory.ProductSelection.WebsiteType;
         base.OnInitialized();
     }
 
@@ -35,21 +48,34 @@
 
     public void DNSProviderChanged(DNSModel.ProviderEnum dnsProvider)
     {
-        ProfileFactory.DNS.Provider = dnsProvider;
+        ViewModel.DNSProvider = dnsProvider;
     }
 
     public void HostingProviderChanged(ServerModel.HostingProviderEnum hostingProvider)
     {
-        ProfileFactory.Server.HostingProvider = hostingProvider;
+        ViewModel.HostingProvider = hostingProvider;
     }
 
     public void WebsiteTypeChanged(ProductSelectionModel.WebsiteTypes websiteType)
     {
-        ProfileFactory.ProductSelection.WebsiteType = websiteType;
+        ViewModel.WebsiteType = websiteType;
     }
 
     public void OnCreateClicked()
     {
-        Navigation.NavigateTo("/create/dns");
+        ShowFormErrorAlert = false;
+        var res = Validator.Validate(ViewModel);
+
+        if (res.IsValid)
+        {
+            ProfileFactory.DNS.Provider = ViewModel.DNSProvider;
+            ProfileFactory.Server.HostingProvider = ViewModel.HostingProvider;
+            ProfileFactory.ProductSelection.WebsiteType = ViewModel.WebsiteType;
+            Navigation.NavigateTo("/create/dns");
+        } else
+        {
+            // TODO: Parse Errors in res and push to the form
+            ShowFormErrorAlert = true;
+        }
     }
 }

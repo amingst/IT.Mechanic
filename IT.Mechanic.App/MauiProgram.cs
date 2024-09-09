@@ -1,8 +1,10 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
+using FluentValidation;
 using IT.Mechanic.App.Services.Profiles;
 using IT.Mechanic.App.Services.Settings;
 using IT.Mechanic.App.Validators;
+using IT.Mechanic.App.ViewModels;
 using Microsoft.Extensions.Logging;
 using MudBlazor.Services;
 
@@ -54,6 +56,7 @@ namespace IT.Mechanic.App
             builder.Services.AddSingleton<DNSValidator>();
             builder.Services.AddSingleton<ServerValidator>();
             builder.Services.AddSingleton<ProductSelectionValidator>();
+            builder.Services.AddSingleton<IValidator<SiteConfigViewModel>, SiteConfigValidator>();
 
             return builder;
         }
